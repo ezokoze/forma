@@ -25,6 +25,10 @@ defined("ASSETS_URL") ? null : define("ASSETS_URL", APP_URL);
 //require library files
 //require_once("util.php");
 
+// Includes files
+$autoload = (is_file('vendor/autoload.php')) ? 'vendor/autoload.php' : '../vendor/autoload.php';
+
+require_once ($autoload);
 require_once("func.global.php");
 
 require_once("smartui/class.smartutil.php");
@@ -55,9 +59,12 @@ SmartUI::register('nav', 'Nav');
 require_once("class.html-indent.php");
 require_once("class.parsedown.php");
 
+
+
+
 define('PDO_DSN', 'mysql:host=localhost;dbname=forma_avril');
 define('PDO_USERNAME', 'root');
 define('PDO_PASSWORD', null);
-$pdo = new \BenTools\PDOExtended\PDOExtended(PDO_DSN, PDO_USERNAME, PDO_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+$pdo = new BenTools\PDOExtended\PDOExtended(PDO_DSN, PDO_USERNAME, PDO_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
 ?>

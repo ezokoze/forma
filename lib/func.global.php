@@ -1,54 +1,414 @@
 <?php
-/**
- * set document type
- * @param string $type type of document
- */
-function set_content_type($type = 'application/json') {
-    header('Content-Type: '.$type);
-}
 
 /**
- * Read CSV from URL or File
- * @param  string $filename  Filename
- * @param  string $delimiter Delimiter
- * @return array            [description]
+ * User: breith
+ * Date: 15/12/2015
+ * Time: 16:57
  */
-function read_csv($filename, $delimiter = ",") {
-    $file_data = array();
-    $handle = @fopen($filename, "r") or false;
-    if ($handle !== FALSE) {
-        while (($data = fgetcsv($handle, 1000, $delimiter)) !== FALSE) {
-            $file_data[] = $data;
-        }
-        fclose($handle);
+
+use BenTools\PDOExtended\PDOExtended;
+use PHPMailer\PHPMailer\PHPMailer;
+
+/**
+ * Class Functions
+ */
+class Functions
+{
+    private $_pdo;
+
+    public function __construct()
+    {
+        $this->_pdo = new PDOExtended(PDO_DSN, PDO_USERNAME, PDO_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     }
-    return $file_data;
+
+    /**
+     * Converti les dates US en FR
+     *
+     * @param     $date
+     * @param int $param
+     *
+     * @return string
+     *
+     * 0 - 15/10/2015
+     * 1 - 15/10/2015 à 15h52
+     * 2 - Jeudi 15 octobre 2015
+     * 3 - Jeudi 15 octobre 2015 à 15h52
+     * 4 - Octobre
+     * 5 - 15 octobre 2015
+     */
+    public function dateFR($date, $param = 0)
+    {
+        if($date != "0000-00-00" && $date != "0000-00-00 00:00:00" )
+        {
+            switch ($param) {
+                case 0:
+                    return strftime('%d/%m/%Y', strtotime($date));
+                    break;
+                case 1:
+                    return strftime('%d/%m/%Y à %H:%M', strtotime($date));
+                    break;
+                case 2:
+                    $strDate = mb_convert_encoding('%A %d %B %Y', 'ISO-8859-9', 'UTF-8');
+
+                    return ucfirst(iconv("ISO-8859-9", "UTF-8", strftime($strDate, strtotime($date))));
+                    break;
+                case 3:
+                    $strDate = mb_convert_encoding('%A %d %B %Y à %Hh%M', 'ISO-8859-9', 'UTF-8');
+
+                    return ucfirst(iconv("ISO-8859-9", "UTF-8", strftime($strDate, strtotime($date))));
+                    break;
+                case 4:
+                    $strDate = mb_convert_encoding('%B', 'ISO-8859-9', 'UTF-8');
+
+                    return ucfirst(iconv("ISO-8859-9", "UTF-8", strftime($strDate, strtotime($date))));
+                    break;
+                case 5:
+                    $strDate = mb_convert_encoding('%d %B %Y', 'ISO-8859-9', 'UTF-8');
+
+                    return ucfirst(iconv("ISO-8859-9", "UTF-8", strftime($strDate, strtotime($date))));
+                    break;
+                default:
+                    return date('d/m/Y');
+            }
+        }
+        else return "";
+    }
+
+    /**
+     * Converti les dates FR en US
+     *
+     * @param     $date
+     * @param int $param
+     *
+     * @return string
+     *
+     * 0 - 2016-12-20
+     * 1 - 2016-12-20 15:24:52 ou 2016-12-20 00:00:00
+     */
+    public function dateUS($date, $param = 0)
+    {
+        if($date != "")
+        {
+            switch ($param) {
+                case 0:
+                    return date_format(date_create(str_replace('/', '-', $date)), 'Y-m-d');
+                    break;
+                case 1:
+                    return date_format(date_create(str_replace('/', '-', $date)), 'Y-m-d H:i:s');
+                    break;
+                default:
+                    return date_format(date_create(str_replace('/', '-', $date)), 'Y-m-d');
+            }
+        }
+        else return "";
+    }
+
+    /**
+     * @param int $debug
+     *
+     * @link https://secure.php.net/manual/fr/function.error-reporting.php
+     */
+    public function debug($debug = 0)
+    {
+        switch ($debug) {
+            case 1:
+                // Rapporte les erreurs d'exécution de script
+                error_reporting(E_ERROR | E_WARNING | E_PARSE);
+                break;
+            case 2:
+                // Rapporter les E_NOTICE peut vous aider à améliorer vos scripts
+                // (variables non initialisées, variables mal orthographiées..)
+                error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+                break;
+            case 3:
+                // Reporte toutes les erreurs PHP
+                error_reporting(-1);
+                break;
+            default:
+                // Désactiver le rapport d'erreurs
+                error_reporting(0);
+        }
+    }
+
+    /**
+     * set document type
+     *
+     * @param string $type type of document
+     */
+    public function set_content_type($type = 'application/json')
+    {
+        header('Content-Type: ' . $type);
+    }
+
+    /**
+     * Print Log to the page
+     *
+     * @param      $type
+     * @param bool $pre
+     */
+    public function plog($type, $pre = true)
+    {
+        $select_logs = $this->_pdo->sqlArray("SELECT * FROM logs WHERE logs_type = ? ORDER BY logs_dateC DESC", array($type));
+        if (!empty($select_logs)) {
+            foreach ($select_logs as $select_log) {
+                $info = date('d/m/Y H:i:s', strtotime($select_log['logs_dateC'])) . " - " . $select_log['logs_type'] . " - " . $select_log['logs_requete'];
+                echo $result = $pre ? "<pre>" . $info . "</pre>" : $info;
+            }
+        }
+    }
+
+    /**
+     * Log to BDD
+     *
+     * @param $type
+     * @param $requete
+     * @param $repertoire
+     * @param $commentaire
+     *
+     * $func->elog("UPDATE", $insert_articles->debug()->preview(), realpath(dirname(__FILE__))."\\".basename(__FILE__, ".php").".php");
+     */
+    public function elog($type, $requete, $repertoire, $commentaire = "")
+    {
+        $this->_pdo->sql("INSERT INTO logs (logs_dateC, utilisateurs_id, logs_type, logs_requete, logs_repertoire, logs_commentaire, logs_ip) VALUES (NOW(),?,?,?,?,?,?)", array(
+            $this->prevInsertBDD($_SESSION['utilisateur']['id']),
+            $type,
+            $requete,
+            $repertoire,
+            $commentaire,
+            $this->get_ip_address()
+        ));
+    }
+
+    /**
+     * Formate la chaine lors d'une insertion en BDD
+     *
+     * @param $var
+     *
+     * @return string
+     */
+    public function prevInsertBDD($var)
+    {
+        return (!empty($var)) ? $var : "";
+    }
+
+    /**
+     * Fonction redimensionnement et enregistrement copie d'image
+     *
+     * @param        $file
+     * @param        $rep
+     * @param        $largeur
+     * @param        $hauteur
+     * @param string $prefixe
+     * @param string $type
+     */
+    public function resize($file, $rep, $largeur, $hauteur, $prefixe = "", $type = "jpg")
+    {
+        $truc = $rep . $file;
+        $size = getimagesize($truc);
+
+        $src_w = $size[0];
+        $src_h = $size[1];
+
+        if ($hauteur == 0) $hauteur = ($src_h * $largeur) / $src_w;
+
+        if ($src_w > $src_h) {
+            //plus large
+            $dest_w = $largeur;
+            $hauteur = ($src_h * $largeur) / $src_w;
+            $dest_h = $hauteur;
+        } else {
+            //plus haut
+            $largeur = ($hauteur * $src_w) / $src_h;
+            $dest_w = $largeur;
+            $dest_h = $hauteur;
+        }
+
+        switch ($type) {
+            case "jpeg" :
+            case "jpg" :
+            case IMAGETYPE_JPEG :
+                $src_img = imagecreatefromjpeg($truc);
+                break;
+            case "png" :
+            case IMAGETYPE_PNG :
+                $src_img = imagecreatefrompng($truc);
+                break;
+            case IMAGETYPE_GIF :
+            case "gif" :
+                $src_img = imagecreatefromgif($truc);
+                break;
+            default :
+                $src_img = imagecreatefromjpeg($truc);
+        }
+
+        $dst_img = imagecreatetruecolor($dest_w, $dest_h);
+
+        $a1 = 0;
+        $a2 = $size[1] / 2 - 75;
+        $dst_img = imagecreatetruecolor($dest_w, $dest_h);
+        imagecopyresampled($dst_img, $src_img, 0, 0, 0, 0, $dest_w, $dest_h, $src_w, $src_h);
+
+        imagejpeg($dst_img, $rep . $prefixe . $file, 75);
+        imagedestroy($src_img);
+        imagedestroy($dst_img);
+    }
+
+    /**
+     * Normalisation des noms de fichiers ou autre...
+     *
+     * @param $string
+     *
+     * @return mixed|string
+     */
+    public function normalize($string)
+    {
+        //$string = utf8_encode($string);
+        $string = trim($string);
+        $string = str_replace('\'', '_', $string);
+        $string = str_replace(' ', '_', $string);
+        $string = str_replace('\' ', '_', $string);
+        $string = str_replace('"', '', $string);
+        $string = str_replace('\'', '_', $string);
+        $string = str_replace('°', '_', $string);
+
+        $translit = array('Á' => 'A', 'À' => 'A', 'Â' => 'A', 'Ä' => 'A', 'Ã' => 'A', 'Å' => 'A', 'Ç' => 'C', 'É' => 'E', 'È' => 'E', 'Ê' => 'E', 'Ë' => 'E', 'Í' => 'I', 'Ï' => 'I', 'Î' => 'I', 'Ì' => 'I', 'Ñ' => 'N', 'Ó' => 'O', 'Ò' => 'O', 'Ô' => 'O', 'Ö' => 'O', 'Õ' => 'O', 'Ú' => 'U', 'Ù' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ý' => 'Y', 'á' => 'a', 'à' => 'a', 'â' => 'a', 'ä' => 'a', 'ã' => 'a', 'å' => 'a', 'ç' => 'c', 'é' => 'e', 'è' => 'e', 'ê' => 'e', 'ë' => 'e', 'í' => 'i', 'ì' => 'i', 'î' => 'i', 'ï' => 'i', 'ñ' => 'n', 'ó' => 'o', 'ò' => 'o', 'ô' => 'o', 'ö' => 'o', 'õ' => 'o', 'ú' => 'u', 'ù' => 'u', 'û' => 'u', 'ü' => 'u', 'ý' => 'y', 'ÿ' => 'y');
+        $string = strtr($string, $translit);
+        //$string = strtr($string,'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ', 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
+        $string = mb_strtolower($string);
+
+        return $string;
+    }
+
+    /**
+     * Ré-arrange plusieurs champs $_FILES en un tableau
+     *
+     * @param $file_post
+     *
+     * @return array
+     */
+    public function reArrayFiles(&$file_post)
+    {
+
+        $file_ary = array();
+        $file_count = count($file_post['name']);
+        $file_keys = array_keys($file_post);
+
+        for ($i = 0; $i < $file_count; $i++) {
+            foreach ($file_keys as $key) {
+                $file_ary[$i][$key] = $file_post[$key][$i];
+            }
+        }
+
+        return $file_ary;
+    }
+
+    /**
+     * @param $fichier
+     * @param $infos
+     *
+     * @return array
+     */
+    public function ajouter_fichier($fichier, $infos)
+    {
+        // Nom de l'entité si présent.
+        $entite = (!empty($infos['entite'])) ? " (" . $infos['entite'] . ") " : "";
+
+        // Si le fichier n'est pas vide
+        if ($fichier['size'] > 0) {
+
+            // Si le fichier doit être une image ou un fichier ?
+            if ($infos['image']) {
+                // Si le fichier est une image
+                // GIF, JPEG, PNG, SWF, PSD, BMP, TIFF_II, TIFF_MM, JPC, JP2, JPX, JB2, SWC, IFF, WBMP, XBM et ICO.
+                if (exif_imagetype($fichier['tmp_name'])) {
+                    $fichierValide = true;
+                } else {
+                    $fichierValide = false;
+                }
+            } else {
+                $fichierValide = true;
+            }
+
+            // Si le fichier est valide
+            if ($fichierValide) {
+
+                // Gestion du nom du fichier
+                if (empty($infos['nom'])) {
+                    $nom = $this->normalize(str_replace('\'', ' ', pathinfo($fichier['name'], PATHINFO_FILENAME)));
+                } else {
+                    $nom = $this->normalize(str_replace('\'', ' ', $infos['nom']));
+                }
+
+
+                // Je récupère l'extention du fichier
+                $extension = pathinfo($fichier['name'], PATHINFO_EXTENSION);
+
+                // Répertoire de destination du fichier
+                $destination = RACINE_SERVEUR . CHEMIN_FICHIERS . $infos['dossier'] . "/";
+
+
+                // Si le dossier n'existe pas, je le crée.
+                if (!is_dir($destination)) {
+                    mkdir($destination, 0777);
+                }
+
+                $destinationComplete = $destination . $nom . "." . $extension;
+
+                // Execution de l'upload !
+                if (move_uploaded_file($fichier['tmp_name'], $destinationComplete)) {
+                    $retour = array(
+                        "retour"  => true,
+                        "message" => "l'upload du fichier a été réalisé avec succès" . $entite,
+                        "nom"     => $nom . "." . $extension
+                    );
+                } else {
+                    $retour = array(
+                        "retour"  => false,
+                        "message" => "Une erreur s'est produite lors de l'upload du fichier" . $entite
+                    );
+                }
+
+            } else {
+                $retour = array(
+                    "retour"  => false,
+                    "message" => "Ce fichier n'est pas une image" . $entite
+                );
+            }
+        } else {
+            $retour = array(
+                "retour"  => false,
+                "message" => "Le fichier est vide" . $entite
+            );
+        }
+
+        return $retour;
+    }
+
+    /**
+     * Récupère l'addresse IP du client
+     *
+     * @return string
+     */
+    public function get_ip_address()
+    {
+        if (isset($_SERVER)) {
+            if (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) && ip2long($_SERVER["HTTP_X_FORWARDED_FOR"]) !== false) {
+                $ipadres = $_SERVER["HTTP_X_FORWARDED_FOR"];
+            } elseif (isset($_SERVER["HTTP_CLIENT_IP"]) && ip2long($_SERVER["HTTP_CLIENT_IP"]) !== false) {
+                $ipadres = $_SERVER["HTTP_CLIENT_IP"];
+            } else {
+                $ipadres = $_SERVER["REMOTE_ADDR"];
+            }
+        } else {
+            if (getenv('HTTP_X_FORWARDED_FOR') && ip2long(getenv('HTTP_X_FORWARDED_FOR')) !== false) {
+                $ipadres = getenv('HTTP_X_FORWARDED_FOR');
+            } elseif (getenv('HTTP_CLIENT_IP') && ip2long(getenv('HTTP_CLIENT_IP')) !== false) {
+                $ipadres = getenv('HTTP_CLIENT_IP');
+            } else {
+                $ipadres = getenv('REMOTE_ADDR');
+            }
+        }
+
+        return $ipadres;
+    }
 }
-
-/**
- * Print Log to the page
- * @param  mixed  $var    Mixed Input
- * @param  boolean $pre    Append <pre> tag
- * @param  boolean $return Return Output
- * @return string/void     Dependent on the $return input
- */
-function plog($var, $pre=true, $return=false) {
-    $info = print_r($var, true);
-    $result = $pre ? "<pre>$info</pre>" : $info;
-    if ($return) return $result;
-    else echo $result;
-}
-
-/**
- * Log to file
- * @param  string $log Log
- * @return void
- */
-function elog($log, $fn = "debug.log") {
-    $fp = fopen($fn, "a");
-    fputs($fp, "[".date("d-m-Y h:i:s")."][Log] $log\r\n");
-    fclose($fp); 
-}
-
-
-?>
