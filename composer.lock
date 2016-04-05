@@ -1,0 +1,65 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "4fbe614657de0e69084faa064e687343",
+    "content-hash": "b8aeae532c05a0f6307237e1ff3a4f4e",
+    "packages": [
+        {
+            "name": "bentools/pdoextended",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bpolaszek/bentools-pdoextended.git",
+                "reference": "805baa1330987984ea67fd6154411edbd951ee7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bpolaszek/bentools-pdoextended/zipball/805baa1330987984ea67fd6154411edbd951ee7f",
+                "reference": "805baa1330987984ea67fd6154411edbd951ee7f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BenTools\\": "src/BenTools"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Beno!t POLASZEK",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An enhanced PDO class",
+            "homepage": "https://github.com/bpolaszek/bentools-pdoextended",
+            "keywords": [
+                "Connection",
+                "database",
+                "extended",
+                "mysql",
+                "pdo",
+                "pdo extended",
+                "pdoextended"
+            ],
+            "time": "2015-07-16 12:01:42"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

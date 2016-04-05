@@ -1,0 +1,5 @@
+{
+    "require": {
+        "bentools/pdoextended": "^2.2"
+    }
+}

@@ -1,0 +1,50 @@
+[
+    {
+        "name": "bentools/pdoextended",
+        "version": "2.2.1",
+        "version_normalized": "2.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bpolaszek/bentools-pdoextended.git",
+            "reference": "805baa1330987984ea67fd6154411edbd951ee7f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bpolaszek/bentools-pdoextended/zipball/805baa1330987984ea67fd6154411edbd951ee7f",
+            "reference": "805baa1330987984ea67fd6154411edbd951ee7f",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3"
+        },
+        "time": "2015-07-16 12:01:42",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "BenTools\\": "src/BenTools"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Beno!t POLASZEK",
+                "role": "Developer"
+            }
+        ],
+        "description": "An enhanced PDO class",
+        "homepage": "https://github.com/bpolaszek/bentools-pdoextended",
+        "keywords": [
+            "Connection",
+            "database",
+            "extended",
+            "mysql",
+            "pdo",
+            "pdo extended",
+            "pdoextended"
+        ]
+    }
+]
