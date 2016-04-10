@@ -11,7 +11,7 @@
         </fileTransfer>
       </webServer>
       <webServer id="030fafef-fce1-4ab2-b9ce-0ec9c929a072" name="forma" url="http://www.francois-garcia.ws">
-        <fileTransfer host="stardust.dreamhost.com" port="21" rootFolder="/francois-garcia.ws" username="fitchadmin">
+        <fileTransfer host="stardust.dreamhost.com" port="21" rootFolder="/francois-garcia.ws" password="dffadfc1df82df9cdfe8df80dfcfdf99" username="fitchadmin">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
           </advancedOptions>

@@ -40,7 +40,7 @@ $page_nav = array(
     "associations" => array(
         "title" => "Associations",
         "icon" => "fa-building",
-        "url" => "",
+        "url" => "ajax/page_associations.php",
     ),
     "utilisateurs" => array(
         "title" => "Utilisateurs",

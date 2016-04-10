@@ -1,6 +1,6 @@
 <?php require_once("inc/init.php"); ?>
 
-<button type="button" class="well" onclick="ouvertureAjout_utilisateur();"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Créer un nouveau stage
+<button type="button" class="well" onclick="ouvertureAjout_utilisateur();"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Creer un nouveau stage
 </button>
 
 <!-- modal-->
