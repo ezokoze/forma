@@ -27,11 +27,31 @@ $page_nav = array(
         "icon" => "fa-tachometer",
         "url" => "ajax/page_dashboard.php"
     ),
-    "intervenants" => array(
-        "title" => "Intervenants",
-        "icon" => "fa-users",
-        "url" => "ajax/page_intervenants.php"
+    "stages" => array(
+        "title" => "Stages",
+        "icon" => "fa-graduation-cap",
+        "url" => "ajax/page_stages.php",
     ),
+    "formations" => array(
+        "title" => "Formations",
+        "icon" => "fa-tags",
+        "url" => "",
+    ),
+    "associations" => array(
+        "title" => "Associations",
+        "icon" => "fa-building",
+        "url" => "",
+    ),
+    "utilisateurs" => array(
+        "title" => "Utilisateurs",
+        "icon" => "fa-child",
+        "url" => "",
+    ),
+    "information" => array(
+        "title" => "Informations",
+        "icon" => "fa-info-circle",
+        "url" => "",
+    )
 
     /*"intervenants_lel" => array(
         "title" => "Intervenants",
