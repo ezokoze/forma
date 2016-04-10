@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6ea5c03-d443-4485-8481-f73c8e6b6ac1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/iAssociation_listing.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/inc/init.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/ssp.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/iAssociation_suppression.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/modal_associations_ajout.php" afterPath="$PROJECT_DIR$/ajax/modal_associations_ajout.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/page_associations.php" afterPath="$PROJECT_DIR$/ajax/page_associations.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/iAssociation_ajout.php" afterPath="$PROJECT_DIR$/php/iAssociation_ajout.php" />
     </list>
     <ignored path="forma.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,12 +33,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="modal_associations_ajout.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="modal_associations_ajout.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajax/modal_associations_ajout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5064">
-              <caret line="211" column="130" selection-start-line="211" selection-start-column="130" selection-end-line="211" selection-end-column="130" />
+            <state relative-caret-position="317">
+              <caret line="210" column="28" selection-start-line="210" selection-start-column="28" selection-end-line="212" selection-end-column="36" />
               <folding>
+                <element signature="n#div#0;n#form#0;n#!!top" expanded="false" />
+                <element signature="n#section#0;n#div#0;n#fieldset#0;n#div#0;n#form#0;n#!!top" expanded="false" />
+                <element signature="n#section#1;n#div#0;n#fieldset#0;n#div#0;n#form#0;n#!!top" expanded="false" />
                 <marker date="1460319948957" expanded="true" signature="334:413" placeholder="..." />
                 <marker date="1460319948957" expanded="true" signature="1383:1417" placeholder="..." />
               </folding>
@@ -53,9 +52,21 @@
       <file leaf-file-name="page_associations.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajax/page_associations.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="112" column="55" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="55" />
+            <state relative-caret-position="376">
+              <caret line="139" column="40" selection-start-line="139" selection-start-column="40" selection-end-line="139" selection-end-column="40" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iAssociation_suppression.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/iAssociation_suppression.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="4" column="86" selection-start-line="4" selection-start-column="86" selection-end-line="4" selection-end-column="86" />
+              <folding>
+                <marker date="1460320740996" expanded="true" signature="84:134" placeholder="DELETE FROM " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,8 +74,8 @@
       <file leaf-file-name="iAssociation_listing.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/iAssociation_listing.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="677">
-              <caret line="45" column="189" selection-start-line="45" selection-start-column="189" selection-end-line="45" selection-end-column="189" />
+            <state relative-caret-position="533">
+              <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -151,12 +162,13 @@
         <option value="$PROJECT_DIR$/inc/scripts.php" />
         <option value="$PROJECT_DIR$/php/iAssociation_ajout.php" />
         <option value="$PROJECT_DIR$/php/iAssociation_ajout.php" />
-        <option value="$PROJECT_DIR$/ajax/page_associations.php" />
-        <option value="$PROJECT_DIR$/ajax/page_associations.php" />
         <option value="$PROJECT_DIR$/php/ssp.class.php" />
         <option value="$PROJECT_DIR$/php/iAssociation_listing.php" />
         <option value="$PROJECT_DIR$/ajax/modal_associations_ajout.php" />
         <option value="$PROJECT_DIR$/ajax/modal_associations_ajout.php" />
+        <option value="$PROJECT_DIR$/ajax/page_associations.php" />
+        <option value="$PROJECT_DIR$/ajax/page_associations.php" />
+        <option value="$PROJECT_DIR$/php/iAssociation_suppression.php" />
       </list>
     </option>
   </component>
@@ -450,7 +462,7 @@
       <workItem from="1460241457281" duration="4219000" />
       <workItem from="1460293029648" duration="10788000" />
       <workItem from="1460309346308" duration="6710000" />
-      <workItem from="1460317897981" duration="2057000" />
+      <workItem from="1460317897981" duration="3438000" />
     </task>
     <task id="LOCAL-00001" summary="Mise à jour des upload composer">
       <created>1459890563795</created>
@@ -487,11 +499,18 @@
       <option name="project" value="LOCAL" />
       <updated>1460313027487</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Ajout listing association">
+      <created>1460319968611</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1460319968611</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40878000" />
+    <option name="totallyTimeSpent" value="42259000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -499,6 +518,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20149253" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32502708" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -507,7 +527,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -534,20 +553,14 @@
     <MESSAGE value="Changement url bd" />
     <MESSAGE value="Transfert bd et changement config pour francois-garcia.ws&#10;- Freeze du fichier conf sur les syncs" />
     <MESSAGE value="Intégration de main.js, ajout en db et configuration du modal ajout asso" />
-    <option name="LAST_COMMIT_MESSAGE" value="Intégration de main.js, ajout en db et configuration du modal ajout asso" />
+    <MESSAGE value="Ajout listing association" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout listing association" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ajax/inc/init.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
@@ -816,6 +829,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -871,27 +885,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/iAssociation_listing.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="45" column="189" selection-start-line="45" selection-start-column="189" selection-end-line="45" selection-end-column="189" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajax/page_associations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="112" column="55" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="55" />
+        <state relative-caret-position="533">
+          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ajax/modal_associations_ajout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5064">
-          <caret line="211" column="130" selection-start-line="211" selection-start-column="130" selection-end-line="211" selection-end-column="130" />
+        <state relative-caret-position="317">
+          <caret line="210" column="28" selection-start-line="210" selection-start-column="28" selection-end-line="212" selection-end-column="36" />
           <folding>
+            <element signature="n#div#0;n#form#0;n#!!top" expanded="false" />
+            <element signature="n#section#0;n#div#0;n#fieldset#0;n#div#0;n#form#0;n#!!top" expanded="false" />
+            <element signature="n#section#1;n#div#0;n#fieldset#0;n#div#0;n#form#0;n#!!top" expanded="false" />
             <marker date="1460319948957" expanded="true" signature="334:413" placeholder="..." />
             <marker date="1460319948957" expanded="true" signature="1383:1417" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax/page_associations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="139" column="40" selection-start-line="139" selection-start-column="40" selection-end-line="139" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/iAssociation_suppression.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="86" selection-start-line="4" selection-start-column="86" selection-end-line="4" selection-end-column="86" />
+          <folding>
+            <marker date="1460320740996" expanded="true" signature="84:134" placeholder="DELETE FROM " />
           </folding>
         </state>
       </provider>

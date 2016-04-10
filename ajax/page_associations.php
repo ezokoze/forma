@@ -130,12 +130,15 @@
         }, function (ButtonPressed) {
             if (ButtonPressed === "Oui") {
                 $.ajax({
-                    url: './php/modal/modal_suppression_utilisateur.php',
+                    url: './php/iAssociation_suppression.php',
                     type: 'POST',
                     data: {'id': paramId},
                     dataType: 'html',
                     success: function (contenu) {
-                        smallBox('Suppression', "L'utilisateur à correctement été supprimé.", 'success');
+                        smallBox('Suppression terminée', "L'association à correctement été supprimée.", 'success');
+                        setTimeout(function () {
+                            $('#listing_associations').DataTable().ajax.reload(null, false); // refresh la datable association
+                        }, 500);
                     },
                     error: function () {
                         smallBox('Erreur', 'Une erreur est survenu dans la fonction suppressionLigne(paramId).', 'warning');
