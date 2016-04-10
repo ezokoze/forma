@@ -48,7 +48,8 @@ $func = new Functions(); ?>
                 <label class="label col col-2">Mot de passe</label>
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-lock"></i>
-                        <input type="text" name="associations_motDePasse" placeholder="Mot de passe de l'association"
+                        <input type="password" name="associations_motDePasse"
+                               placeholder="Mot de passe de l'association"
                                required">
                     </label>
                 </section>
@@ -127,121 +128,107 @@ $func = new Functions(); ?>
 <!-- SCRIPTS ON PAGE EVENT -->
 <script type="text/javascript">
 
-        pageSetUp();
-        var pagefunction = function () {
-            var $checkoutForm = $('#ajoutAssociations').validate({
-                // Rules for form validation
-                rules: {
-                    associations_nom: {
-                        required: true
-                    },
-                    associations_icom: {
-                        required: true,
-                        digits: true
-                    },
-                    associations_email: {
-                        required: true,
-                        email: true
-                    },
-                    associations_motDePasse: {
-                        required: true
-                    },
-                    associations_interlocuteur_nom: {
-                        required: true
-                    },
-                    associations_interlocuteur_prenom: {
-                        required: true
-                    },
-                    associations_interlocuteur_telephone: {
-                        required: true,
-                        digits: true
-                    },
-                    associations_interlocuteur_fax: {
-                        required: false,
-                        digits: true
-                    },
-                },
+    pageSetUp();
 
-                // Messages for form validation
-                messages: {
-                    associations_nom: {
-                        required: "Veuillez renseigner un nom pour l'association."
-                    },
-                    associations_icom: {
-                        required: "Veuillez renseigner le numéro ICOM de l'association.",
-                        digits: "Veuillez entrer seulement des chiffres."
-                    },
-                    associations_email: {
-                        required: "Veuillez renseigner un e-mail pour l'assocation.",
-                        email: "Veuillez saisir un e-mail correct."
-                    },
-                    associations_motDePasse: {
-                        required: "Veuillez renseigner un mot de passe."
-                    },
-                    associations_interlocuteur_nom: {
-                        required: "Veuillez indiquer un nom pour l'interlocuteur."
-                    },
-                    associations_interlocuteur_prenom: {
-                        required: "Veuillez indiquer un prénom pour l'interlocuteur."
-                    },
-                    associations_interlocuteur_telephone: {
-                        required: "Veuillez renseigner un numéro de téléphone pour l'interlocuteur.",
-                        digits: "Veuillez renseigner un numéro de téléphone valide."
-                    },
-                    associations_interlocuteur_fax: {
-                        required: "",
-                        digits: "Veuillez renseigner un numéro de fax valide."
-                    },
+    var pagefunction = function () {
+        var $checkoutForm = $('#ajoutAssociations').validate({
+            // Rules for form validation
+            rules: {
+                associations_nom: {
+                    required: true
                 },
-                submitHandler: function (ev) {
-                    $(ev).ajaxSubmit({
-                        type: $('#ajoutSocietes').attr('method'),
-                        url: $('#ajoutSocietes').attr('action'),
-                        data: $('#ajoutSocietes').serialize(),
-                        dataType: 'json',
-                        success: function (data) {
-                            if (data.return == '1') {
-                                smallBox('Modification impossible', 'Un local portant ce nom existe déjà.', 'warning');
-                            }
-                            else {
-                                smallBox('Modification effectuée', 'Le local à correctement été modifié.', 'success');
-                            }
-                            console.log(data.retour);
+                associations_icom: {
+                    required: true,
+                    digits: true
+                },
+                associations_email: {
+                    required: true,
+                    email: true
+                },
+                associations_motDePasse: {
+                    required: true
+                },
+                associations_interlocuteur_nom: {
+                    required: true
+                },
+                associations_interlocuteur_prenom: {
+                    required: true
+                },
+                associations_interlocuteur_telephone: {
+                    required: true,
+                    digits: true
+                },
+                associations_interlocuteur_fax: {
+                    required: false,
+                    digits: true
+                },
+            },
+
+            // Messages for form validation
+            messages: {
+                associations_nom: {
+                    required: "Veuillez renseigner un nom pour l'association."
+                },
+                associations_icom: {
+                    required: "Veuillez renseigner le numéro ICOM de l'association.",
+                    digits: "Veuillez entrer seulement des chiffres."
+                },
+                associations_email: {
+                    required: "Veuillez renseigner un e-mail pour l'assocation.",
+                    email: "Veuillez saisir un e-mail correct."
+                },
+                associations_motDePasse: {
+                    required: "Veuillez renseigner un mot de passe."
+                },
+                associations_interlocuteur_nom: {
+                    required: "Veuillez indiquer un nom pour l'interlocuteur."
+                },
+                associations_interlocuteur_prenom: {
+                    required: "Veuillez indiquer un prénom pour l'interlocuteur."
+                },
+                associations_interlocuteur_telephone: {
+                    required: "Veuillez renseigner un numéro de téléphone pour l'interlocuteur.",
+                    digits: "Veuillez renseigner un numéro de téléphone valide."
+                },
+                associations_interlocuteur_fax: {
+                    required: "",
+                    digits: "Veuillez renseigner un numéro de fax valide."
+                },
+            },
+            submitHandler: function (ev) {
+                $(ev).ajaxSubmit({
+                    type: $('#ajoutSocietes').attr('method'),
+                    url: $('#ajoutSocietes').attr('action'),
+                    data: $('#ajoutSocietes').serialize(),
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.return == 'icom') {
+                            smallBox('Ajout impossible', 'Une association porte déjà ce numéro ICOM.', 'warning');
+                        } else if (data.return == 'nom') {
+                            smallBox('Ajout impossible', 'Une association porte déjà ce nom.', 'warning');
+                        } else {
+                            smallBox('Ajout réussi !', 'L\'association à correctement été ajoutée.', 'success');
+                            setTimeout(function () {
+                                $('#listing_associations').DataTable().ajax.reload(null, false); // refresh la datable association
+                            }, 500);
+                            $('#associations_ajout').modal('toggle'); // ferme le modal en cas d'ajout
                         }
-                    });
-                },
+                        console.log(data.retour);
+                    }
+                });
+            },
 
-                // Do not change code below
-                errorPlacement: function (error, element) {
-                    error.insertAfter(element.parent());
-                },
+            // Do not change code below
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.parent());
+            },
 
-                invalidHandler: function () {
-                    smallBox('Ajout impossible', "Veuillez remplir les champs correctement.", 'error', '3000')
-                }
-            });
+            invalidHandler: function () {
+                smallBox('Ajout impossible', "Veuillez remplir les champs correctement.", 'error', '3000')
+            }
+        });
+    };
 
-            // START AND FINISH DATE
-            $('#startdate').datepicker({
-                dateFormat: 'dd.mm.yy',
-                prevText: '<i class="fa fa-chevron-left"></i>',
-                nextText: '<i class="fa fa-chevron-right"></i>',
-                onSelect: function (selectedDate) {
-                    $('#finishdate').datepicker('option', 'minDate', selectedDate);
-                }
-            });
-
-            $('#finishdate').datepicker({
-                dateFormat: 'dd.mm.yy',
-                prevText: '<i class="fa fa-chevron-left"></i>',
-                nextText: '<i class="fa fa-chevron-right"></i>',
-                onSelect: function (selectedDate) {
-                    $('#startdate').datepicker('option', 'maxDate', selectedDate);
-                }
-            });
-
-        };
-
-        loadScript("js/plugin/jquery-form/jquery-form.min.js", pagefunction);
+    loadScript("js/plugin/jquery-form/jquery-form.min.js", pagefunction);
 
 </script>
