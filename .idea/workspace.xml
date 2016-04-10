@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6ea5c03-d443-4485-8481-f73c8e6b6ac1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/french_trad_datatables.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ajax/page_intervenants.php" afterPath="$PROJECT_DIR$/ajax/page_stages.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/favicon/favicon.ico" afterPath="$PROJECT_DIR$/img/favicon/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/logo.png" afterPath="$PROJECT_DIR$/img/logo.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/smartadmin-production.min.css" afterPath="$PROJECT_DIR$/css/smartadmin-production.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/config.ui.php" afterPath="$PROJECT_DIR$/inc/config.ui.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/header.php" afterPath="$PROJECT_DIR$/inc/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/nav.php" afterPath="$PROJECT_DIR$/inc/nav.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/ribbon.php" afterPath="$PROJECT_DIR$/inc/ribbon.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.min.js" afterPath="$PROJECT_DIR$/js/app.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/demo.min.js" afterPath="$PROJECT_DIR$/js/demo.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/config.php" afterPath="$PROJECT_DIR$/lib/config.php" />
     </list>
     <ignored path="forma.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -302,7 +290,7 @@
       <workItem from="1460234763694" duration="15000" />
       <workItem from="1460235601916" duration="3574000" />
       <workItem from="1460241457281" duration="4219000" />
-      <workItem from="1460293029648" duration="599000" />
+      <workItem from="1460293029648" duration="633000" />
     </task>
     <task id="LOCAL-00001" summary="Mise à jour des upload composer">
       <created>1459890563795</created>
@@ -325,11 +313,18 @@
       <option name="project" value="LOCAL" />
       <updated>1460238493618</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Transfert bd et changement config pour francois-garcia.ws&#10;- Freeze du fichier conf sur les syncs">
+      <created>1460293802748</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1460293802748</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21922000" />
+    <option name="totallyTimeSpent" value="21956000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -337,6 +332,7 @@
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19722815" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -344,7 +340,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -370,7 +365,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Mise à jour des upload composer" />
     <MESSAGE value="Changement url bd" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changement url bd" />
+    <MESSAGE value="Transfert bd et changement config pour francois-garcia.ws&#10;- Freeze du fichier conf sur les syncs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transfert bd et changement config pour francois-garcia.ws&#10;- Freeze du fichier conf sur les syncs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -638,6 +634,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -645,6 +642,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="89" column="38" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -652,6 +650,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

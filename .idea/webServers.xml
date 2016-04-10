@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="bc522e6b-e592-4f6a-af47-bca2ef02082f" name="site_cv_projet" url="http://francois-garcia.fr/forma/">
+        <fileTransfer host="ftp.cluster011.ovh.net" port="21" password="dfe7dfcfdfc4dfdadfc2dfc3dfd9df99df9b" username="francoismn">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="030fafef-fce1-4ab2-b9ce-0ec9c929a072" name="forma" url="http://www.francois-garcia.ws">
+        <fileTransfer host="stardust.dreamhost.com" port="21" rootFolder="/francois-garcia.ws" username="fitchadmin">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
