@@ -1,186 +1,114 @@
 <?php require_once("inc/init.php");
 $func = new Functions(); ?>
 
-<!-- Titre du modal -->
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-    </button>
-    <h4 class="modal-title" id="myModalLabel">Création d'un utilisateur</h4>
-</div>
-
 <!-- Début du formulaire -->
-<form action="./php/iAjout_utilisateur.php" id="ajoutUtilisateur" class="smart-form" novalidate="novalidate"
-      method="post" name="ajoutSociete">
+<form action="./php/iUtilisateur_ajout.php" id="ajoutAssociations" class="smart-form"
+      novalidate="novalidate" method="post" name="ajoutAssociations">
 
     <div class="modal-body col-12">
 
+        <!-- ASSOCIATION -->
         <fieldset>
 
-            <div class="row">
+            <legend>Informations association</legend>
 
+            <div class="row">
                 <!-- Nom de l'association -->
-                <label class="label col col-2">Association</label>
+                <label class="label col col-2">Nom association</label>
                 <section class="col col-3">
-                    <div class="icon-addon">
-                        <select class="form-control" name="selection_association" id="selection_association" required>
+                    <div class="icon-addon" style="width: 122%;">
+                        <select class="form-control" name="associations_id" id="associations_id" required>
                             <option value="" disabled selected>Choisir une association</option>
                             <?php
-                            $select = $pdo->sql("select societes_id, societes_nom from societes group by societes_nom");
+                            $select = $pdo->sql("select associations_id, associations_nom from associations group by associations_nom");
+
                             while ($row = $select->fetch()) {
-                                echo "<option " . $selected . " value=" . $row['societes_id'] . ">" . $row['societes_nom'] . "</option>";
+                                echo "<option " . $selected . " value=" . $row['associations_id'] . ">" . $row['associations_nom'] . "</option>";
                             }
                             ?>
                         </select>
                         <label for="email" class="fa fa-building" rel="tooltip" title=""
-                               data-original-title="email"></label>
+                               data-original-title="association"></label>
                     </div>
                 </section>
-                <!-- Fin de l'association -->
-
+                <!-- Fin nom de l'association -->
             </div>
 
-            <!-- Societe local -->
+        </fieldset>
+        <!-- FIN ASSOCIATION -->
+
+        <!-- UTILISATEUR -->
+        <fieldset>
+
+            <legend>Informations utilisateur</legend>
+
             <div class="row">
-                <label class="label col col-2">Local</label>
+                <!-- Type de l'utilisateur -->
+                <label class="label col col-2">Type d'utilisateur</label>
                 <section class="col col-3">
                     <div class="icon-addon" style="width: 122%;">
-                        <select class="form-control" name="id_local" id="select_local" required>
-                            <option value="" selected="" disabled="">Choisir un local d'entreprise</option>
-                            <?php
+                        <select class="form-control" name="utilisateurs_type" id="utilisateurs_type" required>
+                            <option value="" disabled selected>Choisir un type</option>
+                            <option value="Salarié">Salarié</option>
+                            <option value="Bénévole">Bénévole</option>
 
-                            $select = $pdo->sql("select societes_locaux_id, societes_locaux_nom from societes_locaux where societes_id = ? group by societes_locaux_nom", array($value));
-                            while ($row = $select->fetch()) {
-                                echo "<option " . $selected . " value=" . $row['societes_locaux_id'] . ">" . $row['societes_locaux_nom'] . "</option>";
-                            }
-                            ?>
                         </select>
-                        <label for="email" class="glyphicon glyphicon-search" rel="tooltip" title=""
-                               data-original-title="email"></label>
+                        <label for="email" class="fa fa-tag" rel="tooltip" title=""
+                               data-original-title="type"></label>
                     </div>
                 </section>
+                <!-- Fin type de l'utilisateur -->
             </div>
 
-            <!-- Service utilisateur -->
             <div class="row">
-                <label class="label col col-2">Service utilisateur</label>
+
+                <!-- Nom de l'utilisateur -->
+                <label class="label col col-2">Nom</label>
                 <section class="col col-4">
-                    <label class="input"> <i class="icon-prepend fa fa-cogs"></i>
-                        <input type="text" name="utilisateur_service" placeholder="Service de l'utilisateur"
-                               required">
+                    <label class="input fe"> <i class="icon-prepend fa fa-user"></i>
+                        <input type="text" name="utilisateurs_nom" placeholder="Nom de l'utilisateur" required">
                     </label>
                 </section>
-
-
-                <!-- Fonction -->
-
-                <label class="label col col-2">Fonction</label>
-                <section class="col col-4">
-                    <label class="input fe">
-                        <input type="text" name="utilisateur_fonction" placeholder="Fonction" required">
-                    </label>
-                </section>
-            </div>
-        </fieldset>
-
-        <fieldset>
-            <!-- Nom utilisateur -->
-            <div class="row">
-                <label class="label col col-2">Nom utilisateur</label>
-                <section class="col col-4">
-                    <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                        <input type="text" name="utilisateur_nom" placeholder="Nom de l'utilisateur" required">
-                    </label>
-                </section>
+                <!-- Fin nom de l'utilisateur -->
 
                 <!-- Prénom de l'utilisateur -->
-                <label class="label col col-2">Prénom utilisateur</label>
+                <label class="label col col-2">Prénom</label>
                 <section class="col col-4">
-                    <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                        <input type="text" name="utilisateur_prenom" placeholder="Prénom de l'utilisateur"
-                               required">
+                    <label class="input fe"> <i class="icon-prepend fa fa-user"></i>
+                        <input type="text" name="utilisateurs_prenom" placeholder="Prénom de l'utilisateur" required">
                     </label>
                 </section>
+                <!-- Fin prénom de l'utilisateur -->
 
-                <!-- Téléphone fixe utilisateur -->
-                <label class="label col col-2">Téléphone fixe</label>
-                <section class="col col-4">
-                    <label class="input"> <i class="icon-prepend fa fa-phone"></i>
-                        <input type="text" name="utilisateur_telephoneFixe" placeholder="Téléphone fixe"
-                               required">
-                    </label>
-                </section>
+            </div>
 
-                <!-- Téléphone mobile utilisateur -->
-                <label class="label col col-2">Téléphone mobile</label>
-                <section class="col col-4">
-                    <label class="input fe"> <i class="icon-prepend fa fa-phone"></i>
-                        <input type="text" name="utilisateur_telephoneMobile" placeholder="Téléphone mobile"
-                               required">
-                    </label>
-                </section>
+            <div class="row">
 
-                <!-- Ville local -->
-                <label class="label col col-2">Email</label>
+                <!-- E-mail de l'utilisateur -->
+                <label class="label col col-2">E-mail</label>
                 <section class="col col-4">
-                    <label class="input fe"> <i class="icon-prepend fa fa-envelope-o"></i>
-                        <input type="text" name="utilisateur_email" placeholder="Email" required">
+                    <label class="input fe"> <i class="icon-prepend fa fa-envelope"></i>
+                        <input type="text" name="utilisateurs_email" placeholder="exemple@live.fr" required">
                     </label>
                 </section>
+                <!-- Fin e-mail de l'utilisateur -->
+
+                <!-- Mot de passe de l'utilisateur -->
+                <label class="label col col-2">Mot de passe</label>
+                <section class="col col-4">
+                    <label class="input fe"> <i class="icon-prepend fa fa-lock"></i>
+                        <input type="password" name="utilisateurs_motDePasse" placeholder="******" required">
+                    </label>
+                </section>
+                <!-- Fin mot de passe de l'utilisateur -->
+
             </div>
         </fieldset>
-
-        <fieldset>
-
-            <!-- Date embauche -->
-            <div class="row">
-                <label class="label col col-2">Date d'embauche</label>
-                <section class="col col-4">
-                    <label class="input"> <i class="icon-prepend fa fa-calendar"></i>
-                        <input type="text" class="form-control datepicker" name="utilisateur_embauche"
-                               id="utilisateur_embauche"
-                               placeholder="Date d'embauche"">
-                    </label>
-                </section>
-
-
-                <!-- Date départ -->
-                <label class="label col col-2">Date départ</label>
-                <section class="col col-4">
-                    <label class="input"> <i class="icon-prepend fa fa-calendar"></i>
-                        <input type="text" class="form-control datepicker" name="utilisateur_depart"
-                               id="utilisateur_depart"
-                               placeholder="Date de départ">
-                    </label>
-                </section>
-            </div>
-
-        </fieldset>
-        <!-- NOUVEAU FIELDSET -->
-        <fieldset>
-            <!-- Statut local -->
-            <div class="row">
-                <!-- Pays local -->
-                <label class="label col col-2">État</label>
-                <section class="col col-4">
-                    <label class="input fe">
-                        <input type="text" name="utilisateur_statut" placeholder="Statut" required">
-                    </label>
-                </section>
-            </div>
-            <div class="row">
-                <label class="label col col-2">Commentaire</label>
-                <section class="col col-10">
-                    <label class="textarea">
-                                <textarea rows="5" name="utilisateur_commentaire" placeholder="Commentaire"
-                                          required></textarea>
-                    </label>
-                </section>
-            </div>
-        </fieldset>
+        <!-- FIN UTILISATEUR -->
 
         <footer>
+            <button type="submit" class="btn btn-success">Créer !</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
         </footer>
 
     </div>
@@ -193,108 +121,69 @@ $func = new Functions(); ?>
 
     pageSetUp();
 
-    // PAGE RELATED SCRIPTS
-
-    // pagefunction
-
     var pagefunction = function () {
-
-        var $checkoutForm = $('#ajoutUtilisateur').validate({
+        var $checkoutForm = $('#ajoutAssociations').validate({
             // Rules for form validation
             rules: {
-                nom_entreprise: {
+                associations_id: {
                     required: true
                 },
-                id_local: {
+                utilisateurs_type:{
                     required: true
                 },
-                utilisateur_service: {
+                utilisateurs_nom: {
                     required: true
                 },
-                utilisateur_nom: {
+                utilisateurs_prenom: {
                     required: true
                 },
-                utilisateur_prenom: {
-                    required: true
-                },
-                utilisateur_telephoneFixe: {
-                    required: true,
-                    digits: true
-                },
-                utilisateur_telephoneMobile: {
-                    required: true,
-                    digits: true
-                },
-                utilisateur_email: {
+                utilisateurs_email: {
                     required: true,
                     email: true
                 },
-                utilisateur_fonction: {
+                utilisateurs_motDePasse: {
                     required: true
                 },
-                utilisateur_statut: {
-                    required: true
-                },
-                utilisateur_commentaire: {
-                    required: true
-                }
             },
 
             // Messages for form validation
             messages: {
-                nom_entreprise: {
-                    required: "Veuillez sélectionner une entreprise."
+                associations_id: {
+                    required: "Veuillez renseigner une association."
                 },
-                id_local: {
-                    required: "Veuillez sélectionner un local."
+                utilisateurs_type:{
+                    required: "Veuillez sélectionner un type pour l'utilisateur."
                 },
-                utilisateur_service: {
-                    required: "Veuillez renseigner un service."
+                utilisateurs_nom: {
+                    required: "Veuillez renseigner un nom pour l'utilisateur."
                 },
-                utilisateur_nom: {
-                    required: "Veuillez renseigner un nom."
+                utilisateurs_prenom: {
+                    required: "Veuillez renseigner un prénom pour l'utilisateur."
                 },
-                utilisateur_prenom: {
-                    required: "Veuillez renseigner un prénom."
+                utilisateurs_email: {
+                    required: "Veuillez renseigner un e-mail pour l'utilisateur.",
+                    email: "Veuillez renseigner un e-mail correct."
                 },
-                utilisateur_telephoneFixe: {
-                    required: "Veuillez renseigner un téléphone fixe."
+                utilisateurs_motDePasse: {
+                    required: "Veuillez renseigner un mot de passe pour l'utilisateur."
                 },
-                utilisateur_telephoneMobile: {
-                    required: "Veuillez renseigner un téléphone mobile."
-                },
-                utilisateur_email: {
-                    required: "Veuillez renseigner un email.",
-                    email: "Veuillez renseigner un email correct"
-                },
-                utilisateur_fonction: {
-                    required: "Veuillez renseigner une fonction."
-                },
-                utilisateur_statut: {
-                    required: "Veuillez renseigner un statut."
-                },
-                utilisateur_commentaire: {
-                    required: "Veuillez renseigner un commentaire."
-                }
-
             },
 
             submitHandler: function (ev) {
                 $(ev).ajaxSubmit({
-                    type: $('#ajoutUtilisateur').attr('method'),
-                    url: $('#ajoutUtilisateur').attr('action'),
-                    data: $('#ajoutUtilisateur').serialize(),
+                    type: $('#ajoutAssociations').attr('method'),
+                    url: $('#ajoutAssociations').attr('action'),
+                    data: $('#ajoutAssociations').serialize(),
                     dataType: 'json',
                     success: function (data) {
-                        alert('On rentre dans le success');
-                        if (data.retour == '1') {
-                            smallBox('Ajout impossible', 'Un utilisateur utilise déjà cet email.', 'warning');
-                        }
-                        else {
-                            smallBox('Ajout effectué', 'Utilisateur correctement ajouté.', 'success');
+                        if (data.return == 'email') {
+                            smallBox('Ajout impossible', 'Un utilisateur possède déjà cet e-mail.', 'warning');
+                        } else {
+                            smallBox('Ajout réussi !', 'L\'utilisateur à correctement été ajouté.', 'success');
                             setTimeout(function () {
-                                $('#datatable_tabletools').DataTable().ajax.reload(null, false);
+                                $('#listing_utilisateurs').DataTable().ajax.reload(null, false); // refresh la datable utilisateur
                             }, 500);
+                            $('#utilisateurs_ajout').modal('toggle'); // ferme le modal en cas d'ajout
                         }
                         console.log(data.retour);
                     }
@@ -307,103 +196,10 @@ $func = new Functions(); ?>
             },
 
             invalidHandler: function () {
-                smallBox('Ajout impossible', "Veuillez vérifier les champs.", 'error', '5000')
+                smallBox('Ajout impossible', "Veuillez remplir les champs correctement.", 'error', '3000')
             }
         });
-
-
-        // START AND FINISH DATE
-        $('#startdate').datepicker({
-            dateFormat: 'dd.mm.yy',
-            prevText: '<i class="fa fa-chevron-left"></i>',
-            nextText: '<i class="fa fa-chevron-right"></i>',
-            onSelect: function (selectedDate) {
-                $('#finishdate').datepicker('option', 'minDate', selectedDate);
-            }
-        });
-
-        $('#finishdate').datepicker({
-            dateFormat: 'dd.mm.yy',
-            prevText: '<i class="fa fa-chevron-left"></i>',
-            nextText: '<i class="fa fa-chevron-right"></i>',
-            onSelect: function (selectedDate) {
-                $('#startdate').datepicker('option', 'maxDate', selectedDate);
-            }
-        });
-
     };
-
-    $("#adresse_identique input").click(function (event) {
-        console.log('On est dedans : ');
-
-        if ($('.adresse_identique').is(':disabled')) {
-            console.log('lel');
-            $('.adresse_identique').prop('disabled', false);
-        }
-        else {
-            console.log('fuck');
-            $('.adresse_identique').prop('disabled', true)
-        }
-
-        if ($('.fe').hasClass("state-disabled")) {
-            $('.fe').removeClass("state-disabled");
-        }
-        else {
-            $('.fe').addClass("input state-disabled");
-//            $('#state-disabled').addClass("input");
-        }
-    });
-
-    $('#checkbox_adresse').change(function () {
-        if ($('#checkbox_adresse').prop('checked')) {
-            console.log('hey');
-            $.ajax({
-                type: $('#ajoutUtilisateur').attr('method'),
-                url: './php/iAjout_local.php',
-                data: $('#ajoutUtilisateur').serialize(),
-                dataType: 'json',
-                success: function (data) {
-                    if (data.checkboxverif == '1') {
-                        $("#adresse_local").val(data.adresse);
-                        $("#ville_local").val(data.ville);
-                        $("#code_postal_local").val(data.code_postal);
-                        $("#pays_local").val(data.pays);
-                    }
-                }
-            });
-        } else {
-            console.log("bad");
-        }
-    });
-
-    $('#select_entreprise').change(function () {
-        $.ajax({
-            type: $('#ajoutUtilisateur').attr('method'),
-            url: './php/iSelect_entreprise.php',
-            data: {'select_entreprise': $('#select_entreprise').val()},
-            dataType: 'json',
-            success: function (data) {
-
-                $('#select_local').html(data.html);
-
-                console.log('gg');
-                console.log(data);
-            }
-        });
-    });
-
-    // GESTION DES TABS
-
-    $('#tabs').tabs();
-    $('#tabs2').tabs();
-
-    // Dynamic tabs
-    var tabTitle = $("#tab_title"), tabContent = $("#tab_content"), tabTemplate = "<li style='position:relative;'> " +
-            "<span class='air air-top-left delete-tab' style='top:7px; left:7px;'><button class='btn btn-xs font-xs btn-default hover-transparent'>" +
-            "<i class='fa fa-times'></i></button></span></span><a href='#{href}'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #{label}</a></li>",
-        tabCounter = 2;
-
-    var tabs = $("#tabs2").tabs();
 
     loadScript("js/plugin/jquery-form/jquery-form.min.js", pagefunction);
 

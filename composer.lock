@@ -4,12 +4,12 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4fbe614657de0e69084faa064e687343",
-    "content-hash": "b8aeae532c05a0f6307237e1ff3a4f4e",
+    "hash": "166de4df76741a5b69291b776483b40a",
+    "content-hash": "0f2bc3b2b286d189eabb64eb2e83b0da",
     "packages": [
         {
             "name": "bentools/pdoextended",
-            "version": "2.2.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bpolaszek/bentools-pdoextended.git",
@@ -57,7 +57,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "bentools/pdoextended": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

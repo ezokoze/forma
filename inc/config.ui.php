@@ -45,7 +45,7 @@ $page_nav = array(
     "utilisateurs" => array(
         "title" => "Utilisateurs",
         "icon" => "fa-child",
-        "url" => "",
+        "url" => "ajax/page_utilisateurs.php",
     ),
     "information" => array(
         "title" => "Informations",

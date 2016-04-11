@@ -25,7 +25,8 @@
                 <!-- contenu widget -->
                 <div class="widget-body no-padding">
                     <form id="tableau">
-                        <table id="listing_associations" class="table table-striped table-bordered table-hover" width="100%">
+                        <table id="listing_associations" class="table table-striped table-bordered table-hover"
+                               width="100%">
                             <thead>
                             <tr>
                                 <th>Nom</th>
@@ -125,7 +126,7 @@
     function suppressionLigne(paramId) {
         $.SmartMessageBox({
             title: "Attention !",
-            content: "Vous êtes sur le point de supprimer cet utilsateur, confirmer ?",
+            content: "Vous êtes sur le point de supprimer cette association, confirmer ?",
             buttons: '[Non][Oui]'
         }, function (ButtonPressed) {
             if (ButtonPressed === "Oui") {
@@ -135,7 +136,7 @@
                     data: {'id': paramId},
                     dataType: 'html',
                     success: function (contenu) {
-                        smallBox('Suppression terminée', "L'association à correctement été supprimée.", 'success');
+                        smallBox('Suppression', "L'association à correctement été supprimée.", 'success');
                         setTimeout(function () {
                             $('#listing_associations').DataTable().ajax.reload(null, false); // refresh la datable association
                         }, 500);
@@ -146,7 +147,7 @@
                 });
             }
             if (ButtonPressed === "Non") {
-                smallBox('Suppression', "L'équipement n'a pas été supprimé.", 'warning');
+                smallBox('Suppression', "L'association n'a pas été supprimée.", 'warning');
             }
         });
     }
