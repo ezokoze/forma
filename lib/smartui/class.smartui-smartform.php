@@ -8,6 +8,7 @@ class SmartForm extends SmartUI {
 	const FORM_FIELD_RADIO ='radio';
 	const FORM_FIELD_SELECT = 'select';
 	const FORM_FIELD_SELECT2 = 'select2';
+	const FORM_FIELD_SELECT2_MULTI = 'select2-multi';
 	const FORM_FIELD_MULTISELECT = 'multi-select';
 	const FORM_FIELD_RATING = 'rating';
 	const FORM_FIELD_RATINGS = 'ratings';
@@ -140,23 +141,25 @@ class SmartForm extends SmartUI {
 				if (isset($structure->col[$field_name])) $new_field_prop['col'] = $structure->col[$field_name];
 				if (isset($structure->type[$field_name])) $new_field_prop['type'] = $structure->type[$field_name];
 
+				$new_prop_col = (int)$new_field_prop['col'];
+
 				$field_html = self::print_field($field_name, $new_field_prop['type'], $new_field_prop['properties'], $new_field_prop['col'], true);
 
-				$collumned = $new_field_prop['col'] > 0 && $new_field_prop['col'] < 12;
+				$collumned = $new_field_prop['col'] > 0 && $new_prop_col < 12;
 
 				if (!$grouped) {
 					$last_group_key = SmartUtil::create_id();
-					$group = self::_create_field_group($collumned, $field_html, $new_field_prop['col']);
+					$group = self::_create_field_group($collumned, $field_html, $new_prop_col);
 					$groups[$last_group_key] = $group;
 					$grouped = true;
 				} else {
 					$last_group = $groups[$last_group_key];
-					if ($last_group->collumned === $collumned && $last_group->total < 12) {
+					if ($last_group->collumned === $collumned && $last_group->total < 12 && ($last_group->total + $new_prop_col) <= 12) {
 						$last_group->items[] = $field_html;
-						$last_group->total = $last_group->total + (int)$new_field_prop['col'];
+						$last_group->total = $last_group->total + $new_prop_col;
 					} else {
 						$last_group_key = SmartUtil::create_id();
-						$group = self::_create_field_group($collumned, $field_html, $new_field_prop['col']);
+						$group = self::_create_field_group($collumned, $field_html, $new_prop_col);
 						$groups[$last_group_key] = $group;
 						$grouped = true;
 					}
@@ -203,19 +206,25 @@ class SmartForm extends SmartUI {
 			return $attr.'="'.$value.'"';
 		}, array_keys($structure->attr), $structure->attr));
 
-		$form_html = '<'.$structure->options['wrapper'].' '.implode(' ', $form_attrs).'>';
-		$form_html .= $header ? '<header>'.$header.'</header>' : '';
-		$form_html .= 	implode('', $fieldsets_html_list);
-		$form_html .= 	implode(' ', $hidden_fields_list);
-		$form_html .= $footer ? '<footer>'.$footer.'</footer>' : '';
-		$form_html .= '</'.$structure->options['wrapper'].'>';
+		$fields_content = $header ? '<header>'.$header.'</header>' : '';
+		$fields_content .= 	implode('', $fieldsets_html_list);
+		$fields_content .= 	implode(' ', $hidden_fields_list);
+		$fields_content .= $footer ? '<footer>'.$footer.'</footer>' : '';
+
+		if ($structure->options['wrapper']) {
+			$form_html = '<'.$structure->options['wrapper'].' '.implode(' ', $form_attrs).'>';
+			$form_html .= $fields_content;
+			$form_html .= '</'.$structure->options['wrapper'].'>';
+		} else {
+			$form_html = $fields_content;
+		}
 
 		if (isset($structure->options["in_widget"]) && $structure->options["in_widget"]) {
 			$structure->widget->body("content", $form_html);
 			if ($structure->title) {
 				$structure->widget->header('title', $structure->title);
 			}
-			
+
 			$result = $structure->widget->print_html(true);
 		} else $result = $form_html;
 
@@ -226,7 +235,7 @@ class SmartForm extends SmartUI {
 	public static function print_field($name, $type = self::FORM_FIELD_INPUT, $properties = array(), $col = false, $return = false) {
 		$field_html = self::_get_field_html($name, $type, $properties);
 		if ($type == self::FORM_FIELD_HIDDEN) return $field_html;
-	
+
 		$classes = array();
 		if ($col && $col < 12) $classes[] = 'col col-'.$col;
 		if ($type == self::FORM_FIELD_LABEL) $classes[] = 'label';
@@ -234,7 +243,7 @@ class SmartForm extends SmartUI {
 		$result = '<section'.($classes ? ' class="'.implode(' ', $classes).'"' : '').'>';
 		$result .= 		$field_html;
 		$result .= '</section>';
-		
+
 		if ($return) return $result;
 		else echo $result;
 	}
@@ -245,6 +254,7 @@ class SmartForm extends SmartUI {
 			self::FORM_FIELD_FILEINPUT => 'input input-file',
 			self::FORM_FIELD_SELECT => 'select',
 			self::FORM_FIELD_SELECT2 => 'select',
+			self::FORM_FIELD_SELECT2_MULTI => 'select select-multiple',
 			self::FORM_FIELD_MULTISELECT => 'select select-multiple',
 			self::FORM_FIELD_TEXTAREA => 'textarea',
 			self::FORM_FIELD_CHECKBOX => 'checkbox',
@@ -355,7 +365,7 @@ class SmartForm extends SmartUI {
 				$classes = array();
 				$classes[] = 'custom-scroll';
 				if ($new_prop['class']) array_push($classes, $new_prop['class']);
-		
+
 				$attrs = array();
 				$attrs[] = 'class="'.implode(' ', $classes).'"';
 				$attrs[] = 'rows="'.$new_prop['rows'].'"';
@@ -376,7 +386,7 @@ class SmartForm extends SmartUI {
 
 				if ($field_html_only) return $field_html;
 
-				$result_html .= '	<'.$new_prop['wrapper'].' class="'.$field_class_map[$field_type].'">';
+				$result_html .= '	<'.$new_prop['wrapper'].' class="'.$field_class_map[$field_type].' '.($new_prop['disabled'] ? 'state-disabled' : '').'">';
 				$result_html .= 		$field_html;
 				$result_html .= '	</'.$new_prop['wrapper'].'>';
 
@@ -400,9 +410,30 @@ class SmartForm extends SmartUI {
 				$result_html .= 		$field_html;
 				$result_html .= '	</label>';
 				break;
+			case self::FORM_FIELD_SELECT2_MULTI:
+				if (isset($properties['attr'])) {
+					array_push($properties['attr'], array('multiple="multiple"', 'class="custom-scroll"'));
+				} else {
+					$properties['attr'] = array('multiple="multiple"');
+				}
+				if (isset($properties['class'])) array_push($properties['class'], array('select2 custom-scroll'));
+				else $properties['class'] = array('select2 custom-scroll');
+
+				$properties['icon'] = '';
+
+				$field_html = self::_get_field_html($name, self::FORM_FIELD_SELECT, $properties, true);
+
+				if ($field_html_only) return $field_html;
+
+				$result_html .= '	<label class="'.$field_class_map[$field_type].'">';
+				$result_html .= 		$field_html;
+				$result_html .= '	</label>';
+				break;
 			case self::FORM_FIELD_SELECT2:
-				if (!is_array($properties['class'])) $properties['class'] = array($properties['class']);
-				array_push($properties['class'], 'select2');
+				if (isset($properties['class'])) {
+					if (!is_array($properties['class'])) $properties['class'] = array($properties['class']);
+					array_push($properties['class'], 'select2');
+				} else $properties['class'] = array('select2');
 
 				$properties['icon'] = '';
 
@@ -440,27 +471,27 @@ class SmartForm extends SmartUI {
 
 				if (!$data) $data = array(array('No Data'));
 
-				$data = SmartUtil::object_to_array($data);
-				
+				$arr_data = (array)$data;
+
 				if (!$new_prop['display']) {
-					$display_key = array_keys($data[0]);
-					$new_prop['display'] = is_array($data[0]) && $display_key ? $display_key[0] : 0;
+					$display_key = is_array($arr_data[0]) ? array_keys($arr_data[0]) : 0;
+					$new_prop['display'] = $display_key ? $display_key[0] : 0;
 				}
 
 				if (!$new_prop['value']) {
-					$value_key = array_keys($data[0]);
-					$new_prop['value'] = is_array($data[0]) && $value_key ? $value_key[0] : 0;
+					$value_key = is_array($arr_data[0]) ? array_keys($arr_data[0]) : 0;
+					$new_prop['value'] = $value_key ? $value_key[0] : 0;
 				}
 
 				$option_list = array();
 				foreach ($data as $row) {
 					$item_attr = '';
-					if (!is_array($row)) $row = array($row);
-					$selected = $row[$new_prop['value']] == $new_prop['selected'];
+					$arr_row = (array)$row;
+
 					if (isset($new_prop['item_attr'])) {
 						$item_attr = $get_property_value($new_prop['item_attr'], array(
 							'if_closure' => function($item_attr) use ($row) {
-								return SmartUtil::run_callback($row);
+								return SmartUtil::run_callback($item_attr, array($row));
 							},
 							'if_array' => function($item_attr) use ($row) {
 								$attrs = array();
@@ -472,19 +503,30 @@ class SmartForm extends SmartUI {
 							},
 							'if_other' => function($item_attr) use ($row) {
 								return SmartUtil::replace_col_codes($item_attr, $row);
-							} 
+							}
 						));
 					}
 
-					$option_list[] = '<option value="'.$row[$new_prop['value']].'"'.($selected ? ' selected' : '').($item_attr ? ' '.$item_attr : '').'>'.$row[$new_prop['display']].'</option>';
+					if (SmartUtil::is_closure($new_prop['value'])) $value = $new_prop['value']($row);
+					else $value = $arr_row[$new_prop['value']];
+
+					if (SmartUtil::is_closure($new_prop['display'])) $display = $new_prop['display']($row);
+					else $display = $arr_row[$new_prop['display']];
+
+					$selected = $value == $new_prop['selected'];
+
+					$option_list[] = '<option value="'.$value.'"'.($selected ? ' selected' : '').($item_attr ? ' '.$item_attr : '').'>'.$display.'</option>';
 				}
 
 				$attrs = array();
 				$attrs[] = 'name="'.$name.'"';
+
+				$classes = is_array($new_prop['class']) ? $new_prop['class'] : array($new_prop['class']);
+
 				if ($new_prop['disabled']) $attrs[] = 'disabled="disabled"';
 				if ($new_prop['id']) $attrs[] = 'id="'.$new_prop['id'].'"';
 				if ($new_prop['attr']) $attrs[] = implode(' ', $new_prop['attr']);
-				if ($new_prop['class']) $attrs[] = 'class="'.implode(' ', $new_prop['class']).'"';
+				if ($new_prop['class']) $attrs[] = 'class="'.implode(' ', $classes).'"';
 
 				$field_html = '<'.$new_prop['container'].' '.implode(' ', $attrs).'>';
 				$field_html .= 		implode('', $option_list);
@@ -492,7 +534,7 @@ class SmartForm extends SmartUI {
 
 				if ($field_html_only) return $field_html;
 
-				$result_html .= '	<label class="'.$field_class_map[$field_type].'">';
+				$result_html .= '	<label class="'.$field_class_map[$field_type].' '.($new_prop['disabled'] ? 'state-disabled' : '').'">';
 				$result_html .= 		$field_html;
 				$result_html .= '	</label>';
 				break;
@@ -519,7 +561,7 @@ class SmartForm extends SmartUI {
 						}
 					}
 				}
-				
+
 				$field_html .= self::_get_field_html($name.'-display', self::FORM_FIELD_INPUT, $default_prop, true);
 
 				if ($field_html_only) return $field_html;
@@ -537,7 +579,7 @@ class SmartForm extends SmartUI {
 				);
 
 				$new_prop = parent::get_clean_structure($default_prop, $properties, array(), 'value');
-				
+
 				$field_html .= self::_get_field_html($name, self::FORM_FIELD_INPUT, $new_prop, true);
 				return $field_html;
 				break;
@@ -548,6 +590,8 @@ class SmartForm extends SmartUI {
 					'id' => '',
 					'icon' => '',
 					'icon_append' => true,
+					'icon_attr' => array(),
+					'append' => '',
 					'placeholder' => '',
 					'value' => '',
 					'tooltip' => array(),
@@ -597,11 +641,23 @@ class SmartForm extends SmartUI {
 					$attrs[] = 'list="'.$list_name.'"';
 				}
 
-				if ($new_prop['icon'])
-					$field_html .= '<i class="icon-'.($new_prop['icon_append'] ? 'append' : 'prepend').' '.SmartUI::$icon_source.' '.$new_prop['icon'].'"></i>';
-				
+				if ($new_prop['icon']) {
+					$def_icon_prop = array(
+						'class' => '',
+						'append' => $new_prop['icon_append'],
+						'attr' => array(),
+						'tag' => 'i'
+					);
+
+					$icon_prop = parent::set_array_prop_def($def_icon_prop, $new_prop['icon'], 'class');
+
+					$icon_attrs = implode(' ', $icon_prop['attr']);
+					$field_html .= '<'.$icon_prop['tag'].' class="icon-'.($icon_prop['append'] ? 'append' : 'prepend').' '.SmartUI::$icon_source.' '.$icon_prop['class'].'" '.$icon_attrs.'></'.$icon_prop['tag'].'>';
+				}
+
 				$field_html .= '<input '.implode(' ', $attrs).' />';
 				$field_html .= $ac_html;
+				$field_html .= $new_prop['append'];
 
 				if ($new_prop['tooltip']) {
 					$tooltip_prop = array(
@@ -615,11 +671,11 @@ class SmartForm extends SmartUI {
 
 				if ($field_html_only) return $field_html;
 
-				$result_html .= '	<label class="'.$field_class_map[$field_type].'">';
+				$result_html .= '	<label class="'.$field_class_map[$field_type].' '.($new_prop['disabled'] ? 'state-disabled' : '').'">';
 				$result_html .= 		$field_html;
 				$result_html .= '	</label>';
 				break;
-			case self::FORM_FIELD_RADIO: 
+			case self::FORM_FIELD_RADIO:
 				$default_prop = array(
 					'items' => array(),
 					'cols' => 0,
@@ -779,7 +835,7 @@ class SmartForm extends SmartUI {
 	                $htm_item = "";
 	            }
 	            $row_cntr++;
-	            
+
 	            $htm_item .= $closure_content($item_data);
 	            $arr_htm_items[$col_cntr] = '<div class="col col-'.(12 / $columns).'">'.$htm_item.'</div>';
 	        }

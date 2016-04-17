@@ -93,7 +93,11 @@ class Tab extends SmartUI {
 				'position' => isset($structure->position[$tab_id]) ? $structure->position[$tab_id] : '',
 				'active' => isset($structure->active[$tab_id]) && $structure->active[$tab_id] === true,
 				'fade' => false,
-				'url' => isset($structure->url[$tab_id]) ? $structure->url[$tab_id] : '#'.$tab_id
+				'url' => isset($structure->url[$tab_id]) ? $structure->url[$tab_id] : '#'.$tab_id,
+				'toggle' => true,
+				'id' => false,
+				'attr' => array(),
+				'content_class' => array()
 			);
 
 			$new_tab_prop = parent::get_clean_structure($tab_structure, $tab_prop, array($that, $tabs, $tab_id), 'title');
@@ -107,18 +111,20 @@ class Tab extends SmartUI {
 				$new_tab_prop[$tab_prop_key] = $new_tab_prop_value;
 			}
 
-			$tab_content_classes = array();
+			$tab_content_classes = is_array($new_tab_prop['content_class']) ? $new_tab_prop['content_class'] : array($new_tab_prop['content_class']);
 			$tab_content_classes[] = 'tab-pane';
 			$li_classes = array();
 			$a_classes = array();
-			$a_attr = array();
+			$a_attr = array_map(function($attr, $value) {
+				return $attr.'="'.$value.'"';
+			}, array_keys($new_tab_prop['attr']), $new_tab_prop['attr']);
 
 			if ($new_tab_prop['active'] === true && !$has_active) {
 				$li_classes[] = 'active';
 				$tab_content_classes[] = 'in active';
 				$has_active = true;
-			} 
-			
+			}
+
 			// $a_attr[] = 'title="'.$new_tab_prop['title'].'"';
 			if (!$structure->options['titles']) {
 				$title = '';
@@ -141,9 +147,11 @@ class Tab extends SmartUI {
 				$title .= ' <b class="caret"></b>';
 			} else {
 				$href = $new_tab_prop['url'];
-				if ($structure->options['toggle']) 
+				if ($structure->options['toggle'] && $new_tab_prop['toggle'])
 					$a_attr[] = 'data-toggle="tab"';
 			}
+			
+			if ($new_tab_prop['id']) $a_attr[] = 'id="'.$new_tab_prop['id'].'"';
 
 			if ($new_tab_prop['position']) $li_classes[] = 'pull-'.$new_tab_prop['position'];
 			$icon = $new_tab_prop['icon'] ? '<i class="'.SmartUI::$icon_source.' '.$new_tab_prop['icon'].'"></i> ' : '';
@@ -167,7 +175,7 @@ class Tab extends SmartUI {
 		$ul_classes[] = 'nav nav-tabs';
 		$ul_id = $structure->tabs_id ? 'id="'.$structure->tabs_id.'"' : '';
 		$ul_attr[] = $ul_id;
-		
+
 		$content_classes = array();
 		$content_classes[] = 'tab-content';
 		if ($structure->content_class)
@@ -180,9 +188,9 @@ class Tab extends SmartUI {
 
 		$main_content_html = '';
 		if ($structure->options['widget']) {
-			
+
 			$ul_classes[] = $structure->options['pull'] ? 'pull-'.$structure->options['pull'] : 'pull-left';
-			
+
 			$ul_html = '<ul class="'.implode(' ', $ul_classes).'" '.implode(' ', $ul_attr).'>';
 			$ul_html .= implode('', $li_list);
 			$ul_html .= '</ul>';
@@ -194,10 +202,10 @@ class Tab extends SmartUI {
 
 			$widget->body('content', $content_html);
 			$widget->options('colorbutton', false)->options('editbutton', false);
-			$widget->header('title', $ul_html);
+			$widget->header('title', $widget->header('title').' '.$ul_html);
 
 			$result = $widget->print_html(true);
-			
+
 		} else {
 			if ($structure->options['bordered']) $ul_classes[] = 'bordered';
 			if ($structure->options['pull']) $ul_classes[] = 'tabs-pull-'.$structure->options['pull'];

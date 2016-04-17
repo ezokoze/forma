@@ -287,7 +287,8 @@ class SmartUI extends SmartUtil {
             'class' => array(),
             'fade_in' => true,
             'icon' => $type,
-            'js_escape' => false
+            'js_escape' => false,
+            'heading' => false
         );
 
         $icon_map = array(
@@ -308,10 +309,17 @@ class SmartUI extends SmartUtil {
         if ($new_options_map['fade_in']) $classes[] = 'fade in';
         if ($new_options_map['block']) $classes[] = 'alert-block';
 
-        $icon_html = $new_options_map['icon'] ? '<i class="'.SmartUI::$icon_source.' '.SmartUI::$icon_source.'-fw '.(isset($icon_map[$type]) ? $icon_map[$type] : SmartUI::$icon_source.'-info').'"></i>' : '';
+        $icon_html = $new_options_map['icon'] ? '<i class="'.SmartUI::$icon_source.' '.(isset($icon_map[$type]) ? $icon_map[$type] : SmartUI::$icon_source.'-info').'"></i>' : '';
+
+        $heading = '';
+        if ($new_options_map['heading']) {
+            $heading = '<h4 class="alert-heading">'.$icon_html.' '.$new_options_map['heading'].'</h4>';
+            $icon_html = '';
+        }
 
     	$result = '<div class="'.implode(' ', $classes).'">
                         '.$closebutton_html.'
+                        '.$heading.'
                         '.$icon_html.'
                         '.$message.'
                     </div>';

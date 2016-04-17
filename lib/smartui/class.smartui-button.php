@@ -159,13 +159,21 @@ class Button extends SmartUI {
 			$dd_prop = array(
 				'items' => array(),
 				'multilevel' => false,
-				'split' => false
+				'split' => false,
+				'attr' => array(),
+				'class' => '',
+				'id' => ''
 			);
 
 			$new_dd_prop = parent::get_clean_structure($dd_prop, $structure->dropdown, array($this), 'items');
 
 			if (is_array($new_dd_prop['items'])) {
-				$dropdown_html = parent::print_dropdown($new_dd_prop['items'], array('multilevel' => $new_dd_prop['multilevel']), true);
+				$dropdown_html = parent::print_dropdown($new_dd_prop['items'], array(
+					'multilevel' => $new_dd_prop['multilevel'],
+					'class' => $new_dd_prop['class'],
+					'attr' => $new_dd_prop['attr'],
+					'id' => $new_dd_prop['id']
+				), true);
 			} else {
 				$dropdown_html = $new_dd_prop['items'];
 			}

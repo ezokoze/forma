@@ -22,6 +22,7 @@ class Widget extends SmartUI {
 		"attr" => array(),
 		"options" => array(),
 		"header" => array(),
+		"footer" => "",
 		"body" => array()
 	);
 
@@ -129,6 +130,7 @@ class Widget extends SmartUI {
 			array(
 				"if_closure" => function($body) use ($that) { return SmartUtil::run_callback($body, array($that)); },
 				"if_other" => function($body) {
+					if ($body === false || is_null($body)) return null;
 					return '<div class="widget-body">'.$body.'</div>';
 				},
 				"if_array" => function($body) use ($that) {
@@ -187,12 +189,12 @@ class Widget extends SmartUI {
 		$header = $get_property_value(
 			$structure->header,
 			array(
-				"if_closure" => function($header) use ($that) { return SmartUtil::run_callback($body, array($that)); },
+				"if_closure" => function($header) use ($that, $body) { return SmartUtil::run_callback($body, array($that)); },
 				"if_other" => function($body) { return $body; },
 				"if_array" => function($body) use ($get_property_value, $that) {
 					$toolbar_htm = '';
 
-					if (isset($body["icon"])) {
+					if (isset($body["icon"]) && $body['icon']) {
 						$toolbar_htm .= '<span class="widget-icon"> <i class="'.SmartUI::$icon_source.' '.$body["icon"].'"></i> </span>';
 					}
 
@@ -247,6 +249,17 @@ class Widget extends SmartUI {
 			)
 		);
 
+		$footer_prop = array(
+			'content' => '',
+			'class' => '',
+			'attr' => array()
+		);
+		$new_footer_prop = parent::get_clean_structure($footer_prop, $structure->footer, array($this), 'content');
+		$footer_attribues = array_map(function($attr, $value) {
+			return $attr.'="'.$value.'"';
+		}, array_keys($new_footer_prop['attr']), $new_footer_prop['attr']);
+		if ($new_footer_prop['class']) $footer_attribues[] = 'class="'.$new_footer_prop['class'].'"';
+
 		$class = $get_property_value($structure->class, array(
 			"if_closure" => function($class) use ($that) { return SmartUtil::run_callback($class, array($that)); },
 			"if_array" => function($class) {
@@ -282,7 +295,8 @@ class Widget extends SmartUI {
 
 		$result = '<div '.trim(implode(' ', $main_attributes)).'>';
 		$result .= '<header>'.$header.'</header>';
-		$result .= '<div>'.$body.'</div>';
+		$result .= is_null($body) ? '' : '<div>'.$body.'</div>';
+		$result .= $new_footer_prop['content'] ? '<footer '.implode(' ', $footer_attribues).'>'.$new_footer_prop['content'].'</footer>' : '';
 		$result .= '</div>';
 
 		if ($return) return $result;

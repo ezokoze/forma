@@ -5,7 +5,7 @@
 //ribbon breadcrumbs config
 //array("Display Name" => "URL");
 $breadcrumbs = array(
-    "Home" => APP_URL
+	"Home" => APP_URL
 );
 
 /*navigation array config
@@ -22,81 +22,36 @@ ex:
 
 */
 $page_nav = array(
-    "dashboard" => array(
-        "title" => "Tableau de bord",
-        "icon" => "fa-tachometer",
-        "url" => "ajax/page_dashboard.php"
-    ),
-    "stages" => array(
-        "title" => "Stages",
-        "icon" => "fa-graduation-cap",
-        "url" => "ajax/page_stages.php",
-    ),
-    "formations" => array(
-        "title" => "Formations",
-        "icon" => "fa-tags",
-        "url" => "",
-    ),
-    "associations" => array(
-        "title" => "Associations",
-        "icon" => "fa-building",
-        "url" => "ajax/page_associations.php",
-    ),
-    "utilisateurs" => array(
-        "title" => "Utilisateurs",
-        "icon" => "fa-child",
-        "url" => "ajax/page_utilisateurs.php",
-    ),
-    "information" => array(
-        "title" => "Informations",
-        "icon" => "fa-info-circle",
-        "url" => "",
-    )
-
-    /*"intervenants_lel" => array(
-        "title" => "Intervenants",
-        "icon" => "fa-code",
-        "sub" => array(
-            'listing_intervenants' => array(
-                'title' => 'Listings',
-                'url' => "ajax/smartui-alert.php"
-            ),
-            'progress' => array(
-                'title' => 'Progress',
-                'url' => 'ajax/smartui-progress.php'
-            )
-        ),
-        "carousel" => array(
-            "title" => "Carousel",
-            "url" => 'ajax/smartui-carousel.php'
-        ),
-        "tab" => array(
-            "title" => "Tab",
-            "url" => 'ajax/smartui-tab.php'
-        ),
-        "accordion" => array(
-            "title" => "Accordion",
-            "url" => 'ajax/smartui-accordion.php'
-        ),
-        "widget" => array(
-            'title' => "Widget",
-            'url' => "ajax/smartui-widget.php"
-        ),
-        "datatable" => array(
-            "title" => "DataTable",
-            "url" => "ajax/smartui-datatable.php"
-        ),
-        "button" => array(
-            "title" => "Button",
-            "url" => "ajax/smartui-button.php"
-        ),
-        'smartform' => array(
-            'title' => 'Smart Form',
-            'url' => 'ajax/smartui-form.php'
-        )
-    )*/
-
-
+	"dashboard" => array(
+		"title" => "Tableau de bord",
+		"icon" => "fa-tachometer",
+		"url" => "index.php?p=modules/page_dashboard"
+	),
+	"stages" => array(
+		"title" => "Stages",
+		"icon" => "fa-graduation-cap",
+		"url" => "index.php?p=modules/page_stages",
+	),
+	"formations" => array(
+		"title" => "Formations",
+		"icon" => "fa-tags",
+		"url" => "",
+	),
+	"associations" => array(
+		"title" => "Associations",
+		"icon" => "fa-building",
+		"url" => "index.php?p=modules/page_associations",
+	),
+	"utilisateurs" => array(
+		"title" => "Utilisateurs",
+		"icon" => "fa-child",
+		"url" => "index.php?p=modules/page_utilisateurs",
+	),
+	"information" => array(
+		"title" => "Informations",
+		"icon" => "fa-info-circle",
+		"url" => "",
+	)
 );
 
 //configuration variables

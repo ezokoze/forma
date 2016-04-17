@@ -4,15 +4,15 @@
 
 			<!-- User info -->
 			<div class="login-info">
-				<span> <!-- User image size is adjusted inside CSS, it should stay as is -->
-
+				<span> <!-- User image size is adjusted inside CSS, it should stay as is --> 
+					
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-						<img src="<?php echo ASSETS_URL; ?>/img/avatars/fitch.png" alt="me"/>
+						<img src="<?php echo ASSETS_URL . $_SESSION['utilisateurs_image']; ?>" alt="me" class="online" />
 						<span>
-							François Garcia
+							<?php echo $_SESSION['utilisateurs_prenom'] . ' ' . $_SESSION['utilisateurs_nom'] ?>
 						</span>
-					</a href="javascript:void(0);">
-
+					</a> 
+					
 				</span>
 			</div>
 			<!-- end user info -->
@@ -28,7 +28,6 @@
 				Please note that these links work a bit different than
 				traditional hre="" links. See documentation for details.
 				-->
-
 				<?php
 					$ui = new SmartUI();
 					$ui->create_nav($page_nav)->print_html();

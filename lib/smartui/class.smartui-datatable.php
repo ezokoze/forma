@@ -43,11 +43,11 @@ class DataTable extends SmartUI {
 	private $_cols_map = array();
 	private $_hide_map = array();
 
-	public function __construct($data, $options = array(), $widget_title = '<h2>DataTable Result Set</h2>') {
-		$this->_init_structure($data, $options, $widget_title);
+	public function __construct($data, $options = array(), $widget_title = '<h2>DataTable Result Set</h2>', $widget_icon = 'table') {
+		$this->_init_structure($data, $options, $widget_title, $widget_icon);
 	}
 
-	private function _init_structure($data, $user_options, $widget_title) {
+	private function _init_structure($data, $user_options, $widget_title, $widget_icon) {
 		$this->_structure = parent::array_to_object($this->_structure);
 		$this->_structure->data = $data;
 		$this->_structure->options = parent::set_array_prop_def($this->_options_map, $user_options);
@@ -56,12 +56,13 @@ class DataTable extends SmartUI {
 		$this->_uid = $uid;
 		$ui = new parent();
 		$this->_structure->widget = $ui->create_widget();
-		$this->_structure->widget->header('icon', SmartUI::$icon_source.'-table')
+		$this->_structure->widget
 			->header('title', $widget_title)
 			->body("class", "no-padding")
 			->body("editbox", '<input class="form-control" type="text">
                         <span class="note"><i class="'.SmartUI::$icon_source.' '.SmartUI::$icon_source.'-check text-success"></i> Change title to update and save instantly!</span>');
 
+		if ($widget_icon) $this->_structure->widget->header('icon', SmartUI::$icon_source.'-'.$widget_icon);
 
 		if (!$this->_structure->data) {
 			$col_list = $this->_structure->options["default_col"] ? array($this->_structure->options["default_col"]) : array();
@@ -122,7 +123,7 @@ class DataTable extends SmartUI {
 		return isset($this->_structure->options["checkboxes"]) && $this->_structure->options["checkboxes"];
 	}
 
-	public function print_js($return = false) {
+	public function print_js($return = false, $jquery_enclosed = true) {
 		$that = $this;
 		$structure = $this->_structure;
 		$dtable_js = '';
@@ -133,7 +134,6 @@ class DataTable extends SmartUI {
 		$otable_var = $structure->js["oTable"];
 
         $dtable_js = '
-            $(function() {
                 $(".desktop[data-rel=\'tooltip\']").tooltip();
                 $(".phone[data-rel=\'tooltip\']").tooltip({placement: tooltip_placement});
                 function tooltip_placement(context, source) {
@@ -168,21 +168,23 @@ class DataTable extends SmartUI {
                     return false;
                 });
                 var '.$otable_var.' = $("#'.$table_id.'").dataTable({
-                    '.(!isset($structure->js['properties']) ? '' :
+                    '.(!isset($structure->js['properties']) || !$structure->js['properties'] ? '' :
                     	implode(', ', array_map(function($key, $js) {
                     		return "'$key' : $js";
                     	}, array_keys($structure->js['properties']), $structure->js['properties'])).',').'
-
                     '.(!$structure->options["paginate"] ? '"bPaginate": false, "bInfo": false,' : '').'
                     aoColumns: [
                         '.($this->is_with_details() ? '{"bSortable": false},' : '').'
                         '.($this->is_with_checkboxes() ? '{"bSortable": false},' : '').'
-                        '.implode(', ', array_map(function($col) { return 'null'; }, array_keys($structure->col))).'
+                        '.implode(', ', array_map(function($col) use ($structure) {
+							if (isset($structure->sort[$col]) && $structure->sort[$col] === false) return '{ "bSortable": false }';
+							else return 'null';
+						}, array_keys($structure->col))).'
                     ],
                     aaSorting: ['.implode(', ', array_filter(array_map(function($col_index, $col) use ($that, $structure) {
                     	$col_index = $that->is_with_details() ? $col_index + 1 : $col_index;
 				        $col_index = $that->is_with_checkboxes() ? $col_index + 1 : $col_index;
-				        if (isset($structure->sort[$col])) {
+				        if (isset($structure->sort[$col]) && $structure->sort[$col]) {
 				            $sorting = $structure->sort[$col];
 				            return "[$col_index, '$sorting']";
 				        } else return null;
@@ -219,11 +221,13 @@ class DataTable extends SmartUI {
                 	return $toolbar['js'];
                 }, $structure->toolbar)) : "" ).'
 
-                '.(isset($structure->js["custom"]) ? $structure->js['custom'] : '').'
+                '.(isset($structure->js["custom"]) ? $structure->js['custom'] : '');
 
-            })';
-
-		$result = $dtable_js;
+        if ($jquery_enclosed) {
+        	$result = '$(function() {
+        		'.$dtable_js.'
+        	});';
+        } else $result = $dtable_js;
 
         if ($return) return $result;
         else echo $result;
@@ -279,7 +283,7 @@ class DataTable extends SmartUI {
 
 					$row_prop = array(
 						"hidden" => false,
-						"checkbox" => true,
+						"checkbox" => array(),
 						"detail" => true,
 						"class" => "",
 						"attr" => array(),
@@ -457,28 +461,46 @@ class DataTable extends SmartUI {
 					$row_details = '';
 
 					if (isset($structure->options["checkboxes"]) && $structure->options["checkboxes"]) {
-						$option = $structure->options["checkboxes"];
-						$checkbox_prop = array(
-							"name" => $structure->id."_checkbox",
-							"id" => "",
-							"checked" => false
-						);
 
-						$new_checkbox_prop = SmartUtil::get_clean_structure($checkbox_prop, $option, array($that, $row_data, $row_index), 'name');
-						$id = $new_checkbox_prop["id"] ? 'id="'.$new_checkbox_prop["id"].'"' : '';
-						$content = '<label class="checkbox-inline">
-		                          <input type="checkbox" '.($new_checkbox_prop["checked"] ? 'checked' : '' ).' class="checkbox style-0" name="'.$checkbox_prop["name"].'[]" '.$id.' />
+						if ($new_row_prop["checkbox"] === false)
+							$checkbox_content = '';
+						else {
+							// global checkboxes configuration
+							$option = $structure->options["checkboxes"];
+							$checkbox_prop = array(
+								"name" => $structure->id."_checkbox",
+								"id" => "",
+								"checked" => false,
+								"value" => "on"
+							);
+
+							$new_checkbox_prop = SmartUtil::get_clean_structure($checkbox_prop, $option, array($that, $row_data, $row_index), 'name');
+
+							// override global checkbox settings if configured
+							$this_row_checkbox_prop = SmartUtil::get_clean_structure($new_checkbox_prop, $new_row_prop['checkbox'], array($that, $row_data, $row_index), 'name');
+
+							$id = $this_row_checkbox_prop["id"] ? 'id="'.$this_row_checkbox_prop["id"].'"' : '';
+							$value = '';
+
+							if (SmartUtil::is_closure($this_row_checkbox_prop['value']))
+								$value = SmartUtil::run_callback($this_row_checkbox_prop['value'], array($row_data));
+							else $value = $this_row_checkbox_prop['value'];
+
+							$value = $that->replace_col_codes($value, $row_data);
+
+							$checkbox_content = '<label class="checkbox-inline">
+		                          <input type="checkbox" '.($this_row_checkbox_prop["checked"] ? 'checked' : '' ).' class="checkbox style-0" name="'.$this_row_checkbox_prop["name"].'[]" '.$id.' value="'.$value.'" />
 		                          <span></span>
 		                        </label>';
-						if ($new_row_prop["checkbox"] === false)
-							$content = '';
 
-						$row_checkbox = '
-			                <td class="center table-checkbox" width="20px"> '.$content.' </td>';
+						}
+
+						$row_checkbox = '<td class="center table-checkbox" width="20px"> '.$checkbox_content.' </td>';
 					}
 
 					if (isset($structure->options["row_details"]) && $structure->options["row_details"]) {
 						$option = $structure->options["row_details"];
+
 						$detail_prop = array(
 							"id" => "",
 							"icon" => SmartUI::$icon_source.'-chevron-right',

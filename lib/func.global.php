@@ -1,13 +1,6 @@
 <?php
 
-/**
- * User: breith
- * Date: 15/12/2015
- * Time: 16:57
- */
-
 use BenTools\PDOExtended\PDOExtended;
-use PHPMailer\PHPMailer\PHPMailer;
 
 /**
  * Class Functions
@@ -38,8 +31,7 @@ class Functions
      */
     public function dateFR($date, $param = 0)
     {
-        if($date != "0000-00-00" && $date != "0000-00-00 00:00:00" )
-        {
+        if ($date != "0000-00-00" && $date != "0000-00-00 00:00:00") {
             switch ($param) {
                 case 0:
                     return strftime('%d/%m/%Y', strtotime($date));
@@ -67,11 +59,89 @@ class Functions
 
                     return ucfirst(iconv("ISO-8859-9", "UTF-8", strftime($strDate, strtotime($date))));
                     break;
+                case 6:
+                    $strDate = mb_convert_encoding('%H:%M', 'ISO-8859-9', 'UTF-8');
+
+                    return ucfirst(iconv("ISO-8859-9", "UTF-8", strftime($strDate, strtotime($date))));
+                    break;
                 default:
                     return date('d/m/Y');
             }
+        } else return "";
+    }
+
+    /**
+     * La fonction darkroom() renomme et redimensionne les photos envoyées lors de l'ajout d'un objet.
+     * @param $img String Chemin absolu de l'image d'origine.
+     * @param $to String Chemin absolu de l'image générée (.jpg).
+     * @param $width Int Largeur de l'image générée. Si 0, valeur calculée en fonction de $height.
+     * @param $height Int Hauteur de l'image génétée. Si 0, valeur calculée en fonction de $width.
+     * Si $height = 0 et $width = 0, dimensions conservées mais conversion en .jpg
+     */
+    public function darkroom($img, $to, $width, $height = 0, $useGD = TRUE){
+
+        $dimensions = getimagesize($img);
+        $ratio      = $dimensions[0] / $dimensions[1];
+
+        // Calcul des dimensions si 0 passé en paramètre
+        if($width == 0 && $height == 0){
+            $width = $dimensions[0];
+            $height = $dimensions[1];
+        }elseif($height == 0){
+            $height = round($width / $ratio);
+        }elseif ($width == 0){
+            $width = round($height * $ratio);
         }
-        else return "";
+
+        if($dimensions[0] > ($width / $height) * $dimensions[1]){
+            $dimY = $height;
+            $dimX = round($height * $dimensions[0] / $dimensions[1]);
+            $decalX = ($dimX - $width) / 2;
+            $decalY = 0;
+        }
+        if($dimensions[0] < ($width / $height) * $dimensions[1]){
+            $dimX = $width;
+            $dimY = round($width * $dimensions[1] / $dimensions[0]);
+            $decalY = ($dimY - $height) / 2;
+            $decalX = 0;
+        }
+        if($dimensions[0] == ($width / $height) * $dimensions[1]){
+            $dimX = $width;
+            $dimY = $height;
+            $decalX = 0;
+            $decalY = 0;
+        }
+
+        // Création de l'image avec la librairie GD
+        if($useGD){
+            $pattern = imagecreatetruecolor($width, $height);
+            $type = mime_content_type($img);
+            switch (substr($type, 6)) {
+                case 'jpeg':
+                    $image = imagecreatefromjpeg($img);
+                    break;
+                case 'gif':
+                    $image = imagecreatefromgif($img);
+                    break;
+                case 'png':
+                    $image = imagecreatefrompng($img);
+                    break;
+            }
+            imagecopyresampled($pattern, $image, 0, 0, 0, 0, $dimX, $dimY, $dimensions[0], $dimensions[1]);
+            imagedestroy($image);
+            imagejpeg($pattern, $to, 100);
+
+            return TRUE;
+
+            // Création de l'image avec ImageMagick
+        }else{
+            $cmd = '/usr/bin/convert -resize '.$dimX.'x'.$dimY.' "'.$img.'" "'.$dest.'"';
+            shell_exec($cmd);
+
+            $cmd = '/usr/bin/convert -gravity Center -quality '.self::$quality.' -crop '.$largeur.'x'.$hauteur.'+0+0 -page '.$largeur.'x'.$hauteur.' "'.$dest.'" "'.$dest.'"';
+            shell_exec($cmd);
+        }
+        return TRUE;
     }
 
     /**
@@ -87,8 +157,7 @@ class Functions
      */
     public function dateUS($date, $param = 0)
     {
-        if($date != "")
-        {
+        if ($date != "") {
             switch ($param) {
                 case 0:
                     return date_format(date_create(str_replace('/', '-', $date)), 'Y-m-d');
@@ -99,8 +168,7 @@ class Functions
                 default:
                     return date_format(date_create(str_replace('/', '-', $date)), 'Y-m-d');
             }
-        }
-        else return "";
+        } else return "";
     }
 
     /**
@@ -308,7 +376,7 @@ class Functions
      *
      * @return array
      */
-    public function ajouter_fichier($fichier, $infos)
+    public function ajouter_fichier($fichier, $infos, $resize, $width_p, $height_p)
     {
         // Nom de l'entité si présent.
         $entite = (!empty($infos['entite'])) ? " (" . $infos['entite'] . ") " : "";
@@ -346,7 +414,6 @@ class Functions
                 // Répertoire de destination du fichier
                 $destination = RACINE_SERVEUR . CHEMIN_FICHIERS . $infos['dossier'] . "/";
 
-
                 // Si le dossier n'existe pas, je le crée.
                 if (!is_dir($destination)) {
                     mkdir($destination, 0777);
@@ -354,29 +421,33 @@ class Functions
 
                 $destinationComplete = $destination . $nom . "." . $extension;
 
+
                 // Execution de l'upload !
                 if (move_uploaded_file($fichier['tmp_name'], $destinationComplete)) {
                     $retour = array(
-                        "retour"  => true,
+                        "retour" => true,
                         "message" => "l'upload du fichier a été réalisé avec succès" . $entite,
-                        "nom"     => $nom . "." . $extension
+                        "nom" => $nom . "." . $extension
                     );
+                    if($resize){
+                        $this->darkroom($destinationComplete, $destinationComplete, $width_p);
+                    }
                 } else {
                     $retour = array(
-                        "retour"  => false,
+                        "retour" => false,
                         "message" => "Une erreur s'est produite lors de l'upload du fichier" . $entite
                     );
                 }
 
             } else {
                 $retour = array(
-                    "retour"  => false,
+                    "retour" => false,
                     "message" => "Ce fichier n'est pas une image" . $entite
                 );
             }
         } else {
             $retour = array(
-                "retour"  => false,
+                "retour" => false,
                 "message" => "Le fichier est vide" . $entite
             );
         }
@@ -389,7 +460,8 @@ class Functions
      *
      * @return string
      */
-    public function get_ip_address()
+    public
+    function get_ip_address()
     {
         if (isset($_SERVER)) {
             if (isset($_SERVER["HTTP_X_FORWARDED_FOR"]) && ip2long($_SERVER["HTTP_X_FORWARDED_FOR"]) !== false) {

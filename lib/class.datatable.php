@@ -3,7 +3,6 @@
 class DataTable {
     private $_uid;
     private $_table_properties;
-    private $_col_list = array();
     public $title = "DataTable Result Set";
     public $color = "darken";
     public $no_data_text = "No Data";
@@ -28,10 +27,7 @@ class DataTable {
         $this->_table_properties->static = $static;
         $this->_table_properties->in_widget = $in_widget;
         $this->_table_properties->hover = $hover;
-        $this->_set_col_list();
     }
-
-   
     
     private function create_id($md5=false) {
         $uid = substr(uniqid((double)microtime() * 10000, 1), 0, 12);
@@ -342,120 +338,22 @@ class DataTable {
     private function map_custom_table_args($key, $js) {
         return "'$key' : $js";
     }
-
-    private function _set_col_list() {
-        if (!$this->data) {
-            $this->_col_list = array($this->no_data_text);
-        } else {
-            $this->_col_list = array_keys(is_object($this->data[0]) ? get_object_vars($this->data[0]) : $this->data[0]);
-        }
-    }
-
-    public function print_js($return = false) {
-        $col_list = $this->_col_list;
-        $js_hidden_cols = array_filter(array_map(array($this, "map_js_hidden_cols"), array_keys($col_list), $col_list));
-        $dtable_js = '';
-        if (!$this->_table_properties->static) {
-            $otable_var = $this->get_otable_var();
-            $table_id = $this->get_table_id();
-            $dtable_js = '
-                $(function() {
-                    $(".desktop[data-rel=\'tooltip\']").tooltip();
-                    $(".phone[data-rel=\'tooltip\']").tooltip({placement: tooltip_placement});
-                    function tooltip_placement(context, source) {
-                        var $source = $(source);
-                        var $parent = $source.closest("table")
-                        var off1 = $parent.offset();
-                        var w1 = $parent.width();
-                
-                        var off2 = $source.offset();
-                        var w2 = $source.width();
-                
-                        if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return "right";
-                        return "left";
-                    }
-                 
-                    $("#'.$table_id.' a i[data-toggle=\'row-detail\']").on("click", function () {
-                        var nTr = $(this).parents("tr")[0];
-                        if ( '.$otable_var.'.fnIsOpen(nTr) )
-                        {
-                            /* This row is already open - close it */
-                            $(this).removeClass("fa-minus-square").addClass("fa-plus-square");
-                            this.title = "Show Details";
-                            '.$otable_var.'.fnClose( nTr );
-                        }
-                        else
-                        {
-                            /* Open this row */
-                            $(this).removeClass("fa-plus-square").addClass("fa-minus-square");
-                            this.title = "Hide Details";
-                            '.$otable_var.'.fnOpen( nTr, fnFormatDetails('.$otable_var.', nTr), "details" );
-                        }
-                        return false;
-                    });
-                    var '.$otable_var.' = $("#'.$table_id.'").dataTable({ 
-                        '.(is_null($this->custom_dtable_prop) ? '' : implode(', ', array_map(array($this, 'map_custom_table_args'), array_keys($this->custom_dtable_prop), $this->custom_dtable_prop)).',').'
-                        '.(!$this->pagination ? '"bPaginate": false, "bInfo": false,' : '').'
-                        aoColumns: [
-                            '.(!is_null($this->row_detail) ? '{"bSortable": false},' : '').'
-                            '.(!is_null($this->row_checkbox) ? '{"bSortable": false},' : '').'
-                            '.implode(', ', array_map(array($this, 'map_js_cols'), $col_list)).'
-                            '.(count($this->row_actions) > 0 ? ', { "bSortable": false }' : '').'              
-                        ],
-                        aaSorting: ['.implode(', ', array_filter(array_map(array($this, 'map_js_cols_sorting'), array_keys($col_list), $col_list))).'],
-                        
-                    });
-                    
-                    '.(!$this->pagination ? '$("#'.$table_id.'").next(".row-fluid").empty();' : '').'
-                    
-                    $("#'.$this->_uid.'_cols li label input[type=checkbox]").on("click", function() {
-                        fnShowHideCol($(this).data("column-toggle"), $(this).prop("checked"));
-                    })
-                    '.implode("\n", $js_hidden_cols).'
-                    function fnShowHideCol(iCol, bVis) {
-                        /* Get the DataTables object again - this is not a recreation, just a get of the object */
-                        //var bVis = '.$otable_var.'.fnSettings().aoColumns[iCol].bVisible;
-                        '.$otable_var.'.fnSetColumnVis(iCol, bVis);
-                    }
-                    
-                    function fnFormatDetails ( '.$otable_var.', nTr ) {
-                        var aData = '.$otable_var.'.fnGetData( nTr );
-                        '.(!is_null($this->row_detail) ? $this->get_detail_content($this->row_detail, $col_list) : '').'
-                                                
-                    }
-                    
-                    $("#'.$this->_uid.'_table th input:checkbox").on("click" , function(){
-                        var that = this;
-                        $(this).closest("table").find("tr > td input:checkbox").each(function(){
-                            this.checked = that.checked;
-                            //$(this).closest("tr").toggleClass("selected");
-                        }); 
-                    });
-                    
-                    '.(!is_null($this->toolbar) ? implode("\n", array_map(array($this, "map_toolbar_js"), $this->toolbar)) : "" ).'
-                    
-                })';
-        }
-
-        $result = $dtable_js;
-            
-        if ($return) return $result;
-        else echo $result;    
-    }
     
-    public function print_html($return = false) {
-        $col_list = $this->_col_list;
+    public function display($return = false) {
         if (!$this->data) {
+            $col_list = array($this->no_data_text);
             $rows = array("");
         } else {
             if ($this->_table_properties->static) {
                 array_map(array($this, "map_static_hidden_cols"), $this->data);
             }
+            $col_list = array_keys(is_object($this->data[0]) ? get_object_vars($this->data[0]) : $this->data[0]);
             $rows = array_map(array($this, "map_rows"), $this->data);
         }
         
         $cols = array_map(array($this, "map_cols"), $col_list);
         //$custom_cols = array_filter(array_map(array($this, "map_custom_cols"), array_keys($col_list), $col_list));
+        $js_hidden_cols = array_filter(array_map(array($this, "map_js_hidden_cols"), array_keys($col_list), $col_list));
         $htm_widget_toolbar = !$this->_table_properties->static ? '
             '.(!is_null($this->toolbar) ? implode('', array_map(array($this, 'map_toolbar_html'), $this->toolbar)) : '').'
             ' : '';
@@ -519,11 +417,93 @@ class DataTable {
     				</tbody>
     			</table>'
             .($this->_table_properties->in_widget ? $widget_footer : '');
-
-        $result = $dtable_htm;
-        
-        $this->_col_list = $col_list;
-
+            
+        $dtable_js = '';
+        if (!$this->_table_properties->static) {
+            $otable_var = $this->get_otable_var();
+            $table_id = $this->get_table_id();
+            $dtable_js = '
+                <script type="text/javascript">
+        			$(function() {
+                        $(".desktop[data-rel=\'tooltip\']").tooltip();
+        				$(".phone[data-rel=\'tooltip\']").tooltip({placement: tooltip_placement});
+        				function tooltip_placement(context, source) {
+        					var $source = $(source);
+        					var $parent = $source.closest("table")
+        					var off1 = $parent.offset();
+        					var w1 = $parent.width();
+        			
+        					var off2 = $source.offset();
+        					var w2 = $source.width();
+        			
+        					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return "right";
+        					return "left";
+        				}
+                     
+                        $("#'.$table_id.' a i[data-toggle=\'row-detail\']").on("click", function () {
+                            var nTr = $(this).parents("tr")[0];
+                            if ( '.$otable_var.'.fnIsOpen(nTr) )
+                            {
+                                /* This row is already open - close it */
+                                $(this).removeClass("fa-minus-square").addClass("fa-plus-square");
+                                this.title = "Show Details";
+                                '.$otable_var.'.fnClose( nTr );
+                            }
+                            else
+                            {
+                                /* Open this row */
+                                $(this).removeClass("fa-plus-square").addClass("fa-minus-square");
+                                this.title = "Hide Details";
+                                '.$otable_var.'.fnOpen( nTr, fnFormatDetails('.$otable_var.', nTr), "details" );
+                            }
+                            return false;
+                        });
+                        var '.$otable_var.' = $("#'.$table_id.'").dataTable({ 
+                            '.(is_null($this->custom_dtable_prop) ? '' : implode(', ', array_map(array($this, 'map_custom_table_args'), array_keys($this->custom_dtable_prop), $this->custom_dtable_prop)).',').'
+                            '.(!$this->pagination ? '"bPaginate": false, "bInfo": false,' : '').'
+            				aoColumns: [
+                                '.(!is_null($this->row_detail) ? '{"bSortable": false},' : '').'
+                                '.(!is_null($this->row_checkbox) ? '{"bSortable": false},' : '').'
+                                '.implode(', ', array_map(array($this, 'map_js_cols'), $col_list)).'
+                                '.(count($this->row_actions) > 0 ? ', { "bSortable": false }' : '').'              
+            				],
+                            aaSorting: ['.implode(', ', array_filter(array_map(array($this, 'map_js_cols_sorting'), array_keys($col_list), $col_list))).'],
+                            
+                        });
+                        
+                        '.(!$this->pagination ? '$("#'.$table_id.'").next(".row-fluid").empty();' : '').'
+                        
+                        $("#'.$this->_uid.'_cols li label input[type=checkbox]").on("click", function() {
+                            fnShowHideCol($(this).data("column-toggle"), $(this).prop("checked"));
+                        })
+                        '.implode("\n", $js_hidden_cols).'
+                        function fnShowHideCol(iCol, bVis) {
+                            /* Get the DataTables object again - this is not a recreation, just a get of the object */
+                            //var bVis = '.$otable_var.'.fnSettings().aoColumns[iCol].bVisible;
+                            '.$otable_var.'.fnSetColumnVis(iCol, bVis);
+                        }
+                        
+                        function fnFormatDetails ( '.$otable_var.', nTr ) {
+                            var aData = '.$otable_var.'.fnGetData( nTr );
+                            '.(!is_null($this->row_detail) ? $this->get_detail_content($this->row_detail, $col_list) : '').'
+                                                    
+                        }
+                        
+        				$("#'.$this->_uid.'_table th input:checkbox").on("click" , function(){
+        					var that = this;
+        					$(this).closest("table").find("tr > td input:checkbox").each(function(){
+        						this.checked = that.checked;
+        						//$(this).closest("tr").toggleClass("selected");
+        					});	
+        				});
+                        
+                        '.(!is_null($this->toolbar) ? implode("\n", array_map(array($this, "map_toolbar_js"), $this->toolbar)) : "" ).'
+                        
+        			})
+        		</script>';
+        }
+        $result = $dtable_htm.$dtable_js;
+            
         if ($return) return $result;
         else echo $result;    
     }

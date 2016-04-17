@@ -3,7 +3,8 @@
 class Info extends SmartUI {
 	private $_options_map = array(
 		'stripped' => false,
-		'grouped' => false
+		'grouped' => false,
+		'class' => ''
 	);
 
 	private $_structure = array(
@@ -82,7 +83,7 @@ class Info extends SmartUI {
 			$new_row_prop = parent::get_clean_structure($row_prop, $info, array($that, $rows, $key), 'value');
 
 			$icon = $new_row_prop['icon'] ? '<i class="'.SmartUI::$icon_source.' '.$new_row_prop['icon'].'"></i> ' : '';
-			
+
 			$row_html = '<div class="info-row">';
 			$row_html .= '	<div class="info-name"> '.$new_row_prop['name'].' </div>';
 			$row_html .= '	<div class="info-action"> '.$new_row_prop['action'].' </div>';
@@ -94,6 +95,8 @@ class Info extends SmartUI {
 		$classes = array();
 		if ($structure->options['stripped']) $classes[] = 'info-stripped';
 		if ($structure->options['grouped']) $classes[] = 'info-grouped';
+
+		$classes[] = $structure->options['class'];
 
 		$result = '<div class="info'.($classes ? ' '.implode(' ', $classes) : '').'">';
 		$result .= $structure->title ? '<div class="info-title">'.$structure->title.'</div>' : '';
