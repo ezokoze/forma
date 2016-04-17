@@ -1,6 +1,7 @@
 <?php
 
 use BenTools\PDOExtended\PDOExtended;
+require 'simpleImage.php';
 
 /**
  * Class Functions
@@ -376,7 +377,7 @@ class Functions
      *
      * @return array
      */
-    public function ajouter_fichier($fichier, $infos, $resize, $width_p, $height_p)
+    public function ajouter_fichier($fichier, $infos)
     {
         // Nom de l'entité si présent.
         $entite = (!empty($infos['entite'])) ? " (" . $infos['entite'] . ") " : "";
@@ -412,7 +413,7 @@ class Functions
                 $extension = pathinfo($fichier['name'], PATHINFO_EXTENSION);
 
                 // Répertoire de destination du fichier
-                $destination = RACINE_SERVEUR . CHEMIN_FICHIERS . $infos['dossier'] . "/";
+                $destination = RACINE_SERVEUR . CHEMIN_IMAGE . $infos['dossier'] . "/";
 
                 // Si le dossier n'existe pas, je le crée.
                 if (!is_dir($destination)) {
@@ -429,9 +430,6 @@ class Functions
                         "message" => "l'upload du fichier a été réalisé avec succès" . $entite,
                         "nom" => $nom . "." . $extension
                     );
-                    if($resize){
-                        $this->darkroom($destinationComplete, $destinationComplete, $width_p);
-                    }
                 } else {
                     $retour = array(
                         "retour" => false,

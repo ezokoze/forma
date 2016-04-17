@@ -81,7 +81,9 @@ if (!defined('RACINE_SERVEUR')) define('RACINE_SERVEUR', __DIR__ . '/..');
 define('CHEMIN_SERVEUR', APP_URL); //APP_URL ou http://xxxxxxxxxx.com
 
 define('CHEMIN_IMAGES', '/assets/img/');
-define('CHEMIN_FICHIERS', '/fichiers/');
+define('CHEMIN_FICHIERS', '/assets/img/transit');
+define('CHEMIN_IMAGE', '/assets/img/transit/');
+define('CHEMIN_AVATAR', '../../../assets/img/avatars/');
 
 /***** INFORMATIONS GLOBALES *****/
 
