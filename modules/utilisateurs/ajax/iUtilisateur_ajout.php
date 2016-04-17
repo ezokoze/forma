@@ -26,17 +26,20 @@ if ($countEmail != 0) {
                 `utilisateurs_prenom`, 
                 `utilisateurs_email`, 
                 `utilisateurs_motDePasse`, 
+                `utilisateurs_image`, 
                 `utilisateurs_premierStage`, 
-                `utilisateurs_quotaFormation`) VALUES (
+                `utilisateurs_quotaFormation`) 
+                VALUES (
                 NULL,
-                '$utilisateurs_type',
-                '$associations_id',
-                '$utilisateurs_nom',
-                '$utilisateurs_prenom',
-                '$utilisateurs_email',
-                '$utilisateurs_motDePasse',
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                'image',
                 NULL,
-                '')");
+                '')", array($utilisateurs_type, $associations_id,$utilisateurs_nom,$utilisateurs_prenom,$utilisateurs_email,$utilisateurs_motDePasse));
 
     $alert = 'ok';
 }

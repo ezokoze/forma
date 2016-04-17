@@ -1,7 +1,7 @@
 <?php require_once('../../../lib/config.php'); ?>
 
 <!-- Début du formulaire -->
-<form action="./php/iAssociation_ajout.php" id="ajoutAssociations" class="smart-form"
+<form action="modules/associations/ajax/iAssociation_ajout.php" id="ajoutAssociations" class="smart-form"
       novalidate="novalidate" method="post" name="ajoutAssociations">
 
     <div class="modal-body col-12">
@@ -38,7 +38,7 @@
                 <label class="label col col-2">E-mail</label>
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-envelope"></i>
-                        <input type="text" name="associations_email" placeholder="E-mail de l'association" required">
+                        <input autocomplete="nope" type="text" name="associations_email" placeholder="E-mail de l'association" required">
                     </label>
                 </section>
                 <!-- Fin e-mail de l'association -->
@@ -47,7 +47,7 @@
                 <label class="label col col-2">Mot de passe</label>
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-lock"></i>
-                        <input type="password" name="associations_motDePasse"
+                        <input type="password" autocomplete="nope" name="associations_motDePasse"
                                placeholder="Mot de passe de l'association"
                                required">
                     </label>
@@ -228,6 +228,6 @@
         });
     };
 
-    loadScript("js/plugin/jquery-form/jquery-form.min.js", pagefunction);
+    loadScript("assets/js/plugin/jquery-form/jquery-form.min.js", pagefunction);
 
 </script>

@@ -84,7 +84,7 @@
                             "sMessage": "Généré par Forma <i>(Appuyez sur Echap pour fermer)</i>"
                         }
                     ],
-                    "sSwfPath": "js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
+                    "sSwfPath": "assets/js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
                 },
                 "autoWidth": true,
                 "preDrawCallback": function () {
@@ -95,12 +95,12 @@
                 "rowCallback": function (nRow) {
                     responsiveHelper_listing_associations.createExpandIcon(nRow);
                 },
-                "ajax": "./php/iAssociation_listing.php",
+                "ajax": "modules/associations/ajax/iAssociation_listing.php",
                 "drawCallback": function (oSettings) {
                     responsiveHelper_listing_associations.respond();
                 },
                 "language": {
-                    "url": "./data/French.json"
+                    "url": "./data/traduction_datatables_fr.json"
                 }
             });
 
@@ -119,7 +119,7 @@
 
     function ouverture_associations_ajout() {
         $.ajax({
-            url: './ajax/modal_associations_ajout.php',
+            url: 'modules/associations/modal/modal_associations_ajout.php',
             type: 'POST',
             data: '',
             dataType: 'html',
@@ -140,17 +140,17 @@
     function suppressionLigne(paramId) {
         $.SmartMessageBox({
             title: "Attention !",
-            content: "Vous êtes sur le point de supprimer cet utilsateur, confirmer ?",
+            content: "Vous êtes sur le point de supprimer cette association, confirmer ?",
             buttons: '[Non][Oui]'
         }, function (ButtonPressed) {
             if (ButtonPressed === "Oui") {
                 $.ajax({
-                    url: './php/modal/modal_suppression_utilisateur.php',
+                    url: 'modules/associations/ajax/iAssociation_suppression.php',
                     type: 'POST',
                     data: {'id': paramId},
                     dataType: 'html',
                     success: function (contenu) {
-                        smallBox('Suppression', "L'utilisateur à correctement été supprimé.", 'success');
+                        smallBox('Suppression', "L'association à correctement été supprimée.", 'success');
                     },
                     error: function () {
                         smallBox('Erreur', 'Une erreur est survenu dans la fonction suppressionLigne(paramId).', 'warning');
@@ -158,7 +158,7 @@
                 });
             }
             if (ButtonPressed === "Non") {
-                smallBox('Suppression', "L'équipement n'a pas été supprimé.", 'warning');
+                smallBox('Suppression', "L'association n'à pas été supprimée.", 'warning');
             }
         });
     }

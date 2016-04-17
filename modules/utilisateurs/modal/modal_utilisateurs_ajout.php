@@ -1,8 +1,8 @@
 <?php require_once('../../../lib/config.php'); ?>
 
 <!-- Début du formulaire -->
-<form action="./php/iUtilisateur_ajout.php" id="ajoutAssociations" class="smart-form"
-      novalidate="novalidate" method="post" name="ajoutAssociations">
+<form action="modules/utilisateurs/ajax/iUtilisateur_ajout.php" id="ajoutUtilisateur" class="smart-form"
+      novalidate="novalidate" method="post" name="ajoutUtilisateur">
 
     <div class="modal-body col-12">
 
@@ -121,7 +121,7 @@
     pageSetUp();
 
     var pagefunction = function () {
-        var $checkoutForm = $('#ajoutAssociations').validate({
+        var $checkoutForm = $('#ajoutUtilisateur').validate({
             // Rules for form validation
             rules: {
                 associations_id: {
@@ -170,9 +170,9 @@
 
             submitHandler: function (ev) {
                 $(ev).ajaxSubmit({
-                    type: $('#ajoutAssociations').attr('method'),
-                    url: $('#ajoutAssociations').attr('action'),
-                    data: $('#ajoutAssociations').serialize(),
+                    type: $('#ajoutUtilisateur').attr('method'),
+                    url: $('#ajoutUtilisateur').attr('action'),
+                    data: $('#ajoutUtilisateur').serialize(),
                     dataType: 'json',
                     success: function (data) {
                         if (data.return == 'email') {
