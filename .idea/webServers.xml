@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="18a19e65-0e1b-4183-908b-c81e2c6086fe" name="forma_dreamhost" url="http://www.francois-garcia.ws/forma">
+        <fileTransfer host="fitchadmin@stardust.dreamhost.com" port="21" rootFolder="/francois-garcia.ws/forma" password="dffadfc1df82df9cdfe8df80dfcfdf99" username="fitchadmin">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
