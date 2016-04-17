@@ -1,5 +1,4 @@
-<?php require_once("inc/init.php");
-$func = new Functions(); ?>
+<?php require_once('../../../lib/config.php'); ?>
 
 <!-- Début du formulaire -->
 <form action="./php/iAssociation_ajout.php" id="ajoutAssociations" class="smart-form"

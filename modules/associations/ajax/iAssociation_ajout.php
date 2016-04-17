@@ -26,15 +26,15 @@ if ($countIcom != 0) {
     $alert = 'nom'; // cas doublons nom
 } else {
     $pdo->sql("INSERT INTO `associations`(
-                `associations_id`,
-                `associations_nom`,
-                `associations_numeroICOM`,
-                `associations_email`,
-                `associations_motDePasse`,
-                `associations_interlocuteur_nom`,
-                `associations_interlocuteur_prenom`,
-                `associations_interlocuteur_telephone`,
-                `associations_interlocuteur_fax`,
+                `associations_id`, 
+                `associations_nom`, 
+                `associations_numeroICOM`, 
+                `associations_email`, 
+                `associations_motDePasse`, 
+                `associations_interlocuteur_nom`, 
+                `associations_interlocuteur_prenom`, 
+                `associations_interlocuteur_telephone`, 
+                `associations_interlocuteur_fax`, 
                 `associations_inscription`) VALUES (
                 NULL,
                 '$associations_nom',

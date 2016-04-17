@@ -57,56 +57,69 @@
 </div> <!-- fin modal-->
 
 <script type="text/javascript">
+    $(document).ready(function () {
 
-    pageSetUp();
+        pageSetUp();
 
-    var pagefunction = function () {
+        var pagefunction = function () {
 
-        localStorage.clear();
+            localStorage.clear();
 
-        var responsiveHelper_listing_utilisateurs = undefined;
+            var responsiveHelper_listing_utilisateurs = undefined;
 
-        var breakpointDefinition = {
-            tablet: 1024,
-            phone: 480
+            var breakpointDefinition = {
+                tablet: 1024,
+                phone: 480
+            };
+
+            $('#listing_utilisateurs').dataTable({
+                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-6 hidden-xs'T>r>" +
+                "t" +
+                "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
+                "oTableTools": {
+                    "aButtons": [
+                        "xls",
+                        {
+                            "sExtends": "print",
+                            "sMessage": "Généré par Forma <i>(Appuyez sur Echap pour fermer)</i>"
+                        }
+                    ],
+                    "sSwfPath": "assets/js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
+                },
+                "autoWidth": true,
+                "preDrawCallback": function () {
+                    if (!responsiveHelper_listing_utilisateurs) {
+                        responsiveHelper_listing_utilisateurs = new ResponsiveDatatablesHelper($('#listing_utilisateurs'), breakpointDefinition);
+                    }
+                },
+                "rowCallback": function (nRow) {
+                    responsiveHelper_listing_utilisateurs.createExpandIcon(nRow);
+                },
+                "ajax": "modules/utilisateurs/ajax/iUtilisateur_listing.php",
+                "drawCallback": function (oSettings) {
+                    responsiveHelper_listing_utilisateurs.respond();
+                },
+                "language": {
+                    "url": "./data/traduction_datatables_fr.json"
+                }
+            });
+
         };
 
-        $('#listing_utilisateurs').dataTable({
-            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-6 hidden-xs'T>r>" +
-            "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
-            "oTableTools": {
-                "aButtons": [
-                    "xls",
-                    {
-                        "sExtends": "print",
-                        "sMessage": "Généré par Forma <i>(Appuyez sur Echap pour fermer)</i>"
-                    }
-                ],
-                "sSwfPath": "js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
-            },
-            "autoWidth": true,
-            "preDrawCallback": function () {
-                if (!responsiveHelper_listing_utilisateurs) {
-                    responsiveHelper_listing_utilisateurs = new ResponsiveDatatablesHelper($('#listing_utilisateurs'), breakpointDefinition);
-                }
-            },
-            "rowCallback": function (nRow) {
-                responsiveHelper_listing_utilisateurs.createExpandIcon(nRow);
-            },
-            "ajax": "./php/iUtilisateur_listing.php",
-            "drawCallback": function (oSettings) {
-                responsiveHelper_listing_utilisateurs.respond();
-            },
-            "language": {
-                "url": "./data/french_trad_datatables.json"
-            }
+        loadScript("assets/js/plugin/datatables/jquery.dataTables.min.js", function () {
+            loadScript("assets/js/plugin/datatables/dataTables.colVis.min.js", function () {
+                loadScript("assets/js/plugin/datatables/dataTables.tableTools.min.js", function () {
+                    loadScript("assets/js/plugin/datatables/dataTables.bootstrap.min.js", function () {
+                        loadScript("assets/js/plugin/datatable-responsive/datatables.responsive.min.js", pagefunction)
+                    });
+                });
+            });
         });
 
-    };
+    });
     function ouverture_utilisateurs_ajout() {
         $.ajax({
-            url: './ajax/modal_utilisateurs_ajout.php',
+            url: 'modules/utilisateurs/modal/modal_utilisateurs_ajout.php',
             type: 'POST',
             data: '',
             dataType: 'html',
@@ -128,7 +141,7 @@
         }, function (ButtonPressed) {
             if (ButtonPressed === "Oui") {
                 $.ajax({
-                    url: './php/iUtlisateur_suppression.php',
+                    url: 'modules/utilisateurs/ajax/iUtlisateur_suppression.php',
                     type: 'POST',
                     data: {'id': paramId},
                     dataType: 'html',
@@ -148,16 +161,5 @@
             }
         });
     }
-
-    loadScript("js/plugin/datatables/jquery.dataTables.min.js", function () {
-        loadScript("js/plugin/datatables/dataTables.colVis.min.js", function () {
-            loadScript("js/plugin/datatables/dataTables.tableTools.min.js", function () {
-                loadScript("js/plugin/datatables/dataTables.bootstrap.min.js", function () {
-                    loadScript("js/plugin/datatable-responsive/datatables.responsive.min.js", pagefunction)
-                });
-            });
-        });
-    });
-
 
 </script>
