@@ -2,11 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e08aaa53-dc19-4be9-9557-1b7f41b4f8d7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/simpleImage.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/079nxfgo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/56e13fef1751c.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/56e141aab7143.original.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/56l.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/9da43a6a65ff03395368d5817e5507e5cf0183bc.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/9fa63b55663c771ed604653da860b73e.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/f57a7045cb9578d0c7b94200a66fdacf.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/logo-ovh.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/route_d_albi_gen.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fichiers/produit/test.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/img/avatars/fitch.png" afterPath="$PROJECT_DIR$/assets/img/avatars/fitch.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/your_style.css" afterPath="$PROJECT_DIR$/assets/css/your_style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/func.global.php" afterPath="$PROJECT_DIR$/lib/func.global.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/associations/modal/modal_associations_ajout.php" afterPath="$PROJECT_DIR$/modules/associations/modal/modal_associations_ajout.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/page_associations.php" afterPath="$PROJECT_DIR$/modules/page_associations.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" afterPath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" afterPath="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" />
     </list>
@@ -43,48 +56,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="modal_associations_ajout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/associations/modal/modal_associations_ajout.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
-              <folding>
-                <marker date="1460913711425" expanded="true" signature="575:753" placeholder="..." />
-                <marker date="1460913711425" expanded="true" signature="620:753" placeholder="..." />
-                <marker date="1460913711425" expanded="true" signature="2049:2294" placeholder="..." />
-                <marker date="1460913711425" expanded="true" signature="2094:2294" placeholder="..." />
-                <marker date="1460913711425" expanded="true" signature="2233:2294" placeholder="..." />
-                <marker date="1460913711425" expanded="true" signature="2589:2707" placeholder="..." />
-                <marker date="1460913711425" expanded="true" signature="2676:2707" placeholder="..." />
-                <marker date="1460913711425" expanded="true" signature="3913:4145" placeholder="..." />
-                <marker date="1460913711425" expanded="true" signature="3958:4145" placeholder="..." />
-                <marker date="1460913711425" expanded="true" signature="4087:4145" placeholder="..." />
-                <marker date="1460913711425" expanded="true" signature="4889:4915" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="modal_utilisateurs_ajout.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+            <state relative-caret-position="557">
+              <caret line="109" column="162" selection-start-line="109" selection-start-column="162" selection-end-line="109" selection-end-column="162" />
               <folding>
-                <marker date="1460913783138" expanded="true" signature="939:1023" placeholder="select assoc... associations" />
+                <marker date="1460917854351" expanded="true" signature="939:1023" placeholder="select assoc... associations" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="iUtilisateur_ajout.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="iUtilisateur_ajout.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+            <state relative-caret-position="504">
+              <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
               <folding>
-                <marker date="1460914237164" expanded="true" signature="500:569" placeholder="SELECT utili... utilisateurs" />
-                <marker date="1460914237164" expanded="true" signature="736:1393" placeholder="INSERT INTO `utilisateurs`... " />
+                <marker date="1460918210505" expanded="true" signature="546:615" placeholder="SELECT utili... utilisateurs" />
+                <marker date="1460918210505" expanded="true" signature="1196:1853" placeholder="INSERT INTO `utilisateurs`... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="func.global.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/func.global.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="783">
+              <caret line="487" column="0" selection-start-line="487" selection-start-column="0" selection-end-line="487" selection-end-column="0" />
+              <folding>
+                <marker date="1460918901760" expanded="true" signature="7350:7413" placeholder="SELECT * FRO... logs" />
+                <marker date="1460918901760" expanded="true" signature="8166:8308" placeholder="INSERT INTO logs... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simpleImage.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/simpleImage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+              <folding>
+                <element signature="e#6#447#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,8 +123,11 @@
         <option value="$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php" />
         <option value="$PROJECT_DIR$/modules/page_associations.php" />
         <option value="$PROJECT_DIR$/modules/associations/modal/modal_associations_ajout.php" />
+        <option value="$PROJECT_DIR$/assets/css/your_style.css" />
         <option value="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" />
         <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" />
+        <option value="$PROJECT_DIR$/lib/func.global.php" />
+        <option value="$PROJECT_DIR$/lib/simpleImage.php" />
       </list>
     </option>
   </component>
@@ -177,123 +196,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utilisateurs" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modal" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utilisateurs" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ajax" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="associations" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modal" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="associations" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ajax" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forma" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -353,7 +256,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1460911500753</updated>
-      <workItem from="1460911501966" duration="3339000" />
+      <workItem from="1460911501966" duration="6164000" />
     </task>
     <task id="LOCAL-00001" summary="Changement de version : &#10;&#10;PHP/AJAX --&gt; PHP/HTML">
       <created>1460911600828</created>
@@ -390,11 +293,18 @@
       <option name="project" value="LOCAL" />
       <updated>1460913221082</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Changement de version : &#10;&#10;PHP/AJAX --&gt; PHP/HTML">
+      <created>1460916183473</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1460916183473</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3339000" />
+    <option name="totallyTimeSpent" value="6164000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -515,36 +425,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/associations/modal/modal_associations_ajout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
-          <folding>
-            <marker date="1460913711425" expanded="true" signature="575:753" placeholder="..." />
-            <marker date="1460913711425" expanded="true" signature="620:753" placeholder="..." />
-            <marker date="1460913711425" expanded="true" signature="2049:2294" placeholder="..." />
-            <marker date="1460913711425" expanded="true" signature="2094:2294" placeholder="..." />
-            <marker date="1460913711425" expanded="true" signature="2233:2294" placeholder="..." />
-            <marker date="1460913711425" expanded="true" signature="2589:2707" placeholder="..." />
-            <marker date="1460913711425" expanded="true" signature="2676:2707" placeholder="..." />
-            <marker date="1460913711425" expanded="true" signature="3913:4145" placeholder="..." />
-            <marker date="1460913711425" expanded="true" signature="3958:4145" placeholder="..." />
-            <marker date="1460913711425" expanded="true" signature="4087:4145" placeholder="..." />
-            <marker date="1460913711425" expanded="true" signature="4889:4915" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
-          <folding>
-            <marker date="1460913783138" expanded="true" signature="939:1023" placeholder="select assoc... associations" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1c95393f-d9ca-45e7-867e-22bfc49152ca/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -553,13 +433,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modules/associations/modal/modal_associations_ajout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="69" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
+          <folding>
+            <marker date="1460916259358" expanded="true" signature="576:754" placeholder="..." />
+            <marker date="1460916259358" expanded="true" signature="621:754" placeholder="..." />
+            <marker date="1460916259358" expanded="true" signature="2050:2295" placeholder="..." />
+            <marker date="1460916259358" expanded="true" signature="2095:2295" placeholder="..." />
+            <marker date="1460916259358" expanded="true" signature="2234:2295" placeholder="..." />
+            <marker date="1460916259358" expanded="true" signature="2590:2708" placeholder="..." />
+            <marker date="1460916259358" expanded="true" signature="2677:2708" placeholder="..." />
+            <marker date="1460916259358" expanded="true" signature="3914:4146" placeholder="..." />
+            <marker date="1460916259358" expanded="true" signature="3959:4146" placeholder="..." />
+            <marker date="1460916259358" expanded="true" signature="4088:4146" placeholder="..." />
+            <marker date="1460916259358" expanded="true" signature="4890:4916" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/your_style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="725">
+          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="109" column="162" selection-start-line="109" selection-start-column="162" selection-end-line="109" selection-end-column="162" />
+          <folding>
+            <marker date="1460917854351" expanded="true" signature="939:1023" placeholder="select assoc... associations" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fichiers/produit/9fc118cb841939978fc959964cece79f.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+        <state relative-caret-position="504">
+          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
           <folding>
-            <marker date="1460914237164" expanded="true" signature="500:569" placeholder="SELECT utili... utilisateurs" />
-            <marker date="1460914237164" expanded="true" signature="736:1393" placeholder="INSERT INTO `utilisateurs`... " />
+            <marker date="1460918210505" expanded="true" signature="546:615" placeholder="SELECT utili... utilisateurs" />
+            <marker date="1460918210505" expanded="true" signature="1196:1853" placeholder="INSERT INTO `utilisateurs`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/func.global.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="487" column="0" selection-start-line="487" selection-start-column="0" selection-end-line="487" selection-end-column="0" />
+          <folding>
+            <marker date="1460918901760" expanded="true" signature="7350:7413" placeholder="SELECT * FRO... logs" />
+            <marker date="1460918901760" expanded="true" signature="8166:8308" placeholder="INSERT INTO logs... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/simpleImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#447#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

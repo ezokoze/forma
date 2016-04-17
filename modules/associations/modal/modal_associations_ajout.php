@@ -2,7 +2,7 @@
 
 <!-- Début du formulaire -->
 <form action="modules/associations/ajax/iAssociation_ajout.php" id="ajoutAssociations" class="smart-form"
-      novalidate="novalidate" method="post" name="ajoutAssociations">
+      novalidate="novalidate" method="post" name="ajoutAssociations" >
 
     <div class="modal-body col-12">
 

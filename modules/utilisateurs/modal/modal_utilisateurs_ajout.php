@@ -102,6 +102,15 @@
                 <!-- Fin mot de passe de l'utilisateur -->
 
             </div>
+
+            <div class="row">
+                <label class="label col col-2">Avatar</label>
+                <section class="col col-10">
+                    <label for="file" class="input input-file">
+                        <div class="button"><input type="file" name="utilisateurs_avatar" onchange="this.parentNode.nextSibling.value = this.value">Chercher</div><input type="text" readonly=""></label>
+                    <div class="note note-error">L'image ne doit pas être supérieure à 3Mo.</div>
+                </section>
+            </div>
         </fieldset>
         <!-- FIN UTILISATEUR -->
 
@@ -127,7 +136,7 @@
                 associations_id: {
                     required: true
                 },
-                utilisateurs_type:{
+                utilisateurs_type: {
                     required: true
                 },
                 utilisateurs_nom: {
@@ -143,6 +152,9 @@
                 utilisateurs_motDePasse: {
                     required: true
                 },
+                utilisateurs_avatar: {
+                    required: true
+                }
             },
 
             // Messages for form validation
@@ -150,7 +162,7 @@
                 associations_id: {
                     required: "Veuillez renseigner une association."
                 },
-                utilisateurs_type:{
+                utilisateurs_type: {
                     required: "Veuillez sélectionner un type pour l'utilisateur."
                 },
                 utilisateurs_nom: {
@@ -166,6 +178,9 @@
                 utilisateurs_motDePasse: {
                     required: "Veuillez renseigner un mot de passe pour l'utilisateur."
                 },
+                utilisateurs_avatar: {
+                    required: "Veuillez choisir un avatar pour l'utilisateur."
+                }
             },
 
             submitHandler: function (ev) {
@@ -177,6 +192,8 @@
                     success: function (data) {
                         if (data.return == 'email') {
                             smallBox('Ajout impossible', 'Un utilisateur possède déjà cet e-mail.', 'warning');
+                        } else if (data.return == 'avatar') {
+                            smallBox('Ajout impossible', 'Une erreur est survenue avec l\'avatar.', 'warning');
                         } else {
                             smallBox('Ajout réussi !', 'L\'utilisateur à correctement été ajouté.', 'success');
                             setTimeout(function () {

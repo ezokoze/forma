@@ -75,7 +75,7 @@ class Functions
      * @param $img String Chemin absolu de l'image d'origine.
      * @param $to String Chemin absolu de l'image générée (.jpg).
      * @param $width Int Largeur de l'image générée. Si 0, valeur calculée en fonction de $height.
-     * @param $height Int Hauteur de l'image génétée. Si 0, valeur calculée en fonction de $width.
+     * @param $height Int Hauteur de l'image générée. Si 0, valeur calculée en fonction de $width.
      * Si $height = 0 et $width = 0, dimensions conservées mais conversion en .jpg
      */
     public function darkroom($img, $to, $width, $height = 0, $useGD = TRUE){
@@ -484,3 +484,4 @@ class Functions
         return $ipadres;
     }
 }
+
