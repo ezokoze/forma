@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e08aaa53-dc19-4be9-9557-1b7f41b4f8d7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateurs_modification.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_modification.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/your_style.css" afterPath="$PROJECT_DIR$/assets/css/your_style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" afterPath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" afterPath="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" />
     </list>
     <ignored path="forma.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,47 +41,27 @@
     <favorites_list name="forma" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="iUtilisateur_ajout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="modal_utilisateurs_modification.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_modification.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-217">
-              <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+            <state relative-caret-position="5232">
+              <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
               <folding>
-                <marker date="1460929114479" expanded="true" signature="633:678" placeholder="SELECT MAX(u... utilisateurs" />
-                <marker date="1460929114479" expanded="true" signature="755:824" placeholder="SELECT utili... utilisateurs" />
-                <marker date="1460929114479" expanded="true" signature="1381:2032" placeholder="INSERT INTO `utilisateurs`... " />
+                <marker date="1460999625324" expanded="true" signature="931:1015" placeholder="select assoc... associations" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/config.php">
+      <file leaf-file-name="modal_utilisateurs_ajout.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="iAssociation_listing.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1465">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="iUtilisateur_listing.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="69" column="15" selection-start-line="69" selection-start-column="15" selection-end-line="69" selection-end-column="19" />
-              <folding />
+            <state relative-caret-position="376">
+              <caret line="198" column="52" selection-start-line="0" selection-start-column="0" selection-end-line="218" selection-end-column="9" />
+              <folding>
+                <marker date="1460999148478" expanded="true" signature="931:1015" placeholder="select assoc... associations" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,13 +81,15 @@
         <option value="$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php" />
         <option value="$PROJECT_DIR$/modules/page_associations.php" />
         <option value="$PROJECT_DIR$/modules/associations/modal/modal_associations_ajout.php" />
-        <option value="$PROJECT_DIR$/assets/css/your_style.css" />
-        <option value="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" />
         <option value="$PROJECT_DIR$/lib/simpleImage.php" />
         <option value="$PROJECT_DIR$/lib/func.global.php" />
         <option value="$PROJECT_DIR$/lib/config.php" />
-        <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" />
         <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php" />
+        <option value="$PROJECT_DIR$/assets/css/your_style.css" />
+        <option value="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" />
+        <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" />
+        <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateurs_modification.php" />
+        <option value="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_modification.php" />
       </list>
     </option>
   </component>
@@ -113,6 +97,9 @@
   <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
@@ -146,6 +133,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,6 +184,10 @@
               <option name="myItemId" value="utilisateurs" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modal" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -220,12 +213,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="web.server" />
@@ -254,6 +245,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -267,6 +264,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e08aaa53-dc19-4be9-9557-1b7f41b4f8d7" name="Default" comment="" />
@@ -274,7 +274,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1460911500753</updated>
-      <workItem from="1460911501966" duration="14514000" />
+      <workItem from="1460911501966" duration="14541000" />
+      <workItem from="1460976605507" duration="15000" />
+      <workItem from="1460976750128" duration="1113000" />
+      <workItem from="1460997699623" duration="1929000" />
     </task>
     <task id="LOCAL-00001" summary="Changement de version : &#10;&#10;PHP/AJAX --&gt; PHP/HTML">
       <created>1460911600828</created>
@@ -332,36 +335,51 @@
       <option name="project" value="LOCAL" />
       <updated>1460925605190</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Changement des parametres pour la connexion sql">
+      <created>1460936992162</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1460936992162</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14514000" />
+    <option name="totallyTimeSpent" value="17598000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17270789" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17750533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5021322" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20476706" sideWeight="0.4978678" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20476706" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2524377" sideWeight="0.4978678" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2524377" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -369,20 +387,130 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changement de version : &#10;&#10;PHP/AJAX --&gt; PHP/HTML" />
     <MESSAGE value="Ajout d'une classe SimpleImage.php&#10;Redimensionnement des images 250x250 automatique et nom&#10;dynamique pointant le répértoire /assets/img/avatars/*.png" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout d'une classe SimpleImage.php&#10;Redimensionnement des images 250x250 automatique et nom&#10;dynamique pointant le répértoire /assets/img/avatars/*.png" />
+    <MESSAGE value="Changement des parametres pour la connexion sql" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changement des parametres pour la connexion sql" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/smartadmin-production-plugins.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="15" column="2169" selection-start-line="15" selection-start-column="2169" selection-end-line="15" selection-end-column="2169" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/your_style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding>
+            <marker date="1460999440667" expanded="true" signature="633:678" placeholder="SELECT MAX(u... utilisateurs" />
+            <marker date="1460999440667" expanded="true" signature="755:824" placeholder="SELECT utili... utilisateurs" />
+            <marker date="1460999440667" expanded="true" signature="1415:2066" placeholder="INSERT INTO `utilisateurs`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding>
+            <marker date="1460999440667" expanded="true" signature="633:678" placeholder="SELECT MAX(u... utilisateurs" />
+            <marker date="1460999440667" expanded="true" signature="755:824" placeholder="SELECT utili... utilisateurs" />
+            <marker date="1460999440667" expanded="true" signature="1415:2066" placeholder="INSERT INTO `utilisateurs`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtlisateur_suppression.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-          <folding>
-            <marker date="1460912119994" expanded="true" signature="94:144" placeholder="DELETE FROM " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -390,11 +518,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-          <folding>
-            <marker date="1460912140764" expanded="true" signature="723:797" placeholder="SELECT assoc... associations" />
-            <marker date="1460912140764" expanded="true" signature="895:962" placeholder="SELECT assoc... associations" />
-            <marker date="1460912140764" expanded="true" signature="1188:2097" placeholder="INSERT INTO `associations`... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -413,9 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-          <folding>
-            <marker date="1460912154244" expanded="true" signature="94:144" placeholder="DELETE FROM " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -423,7 +543,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="143" column="40" selection-start-line="143" selection-start-column="40" selection-end-line="143" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -431,7 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3840">
           <caret line="160" column="76" selection-start-line="160" selection-start-column="76" selection-end-line="160" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -439,7 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -447,70 +564,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="4" column="69" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
-          <folding>
-            <marker date="1460916259358" expanded="true" signature="576:754" placeholder="..." />
-            <marker date="1460916259358" expanded="true" signature="621:754" placeholder="..." />
-            <marker date="1460916259358" expanded="true" signature="2050:2295" placeholder="..." />
-            <marker date="1460916259358" expanded="true" signature="2095:2295" placeholder="..." />
-            <marker date="1460916259358" expanded="true" signature="2234:2295" placeholder="..." />
-            <marker date="1460916259358" expanded="true" signature="2590:2708" placeholder="..." />
-            <marker date="1460916259358" expanded="true" signature="2677:2708" placeholder="..." />
-            <marker date="1460916259358" expanded="true" signature="3914:4146" placeholder="..." />
-            <marker date="1460916259358" expanded="true" signature="3959:4146" placeholder="..." />
-            <marker date="1460916259358" expanded="true" signature="4088:4146" placeholder="..." />
-            <marker date="1460916259358" expanded="true" signature="4890:4916" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/your_style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fichiers/produit/wallhaven-126682.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fichiers/produit/7d53f5459b92ce760cf83841e0eac648.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fichiers/produit/3b0381283d32dbc7f2e8fd140a438526.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fichiers/produit/24a76c12e72eb23d9f3aaf9835804cd8.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="109" column="162" selection-start-line="109" selection-start-column="162" selection-end-line="109" selection-end-column="162" />
-          <folding>
-            <marker date="1460917854351" expanded="true" signature="939:1023" placeholder="select assoc... associations" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/avatars/9.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/avatars/10.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fichiers/produit/wallhaven-126682.jpg" />
+    <entry file="file://$PROJECT_DIR$/fichiers/produit/7d53f5459b92ce760cf83841e0eac648.png" />
+    <entry file="file://$PROJECT_DIR$/fichiers/produit/3b0381283d32dbc7f2e8fd140a438526.jpg" />
+    <entry file="file://$PROJECT_DIR$/fichiers/produit/24a76c12e72eb23d9f3aaf9835804cd8.png" />
+    <entry file="file://$PROJECT_DIR$/assets/img/avatars/9.png" />
+    <entry file="file://$PROJECT_DIR$/assets/img/avatars/10.png" />
     <entry file="file://$PROJECT_DIR$/fichiers/produit/9fc118cb841939978fc959964cece79f.jpg.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -526,45 +588,78 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/avatars/11.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/img/avatars/11.png" />
     <entry file="file://$PROJECT_DIR$/fichiers/produit/lol.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/avatars/4.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/assets/img/avatars/4.png" />
+    <entry file="file://$PROJECT_DIR$/assets/img/transit/jbsg1.jpg" />
+    <entry file="file://$PROJECT_DIR$/assets/img/avatars/12.png" />
+    <entry file="file://$PROJECT_DIR$/assets/img/avatars/5.png" />
+    <entry file="file://$PROJECT_DIR$/assets/img/avatars/16.png" />
+    <entry file="file://$PROJECT_DIR$/lib/simpleImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1342">
+          <caret line="900" column="24" selection-start-line="900" selection-start-column="24" selection-end-line="900" selection-end-column="24" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/transit/jbsg1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/8.png" />
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/0.png" />
+    <entry file="file://$PROJECT_DIR$/assets/css/your_style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/avatars/12.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/assets/css/smartadmin-production-plugins.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="15" column="2169" selection-start-line="15" selection-start-column="2169" selection-end-line="15" selection-end-column="2169" />
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/avatars/5.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/avatars/16.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="140" column="30" selection-start-line="140" selection-start-column="30" selection-end-line="140" selection-end-column="30" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/func.global.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="415" column="60" selection-start-line="415" selection-start-column="60" selection-end-line="415" selection-end-column="60" />
+        <state relative-caret-position="7944">
+          <caret line="331" column="26" selection-start-line="331" selection-start-column="20" selection-end-line="331" selection-end-column="29" />
           <folding>
             <marker date="1460924735536" expanded="true" signature="7377:7440" placeholder="SELECT * FRO... logs" />
             <marker date="1460924735536" expanded="true" signature="8193:8335" placeholder="INSERT INTO logs... " />
@@ -572,59 +667,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/simpleImage.php">
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateurs_modification.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1342">
-          <caret line="900" column="24" selection-start-line="900" selection-start-column="24" selection-end-line="900" selection-end-column="24" />
+        <state relative-caret-position="822">
+          <caret line="83" column="2" selection-start-line="83" selection-start-column="2" selection-end-line="83" selection-end-column="2" />
           <folding>
-            <element signature="e#6#447#0#PHP" expanded="false" />
+            <marker date="1460999606825" expanded="true" signature="633:678" placeholder="SELECT MAX(u... utilisateurs" />
+            <marker date="1460999606825" expanded="true" signature="755:824" placeholder="SELECT utili... utilisateurs" />
+            <marker date="1460999606825" expanded="true" signature="1415:2066" placeholder="INSERT INTO `utilisateurs`... " />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/8.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/0.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-217">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+        <state relative-caret-position="848">
+          <caret line="40" column="58" selection-start-line="0" selection-start-column="0" selection-end-line="83" selection-end-column="2" />
           <folding>
-            <marker date="1460929114479" expanded="true" signature="633:678" placeholder="SELECT MAX(u... utilisateurs" />
-            <marker date="1460929114479" expanded="true" signature="755:824" placeholder="SELECT utili... utilisateurs" />
-            <marker date="1460929114479" expanded="true" signature="1381:2032" placeholder="INSERT INTO `utilisateurs`... " />
+            <marker date="1460999440667" expanded="true" signature="633:678" placeholder="SELECT MAX(u... utilisateurs" />
+            <marker date="1460999440667" expanded="true" signature="755:824" placeholder="SELECT utili... utilisateurs" />
+            <marker date="1460999440667" expanded="true" signature="1415:2066" placeholder="INSERT INTO `utilisateurs`... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/config.php">
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
-          <folding />
+        <state relative-caret-position="376">
+          <caret line="198" column="52" selection-start-line="0" selection-start-column="0" selection-end-line="218" selection-end-column="9" />
+          <folding>
+            <marker date="1460999148478" expanded="true" signature="931:1015" placeholder="select assoc... associations" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php">
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_modification.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1465">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="69" column="15" selection-start-line="69" selection-start-column="15" selection-end-line="69" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="5232">
+          <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
+          <folding>
+            <marker date="1460999625324" expanded="true" signature="931:1015" placeholder="select assoc... associations" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -26,7 +26,7 @@
     z-index: 9999;
 }
 
-.col-centered{
+.col-centered {
     float: none;
     margin: 0 auto;
 }
@@ -37,4 +37,11 @@
 
 #logo {
     margin-left: 40px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @font-face {
+        font-family: 'FontAwesome';
+        src: url('../fonts/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular') format('svg');
+    }
 }
