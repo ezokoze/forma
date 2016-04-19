@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e08aaa53-dc19-4be9-9557-1b7f41b4f8d7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_modification.php" afterPath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_modification.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php" afterPath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php" />
     </list>
     <ignored path="forma.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,8 +54,8 @@
       <file leaf-file-name="iUtilisateur_listing.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+            <state relative-caret-position="504">
+              <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -97,7 +97,6 @@
         <option value="$PROJECT_DIR$/lib/func.global.php" />
         <option value="$PROJECT_DIR$/lib/config.php" />
         <option value="$PROJECT_DIR$/assets/css/your_style.css" />
-        <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php" />
         <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateurs_modification.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/inc/header.php" />
@@ -112,6 +111,7 @@
         <option value="$PROJECT_DIR$/modules/associations/ajax/iAssociation_modification.php" />
         <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" />
         <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_modification.php" />
+        <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php" />
       </list>
     </option>
   </component>
@@ -344,7 +344,7 @@
       <workItem from="1460976605507" duration="15000" />
       <workItem from="1460976750128" duration="1113000" />
       <workItem from="1460997699623" duration="6726000" />
-      <workItem from="1461071198720" duration="13397000" />
+      <workItem from="1461071198720" duration="13455000" />
     </task>
     <task id="LOCAL-00001" summary="Changement de version : &#10;&#10;PHP/AJAX --&gt; PHP/HTML">
       <created>1460911600828</created>
@@ -437,17 +437,24 @@
       <option name="project" value="LOCAL" />
       <updated>1461087049623</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Controle sur les modifications avec meme email sur les utilisateurs + &#10;refresh du listing avec le nom correct des utilisateurs_type_nom">
+      <created>1461087945018</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1461087945018</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35792000" />
+    <option name="totallyTimeSpent" value="35850000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17910448" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17910448" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21343446" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
@@ -487,7 +494,8 @@
     <MESSAGE value="Update picture terminé, changement favicon" />
     <MESSAGE value="Page d'accueil : dashboard" />
     <MESSAGE value="Controle sur les modifications des associations, traite tous les cas de doublons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Controle sur les modifications des associations, traite tous les cas de doublons" />
+    <MESSAGE value="Controle sur les modifications avec meme email sur les utilisateurs + &#10;refresh du listing avec le nom correct des utilisateurs_type_nom" />
+    <option name="LAST_COMMIT_MESSAGE" value="Controle sur les modifications avec meme email sur les utilisateurs + &#10;refresh du listing avec le nom correct des utilisateurs_type_nom" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -815,8 +823,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        <state relative-caret-position="504">
+          <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
           <folding />
         </state>
       </provider>

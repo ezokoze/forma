@@ -28,7 +28,7 @@ $columns = array(
         }
     ),
     array(
-        'db'        => 'utilisateurs_type',
+        'db'        => 'utilisateurs_type_nom',
         'dt'        => 1,
         'formatter' => function( $d, $row ) {
             return '<span class="id" id="id" data-type="text" data-pk="'.$row['utilisateurs_id'].'" table_id="utilisateurs_id" data-original-title="">'.utf8_encode($d).'</span>';
