@@ -1,5 +1,3 @@
-<?php require_once('./lib/config.php'); ?>
-
 <button type="button" class="well" onclick="ouverture_utilisateurs_ajout();"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Créer
     un utilisateur
 </button>
