@@ -48,8 +48,13 @@
                     <label class="select">
                         <select name="utilisateurs_type" id="utilisateurs_type" required>
                             <option value="" disabled selected> &nbsp;&nbsp;Choisir un type</option>
-                            <option value="Salarié">Salarié</option>
-                            <option value="Bénévole">Bénévole</option>
+                            <?php
+                            $select = $pdo->sql("select utilisateurs_type_id , utilisateurs_type_nom from utilisateurs_type group by utilisateurs_type_nom");
+
+                            while ($row = $select->fetch()) {
+                                echo "<option " . $selected . " value=" . $row['utilisateurs_type_id'] . ">" . $row['utilisateurs_type_nom'] . "</option>";
+                            }
+                            ?>
                         </select> <i></i> </label>
                 </section>
 

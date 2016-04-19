@@ -1,4 +1,4 @@
-<?php require_once("inc/init.php"); ?>
+<?php require_once('./lib/config.php'); ?>
 
 <button type="button" class="well" onclick="ouverture_utilisateurs_ajout();"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Créer
     un utilisateur
@@ -48,13 +48,23 @@
 </div>
 <!-- fin container-->
 
-<!-- modal-->
+<!-- modal ajout-->
 <div class="modal fade" id="utilisateurs_ajout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         </div>
     </div>
-</div> <!-- fin modal-->
+</div>
+<!-- fin modal ajout -->
+
+<!-- modal modification-->
+<div class="modal fade" id="utilisateurs_modification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<!-- fin modal modification-->
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -117,6 +127,7 @@
         });
 
     });
+
     function ouverture_utilisateurs_ajout() {
         $.ajax({
             url: 'modules/utilisateurs/modal/modal_utilisateurs_ajout.php',
@@ -133,17 +144,33 @@
         });
     }
 
-    function suppressionLigne(paramId) {
+    function ouverture_utilisateurs_modification(utilisateurs_id) {
+        $.ajax({
+            url: 'modules/utilisateurs/modal/modal_utilisateurs_modification.php',
+            type: 'POST',
+            data: {"utilisateurs_id" : utilisateurs_id},
+            dataType: 'html',
+            success: function (contenu) {
+                $('#utilisateurs_modification .modal-content').html(contenu);
+                $('#utilisateurs_modification').modal('show');
+            },
+            error: function () {
+                alert('erreur lors du retour JSON !');
+            }
+        });
+    }
+
+    function suppressionLigne(utilisateurs_id) {
         $.SmartMessageBox({
             title: "Attention !",
-            content: "Vous êtes sur le point de supprimer cet utilsateur, confirmer ?",
+            content: "Vous êtes sur le point de supprimer l'utilisateur suivant , confirmer ?",
             buttons: '[Non][Oui]'
         }, function (ButtonPressed) {
             if (ButtonPressed === "Oui") {
                 $.ajax({
                     url: 'modules/utilisateurs/ajax/iUtlisateur_suppression.php',
                     type: 'POST',
-                    data: {'id': paramId},
+                    data: {'id': utilisateurs_id},
                     dataType: 'html',
                     success: function (contenu) {
                         smallBox('Suppression', "L'utilisateur à correctement été supprimé.", 'success');

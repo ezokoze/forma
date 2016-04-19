@@ -57,7 +57,7 @@ include("inc/header.php");
 
 		</div>
 		<p class="font-xs margin-top-5">
-			Copyright SmartAdmin 2014-2020.
+			Copyright Forma 2016.
 
 		</p>
 	</form>

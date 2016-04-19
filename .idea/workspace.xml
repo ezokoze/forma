@@ -2,12 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e08aaa53-dc19-4be9-9557-1b7f41b4f8d7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateurs_modification.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_modification.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_modification.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/img/avatars/Playboy Playmates Sweet Ladies Pulsarmedia Wallpaper.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/img/avatars/Windows-10-Users-Want-Microsoft-to-Go-All-in-on-the-Flat-Design-462419-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/img/avatars/breith.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/img/avatars/fitch.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateurs_modification.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/img/favicon/1favicon.ico" afterPath="$PROJECT_DIR$/assets/img/favicon/1favicon.ico" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/img/favicon/favicon.ico" afterPath="$PROJECT_DIR$/assets/img/favicon/favicon.ico" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/your_style.css" afterPath="$PROJECT_DIR$/assets/css/your_style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/header.php" afterPath="$PROJECT_DIR$/inc/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lock.php" afterPath="$PROJECT_DIR$/lock.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/connexion/connexion.php" afterPath="$PROJECT_DIR$/modules/connexion/connexion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/page_utilisateurs.php" afterPath="$PROJECT_DIR$/modules/page_utilisateurs.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" afterPath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php" afterPath="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" afterPath="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_modification.php" afterPath="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_modification.php" />
     </list>
     <ignored path="forma.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,12 +43,6 @@
     <option name="SORT_POSITIONED" value="false" />
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -42,26 +50,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="modal_utilisateurs_modification.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_modification.php">
+      <file leaf-file-name="page_utilisateurs.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/page_utilisateurs.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5232">
-              <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
-              <folding>
-                <marker date="1460999625324" expanded="true" signature="931:1015" placeholder="select assoc... associations" />
-              </folding>
+            <state relative-caret-position="264">
+              <caret line="165" column="79" selection-start-line="165" selection-start-column="79" selection-end-line="165" selection-end-column="79" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modal_utilisateurs_ajout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="198" column="52" selection-start-line="0" selection-start-column="0" selection-end-line="218" selection-end-column="9" />
-              <folding>
-                <marker date="1460999148478" expanded="true" signature="931:1015" placeholder="select assoc... associations" />
-              </folding>
+            <state relative-caret-position="360">
+              <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iUtilisateur_listing.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -74,7 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/modules/page_utilisateurs.php" />
         <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtlisateur_suppression.php" />
         <option value="$PROJECT_DIR$/modules/associations/ajax/iAssociation_ajout.php" />
         <option value="$PROJECT_DIR$/modules/associations/ajax/iAssociation_suppression.php" />
@@ -84,12 +97,16 @@
         <option value="$PROJECT_DIR$/lib/simpleImage.php" />
         <option value="$PROJECT_DIR$/lib/func.global.php" />
         <option value="$PROJECT_DIR$/lib/config.php" />
-        <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php" />
         <option value="$PROJECT_DIR$/assets/css/your_style.css" />
-        <option value="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" />
         <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php" />
+        <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php" />
         <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateurs_modification.php" />
+        <option value="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php" />
+        <option value="$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_modification.php" />
         <option value="$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_modification.php" />
+        <option value="$PROJECT_DIR$/modules/page_utilisateurs.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/inc/header.php" />
       </list>
     </option>
   </component>
@@ -134,7 +151,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -211,8 +227,41 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forma" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forma" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="connexion" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forma" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forma" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="inc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -277,7 +326,8 @@
       <workItem from="1460911501966" duration="14541000" />
       <workItem from="1460976605507" duration="15000" />
       <workItem from="1460976750128" duration="1113000" />
-      <workItem from="1460997699623" duration="1929000" />
+      <workItem from="1460997699623" duration="6726000" />
+      <workItem from="1461071198720" duration="5031000" />
     </task>
     <task id="LOCAL-00001" summary="Changement de version : &#10;&#10;PHP/AJAX --&gt; PHP/HTML">
       <created>1460911600828</created>
@@ -342,22 +392,29 @@
       <option name="project" value="LOCAL" />
       <updated>1460936992162</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Modale de modification des utilisateurs + solution icones IPAD">
+      <created>1460999651013</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1460999651013</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17598000" />
+    <option name="totallyTimeSpent" value="27426000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17750533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17910448" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20476706" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2524377" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
@@ -388,37 +445,15 @@
     <MESSAGE value="Changement de version : &#10;&#10;PHP/AJAX --&gt; PHP/HTML" />
     <MESSAGE value="Ajout d'une classe SimpleImage.php&#10;Redimensionnement des images 250x250 automatique et nom&#10;dynamique pointant le répértoire /assets/img/avatars/*.png" />
     <MESSAGE value="Changement des parametres pour la connexion sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changement des parametres pour la connexion sql" />
+    <MESSAGE value="Modale de modification des utilisateurs + solution icones IPAD" />
+    <MESSAGE value="Update picture terminé, changement favicon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update picture terminé, changement favicon" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/smartadmin-production-plugins.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -439,11 +474,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding>
-            <marker date="1460999440667" expanded="true" signature="633:678" placeholder="SELECT MAX(u... utilisateurs" />
-            <marker date="1460999440667" expanded="true" signature="755:824" placeholder="SELECT utili... utilisateurs" />
-            <marker date="1460999440667" expanded="true" signature="1415:2066" placeholder="INSERT INTO `utilisateurs`... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -459,7 +490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -475,11 +505,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding>
-            <marker date="1460999440667" expanded="true" signature="633:678" placeholder="SELECT MAX(u... utilisateurs" />
-            <marker date="1460999440667" expanded="true" signature="755:824" placeholder="SELECT utili... utilisateurs" />
-            <marker date="1460999440667" expanded="true" signature="1415:2066" placeholder="INSERT INTO `utilisateurs`... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -495,7 +521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -539,13 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/page_utilisateurs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="143" column="40" selection-start-line="143" selection-start-column="40" selection-end-line="143" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/page_associations.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3840">
@@ -573,27 +591,11 @@
     <entry file="file://$PROJECT_DIR$/fichiers/produit/24a76c12e72eb23d9f3aaf9835804cd8.png" />
     <entry file="file://$PROJECT_DIR$/assets/img/avatars/9.png" />
     <entry file="file://$PROJECT_DIR$/assets/img/avatars/10.png" />
-    <entry file="file://$PROJECT_DIR$/fichiers/produit/9fc118cb841939978fc959964cece79f.jpg.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fichiers/produit/9fc118cb841939978fc959964cece79f.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fichiers/produit/1-ym_nsivlbw72y3ywuouedw.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fichiers/produit/9fc118cb841939978fc959964cece79f.jpg.png" />
+    <entry file="file://$PROJECT_DIR$/fichiers/produit/9fc118cb841939978fc959964cece79f.jpg" />
+    <entry file="file://$PROJECT_DIR$/fichiers/produit/1-ym_nsivlbw72y3ywuouedw.png" />
     <entry file="file://$PROJECT_DIR$/assets/img/avatars/11.png" />
-    <entry file="file://$PROJECT_DIR$/fichiers/produit/lol.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fichiers/produit/lol.png" />
     <entry file="file://$PROJECT_DIR$/assets/img/avatars/4.png" />
     <entry file="file://$PROJECT_DIR$/assets/img/transit/jbsg1.jpg" />
     <entry file="file://$PROJECT_DIR$/assets/img/avatars/12.png" />
@@ -624,19 +626,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/associations/ajax/iAssociation_listing.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -667,47 +660,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateurs_modification.php">
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="822">
-          <caret line="83" column="2" selection-start-line="83" selection-start-column="2" selection-end-line="83" selection-end-column="2" />
+        <state relative-caret-position="112">
+          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
           <folding>
-            <marker date="1460999606825" expanded="true" signature="633:678" placeholder="SELECT MAX(u... utilisateurs" />
-            <marker date="1460999606825" expanded="true" signature="755:824" placeholder="SELECT utili... utilisateurs" />
-            <marker date="1460999606825" expanded="true" signature="1415:2066" placeholder="INSERT INTO `utilisateurs`... " />
+            <marker date="1461000929745" expanded="true" signature="931:1015" placeholder="select assoc... associations" />
+            <marker date="1461000929745" expanded="true" signature="2109:2214" placeholder="select utili... utilisateurs_type" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_ajout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="40" column="58" selection-start-line="0" selection-start-column="0" selection-end-line="83" selection-end-column="2" />
-          <folding>
-            <marker date="1460999440667" expanded="true" signature="633:678" placeholder="SELECT MAX(u... utilisateurs" />
-            <marker date="1460999440667" expanded="true" signature="755:824" placeholder="SELECT utili... utilisateurs" />
-            <marker date="1460999440667" expanded="true" signature="1415:2066" placeholder="INSERT INTO `utilisateurs`... " />
-          </folding>
+        <state relative-caret-position="735">
+          <caret line="69" column="84" selection-start-line="69" selection-start-column="84" selection-end-line="69" selection-end-column="84" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_ajout.php">
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_modification.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="198" column="52" selection-start-line="0" selection-start-column="0" selection-end-line="218" selection-end-column="9" />
+        <state relative-caret-position="221">
+          <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
           <folding>
-            <marker date="1460999148478" expanded="true" signature="931:1015" placeholder="select assoc... associations" />
+            <marker date="1461072183191" expanded="true" signature="554:628" placeholder="SELECT utili... utilisateurs" />
+            <marker date="1461072183191" expanded="true" signature="887:956" placeholder="SELECT utili... utilisateurs" />
+            <marker date="1461072183191" expanded="true" signature="1644:2133" placeholder="UPDATE `util... " />
+            <marker date="1461072183191" expanded="true" signature="1644:2151" placeholder="UPDATE `util... " />
+            <marker date="1461072183191" expanded="true" signature="3138:3164" placeholder="UPDATE `util... " />
+            <marker date="1461072183191" expanded="true" signature="3138:3645" placeholder="UPDATE `util... " />
+            <marker date="1461072183191" expanded="true" signature="3138:3646" placeholder="UPDATE `util... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/utilisateurs/modal/modal_utilisateurs_modification.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5232">
-          <caret line="218" column="9" selection-start-line="218" selection-start-column="9" selection-end-line="218" selection-end-column="9" />
+        <state relative-caret-position="192">
+          <caret line="131" column="26" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
           <folding>
-            <marker date="1460999625324" expanded="true" signature="931:1015" placeholder="select assoc... associations" />
+            <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <marker date="1461074072050" expanded="true" signature="256:308" placeholder="SELECT * FRO... utilisateurs" />
+            <marker date="1461074072050" expanded="true" signature="1572:1656" placeholder="select assoc... associations" />
+            <marker date="1461074072050" expanded="true" signature="1866:1932" placeholder="SELECT assoc... utilisateurs" />
+            <marker date="1461074072050" expanded="true" signature="3153:3258" placeholder="select utili... utilisateurs_type" />
+            <marker date="1461074072050" expanded="true" signature="3468:3536" placeholder="SELECT utili... utilisateurs" />
+            <marker date="1461074072050" expanded="true" signature="7354:7386" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/connexion/connexion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="75" />
+          <folding>
+            <marker date="1461000499613" expanded="true" signature="143:244" placeholder="SELECT utili... utilisateurs" />
+            <marker date="1461000499613" expanded="true" signature="532:619" placeholder="SELECT * FRO... utilisateurs" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/utilisateurs/ajax/iUtilisateur_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/page_utilisateurs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="165" column="79" selection-start-line="165" selection-start-column="79" selection-end-line="165" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>

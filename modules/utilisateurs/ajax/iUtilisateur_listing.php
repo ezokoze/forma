@@ -59,7 +59,7 @@ $columns = array(
         'db'        => 'utilisateurs_quotaFormation',
         'dt'        => 5,
         'formatter' => function( $d, $row ) {
-            return '<button type=\'button\' onclick=\'ouvertureModification_utilisateur('.$row['utilisateurs_id'].');\' class=\'btn btn-primary btn-circle\'><i class="fa fa-pencil"></i></button>
+            return '<button type=\'button\' onclick=\'ouverture_utilisateurs_modification('.$row['utilisateurs_id'].');\' class=\'btn btn-primary btn-circle\'><i class="fa fa-pencil"></i></button>
             <button type=\'button\' onclick=\'suppressionLigne('.$row['utilisateurs_id'].');\' class=\'btn btn-danger btn-circle\'><i class="fa fa-trash-o"></i></button>';
         }
     )

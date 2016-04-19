@@ -1,10 +1,25 @@
-<?php require_once('../../../lib/config.php'); ?>
+<?php
+
+require_once('../../../lib/config.php');
+
+// on recupere l'id de l'utilisateur à modifier
+$utilisateurs_id = $_POST['utilisateurs_id'];
+
+// requete pour obtenir toutes les données correspondantes à cet utilisateur
+$utilisateurs_data = $pdo->sqlRow("SELECT * FROM utilisateurs WHERE utilisateurs_id = ?", array($utilisateurs_id));
+
+?>
 
 <!-- Début du formulaire -->
-<form action="modules/utilisateurs/ajax/iUtilisateur_ajout.php" id="ajoutUtilisateur" class="smart-form"
-      novalidate="novalidate" method="post" name="ajoutUtilisateur">
+<form action="modules/utilisateurs/ajax/iUtilisateur_modification.php" id="modifierUtilisateur" class="smart-form"
+      novalidate="novalidate" method="post" name="modifierUtilisateur">
 
     <div class="modal-body col-12">
+
+        <input class="hidden" type="text" name="utilisateurs_id" value="<?php echo $utilisateurs_id ?>"/>
+        <!-- Afin d'empêcher l'autocompletion des navigateurs -->
+        <input style="display:none" type="text" name="fakeusernameremembered"/>
+        <input style="display:none" type="password" name="fakepasswordremembered"/>
 
         <!-- ASSOCIATION -->
         <fieldset>
@@ -23,6 +38,11 @@
                             $select = $pdo->sql("select associations_id, associations_nom from associations group by associations_nom");
 
                             while ($row = $select->fetch()) {
+                                // on recupere la valeur pour l'utilisateur
+                                $associations_id = $pdo->sqlValue("SELECT associations_id FROM utilisateurs WHERE utilisateurs_id = ?", array($utilisateurs_id));
+                                // on selectionne si =
+                                $selected = ($row['associations_id'] == $associations_id) ? 'selected' : '';
+
                                 echo "<option " . $selected . " value=" . $row['associations_id'] . ">" . $row['associations_nom'] . "</option>";
                             }
                             ?>
@@ -48,8 +68,18 @@
                     <label class="select">
                         <select name="utilisateurs_type" id="utilisateurs_type" required>
                             <option value="" disabled selected> &nbsp;&nbsp;Choisir un type</option>
-                            <option value="Salarié">Salarié</option>
-                            <option value="Bénévole">Bénévole</option>
+                            <?php
+                            $select = $pdo->sql("select utilisateurs_type_id , utilisateurs_type_nom from utilisateurs_type group by utilisateurs_type_nom");
+
+                            while ($row = $select->fetch()) {
+                                // on recupere la valeur pour l'utilisateur
+                                $associations_id = $pdo->sqlValue("SELECT utilisateurs_type FROM utilisateurs WHERE utilisateurs_id = ?", array($utilisateurs_id));
+                                // on selectionne si =
+                                $selected = ($row['utilisateurs_type_id'] == $associations_id) ? 'selected' : '';
+
+                                echo "<option " . $selected . " value=" . $row['utilisateurs_type_id'] . ">" . $row['utilisateurs_type_nom'] . "</option>";
+                            }
+                            ?>
                         </select> <i></i> </label>
                 </section>
 
@@ -62,7 +92,8 @@
                 <label class="label col col-2">Nom</label>
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-user"></i>
-                        <input type="text" name="utilisateurs_nom" placeholder="Nom de l'utilisateur" required">
+                        <input type="text" name="utilisateurs_nom" placeholder="Nom de l'utilisateur" required
+                               value="<?php echo $utilisateurs_data['utilisateurs_nom'] ?>">
                     </label>
                 </section>
                 <!-- Fin nom de l'utilisateur -->
@@ -71,7 +102,8 @@
                 <label class="label col col-2">Prénom</label>
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-user"></i>
-                        <input type="text" name="utilisateurs_prenom" placeholder="Prénom de l'utilisateur" required">
+                        <input type="text" name="utilisateurs_prenom" placeholder="Prénom de l'utilisateur" required
+                               value="<?php echo $utilisateurs_data['utilisateurs_prenom'] ?>">
                     </label>
                 </section>
                 <!-- Fin prénom de l'utilisateur -->
@@ -84,7 +116,8 @@
                 <label class="label col col-2">E-mail</label>
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-envelope"></i>
-                        <input type="text" name="utilisateurs_email" placeholder="exemple@live.fr" required">
+                        <input type="text" name="utilisateurs_email" placeholder="exemple@live.fr" required
+                               value="<?php echo $utilisateurs_data['utilisateurs_email'] ?>">
                     </label>
                 </section>
                 <!-- Fin e-mail de l'utilisateur -->
@@ -93,7 +126,8 @@
                 <label class="label col col-2">Mot de passe</label>
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-lock"></i>
-                        <input type="password" name="utilisateurs_motDePasse" placeholder="******" required">
+                        <input type="password" name="utilisateurs_motDePasse" placeholder="******" required
+                               value="">
                     </label>
                 </section>
                 <!-- Fin mot de passe de l'utilisateur -->
@@ -112,7 +146,7 @@
         <!-- FIN UTILISATEUR -->
 
         <footer>
-            <button type="submit" class="btn btn-success">Créer !</button>
+            <button type="submit" class="btn btn-success">Modifier !</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
         </footer>
 
@@ -127,7 +161,7 @@
     pageSetUp();
 
     var pagefunction = function () {
-        var $checkoutForm = $('#ajoutUtilisateur').validate({
+        var $checkoutForm = $('#modifierUtilisateur').validate({
             // Rules for form validation
             rules: {
                 associations_id: {
@@ -147,10 +181,10 @@
                     email: true
                 },
                 utilisateurs_motDePasse: {
-                    required: true
+                    required: false
                 },
                 utilisateurs_avatar: {
-                    required: true
+                    required: false
                 }
             },
 
@@ -173,18 +207,18 @@
                     email: "Veuillez renseigner un e-mail correct."
                 },
                 utilisateurs_motDePasse: {
-                    required: "Veuillez renseigner un mot de passe pour l'utilisateur."
+                    required: ""
                 },
                 utilisateurs_avatar: {
-                    required: "Veuillez choisir un avatar pour l'utilisateur."
+                    required: ""
                 }
             },
 
             submitHandler: function (ev) {
                 $(ev).ajaxSubmit({
-                    type: $('#ajoutUtilisateur').attr('method'),
-                    url: $('#ajoutUtilisateur').attr('action'),
-                    data: $('#ajoutUtilisateur').serialize(),
+                    type: $('#modifierUtilisateur').attr('method'),
+                    url: $('#modifierUtilisateur').attr('action'),
+                    data: $('#modifierUtilisateur').serialize(),
                     dataType: 'json',
                     success: function (data) {
                         if (data.return == 'email') {
@@ -196,7 +230,7 @@
                             setTimeout(function () {
                                 $('#listing_utilisateurs').DataTable().ajax.reload(null, false); // refresh la datable utilisateur
                             }, 500);
-                            $('#utilisateurs_ajout').modal('toggle'); // ferme le modal en cas d'ajout
+                            $('#utilisateurs_modification').modal('toggle'); // ferme le modal en cas d'ajout
                         }
                         console.log(data.retour);
                     }

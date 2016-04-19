@@ -42,7 +42,7 @@ if ($countEmail != 0) {
         $pdo->sql("INSERT INTO `utilisateurs`(
                 `utilisateurs_id`, 
                 `utilisateurs_type`, 
-                `association_id`, 
+                `associations_id`, 
                 `utilisateurs_nom`, 
                 `utilisateurs_prenom`, 
                 `utilisateurs_email`, 
