@@ -53,7 +53,7 @@ $columns = array(
         'db'        => 'associations_inscription',
         'dt'        => 4,
         'formatter' => function( $d, $row ) {
-            return '<button type=\'button\' onclick=\'ouvertureModification_utilisateur('.$row['associations_id'].');\' class=\'btn btn-primary btn-circle\'><i class="fa fa-pencil"></i></button>
+            return '<button type=\'button\' onclick=\'ouverture_associations_modification('.$row['associations_id'].');\' class=\'btn btn-primary btn-circle\'><i class="fa fa-pencil"></i></button>
             <button type=\'button\' onclick=\'suppressionLigne('.$row['associations_id'].');\' class=\'btn btn-danger btn-circle\'><i class="fa fa-trash-o"></i></button>';
         }
     )

@@ -1,15 +1,26 @@
-<?php require_once('../../../lib/config.php'); ?>
+<?php
+
+require_once('../../../lib/config.php');
+
+// on recupere l'id de l'utilisateur à modifier
+$associations_id = $_POST['associations_id'];
+
+// requete pour obtenir toutes les données correspondantes à cet utilisateur
+$associations_data = $pdo->sqlRow("SELECT * FROM associations WHERE associations_id = ?", array($associations_id));
+
+?>
 
 <!-- Début du formulaire -->
-<form action="modules/associations/ajax/iAssociation_ajout.php" id="ajoutAssociations" class="smart-form"
-      novalidate="novalidate" method="post" name="ajoutAssociations" >
+<form action="modules/associations/ajax/iAssociation_modification.php" id="ajoutAssociations" class="smart-form"
+      novalidate="novalidate" method="post" name="ajoutAssociations">
 
     <div class="modal-body col-12">
 
+        <input class="hidden" type="text" name="associations_id" value="<?php echo $associations_id ?>"/>
         <!-- Afin d'empêcher l'autocompletion des navigateurs -->
         <input style="display:none" type="text" name="fakeusernameremembered"/>
         <input style="display:none" type="password" name="fakepasswordremembered"/>
-        
+
         <!-- ASSOCIATION -->
         <fieldset>
 
@@ -20,7 +31,8 @@
                 <label class="label col col-2">Nom</label>
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-building"></i>
-                        <input type="text" name="associations_nom" placeholder="Nom de l'association" required">
+                        <input type="text" name="associations_nom" placeholder="Nom de l'association" required
+                               value="<?php echo $associations_data['associations_nom']; ?>">
                     </label>
                 </section>
                 <!-- Fin nom de l'association -->
@@ -29,7 +41,8 @@
                 <label class="label col col-2">ICOM</label>
                 <section class="col col-4">
                     <label class="input"> <i class="icon-prepend fa fa-sort-numeric-asc"></i>
-                        <input type="text" name="associations_icom" placeholder="Numéro ICOM" required">
+                        <input type="text" name="associations_icom" placeholder="Numéro ICOM" required
+                               value="<?php echo $associations_data['associations_numeroICOM']; ?>">
                     </label>
                 </section>
                 <!-- Fin numéro icom -->
@@ -42,7 +55,9 @@
                 <label class="label col col-2">E-mail</label>
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-envelope"></i>
-                        <input autocomplete="nope" type="text" name="associations_email" placeholder="E-mail de l'association" required">
+                        <input autocomplete="nope" type="text" name="associations_email"
+                               placeholder="E-mail de l'association" required
+                               value="<?php echo $associations_data['associations_email']; ?>">
                     </label>
                 </section>
                 <!-- Fin e-mail de l'association -->
@@ -52,8 +67,7 @@
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-lock"></i>
                         <input type="password" autocomplete="nope" name="associations_motDePasse"
-                               placeholder="Mot de passe de l'association"
-                               required">
+                               placeholder="********" required">
                     </label>
                 </section>
                 <!-- Fin mot de passe de l'association -->
@@ -74,7 +88,8 @@
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-user"></i>
                         <input type="text" name="associations_interlocuteur_nom" placeholder="Nom de l'interlocuteur"
-                               required">
+                               required
+                               value="<?php echo $associations_data['associations_interlocuteur_nom']; ?>">
                     </label>
                 </section>
                 <!-- Fin nom de l'interlocuteur -->
@@ -84,7 +99,8 @@
                 <section class="col col-4">
                     <label class="input"> <i class="icon-prepend fa fa-user"></i>
                         <input type="text" name="associations_interlocuteur_prenom"
-                               placeholder="Prénom de l'interlocuteur" required">
+                               placeholder="Prénom de l'interlocuteur" required
+                               value="<?php echo $associations_data['associations_interlocuteur_prenom']; ?>">
                     </label>
                 </section>
                 <!-- Fin prénom de l'interlocuteur -->
@@ -98,7 +114,8 @@
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-phone"></i>
                         <input type="text" name="associations_interlocuteur_telephone"
-                               placeholder="Téléphone de l'interlocuteur" required">
+                               placeholder="Téléphone de l'interlocuteur" required
+                               value="<?php echo $associations_data['associations_interlocuteur_telephone']; ?>">
                     </label>
                 </section>
                 <!-- Fin téléphone de l'interlocuteur -->
@@ -108,7 +125,8 @@
                 <section class="col col-4">
                     <label class="input"> <i class="icon-prepend fa fa-phone-square"></i>
                         <input type="text" name="associations_interlocuteur_fax" placeholder="Fax de l'interlocuteur"
-                               required">
+                               required
+                               value="<?php echo $associations_data['associations_interlocuteur_fax']; ?>">
                     </label>
                 </section>
                 <!-- Fin fax de l'interlocuteur -->
@@ -119,7 +137,7 @@
         <!-- FIN INTERLOCUTEUR -->
 
         <footer>
-            <button type="submit" class="btn btn-success">Créer !</button>
+            <button type="submit" class="btn btn-success">Modifier !</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
         </footer>
 
@@ -149,7 +167,7 @@
                     email: true
                 },
                 associations_motDePasse: {
-                    required: true
+                    required: false
                 },
                 associations_interlocuteur_nom: {
                     required: true
@@ -181,7 +199,7 @@
                     email: "Veuillez saisir un e-mail correct."
                 },
                 associations_motDePasse: {
-                    required: "Veuillez renseigner un mot de passe."
+                    required: ""
                 },
                 associations_interlocuteur_nom: {
                     required: "Veuillez indiquer un nom pour l'interlocuteur."
@@ -209,12 +227,14 @@
                             smallBox('Ajout impossible', 'Une association porte déjà ce numéro ICOM.', 'warning');
                         } else if (data.return == 'nom') {
                             smallBox('Ajout impossible', 'Une association porte déjà ce nom.', 'warning');
+                        } else if (data.return == 'nom&icom') {
+                            smallBox('Ajout impossible', 'Une association porte déjà ce nom et ce numéro icom.', 'warning');
                         } else {
                             smallBox('Ajout réussi !', 'L\'association à correctement été ajoutée.', 'success');
                             setTimeout(function () {
                                 $('#listing_associations').DataTable().ajax.reload(null, false); // refresh la datable association
                             }, 500);
-                            $('#associations_ajout').modal('toggle'); // ferme le modal en cas d'ajout
+                            $('#associations_modification').modal('toggle'); // ferme le modal en cas d'ajout
                         }
                         console.log(data.retour);
                     }

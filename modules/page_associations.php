@@ -47,13 +47,22 @@
 </div>
 <!-- fin container-->
 
-<!-- modal-->
+<!-- modal ajout association-->
 <div class="modal fade" id="associations_ajout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         </div>
     </div>
-</div> <!-- fin modal-->
+</div>
+<!-- fin modal ajout -->
+
+<!-- modal modification association -->
+<div class="modal fade" id="associations_modification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div> <!-- fin modal modification -->
 
 <script type="text/javascript">
 
@@ -115,6 +124,7 @@
                 });
             });
         });
+
     });
 
     function ouverture_associations_ajout() {
@@ -133,8 +143,20 @@
         });
     }
 
-    function ouvertureModification_utilisateur(paramId) {
-        window.location = './#ajax/modification_utilisateur.php?id=' + paramId;
+    function ouverture_associations_modification(associations_id) {
+        $.ajax({
+            url: 'modules/associations/modal/modal_associations_modification.php',
+            type: 'POST',
+            data: {"associations_id" : associations_id},
+            dataType: 'html',
+            success: function (contenu) {
+                $('#associations_modification .modal-content').html(contenu);
+                $('#associations_modification').modal('show');
+            },
+            error: function () {
+                alert('erreur lors du retour JSON !');
+            }
+        });
     }
 
     function suppressionLigne(paramId) {
@@ -158,7 +180,7 @@
                 });
             }
             if (ButtonPressed === "Non") {
-                smallBox('Suppression', "L'association n'à pas été supprimée.", 'warning');
+                smallBox('Suppression', "L'association n'a pas été supprimée.", 'warning');
             }
         });
     }

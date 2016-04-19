@@ -126,7 +126,7 @@ $utilisateurs_data = $pdo->sqlRow("SELECT * FROM utilisateurs WHERE utilisateurs
                 <label class="label col col-2">Mot de passe</label>
                 <section class="col col-4">
                     <label class="input fe"> <i class="icon-prepend fa fa-lock"></i>
-                        <input type="password" name="utilisateurs_motDePasse" placeholder="******" required
+                        <input type="password" name="utilisateurs_motDePasse" placeholder="********" required
                                value="">
                     </label>
                 </section>
