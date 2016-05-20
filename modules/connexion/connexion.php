@@ -17,6 +17,7 @@ if ($countUtilisateurs == 1) {
     $allUtilsateur = $pdo->sqlRow("SELECT * FROM utilisateurs WHERE utilisateurs_email = ? AND utilisateurs_motDePasse = ?", array($login, $password));
     $_SESSION['utilisateurs_id'] = $allUtilsateur['utilisateurs_id'];
     $_SESSION['utilisateurs_type'] = $allUtilsateur['utilisateurs_type'];
+    $_SESSION['utilisateurs_admin'] = $allUtilsateur['utilisateurs_admin'];
     $_SESSION['associations_id'] = $allUtilsateur['associations_id'];
     $_SESSION['utilisateurs_nom'] = $allUtilsateur['utilisateurs_nom'];
     $_SESSION['utilisateurs_prenom'] = $allUtilsateur['utilisateurs_prenom'];

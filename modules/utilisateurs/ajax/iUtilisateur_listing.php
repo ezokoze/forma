@@ -67,10 +67,10 @@ $columns = array(
 
 // SQL server connection information
 $sql_details = array(
-    'user' => 'root',
-    'pass' => '',
-    'db'   => 'forma_avril',
-    'host' => 'localhost'
+    'user' => 'fitchadmin',
+    'pass' => 'menphis31',
+    'db'   => 'formadb',
+    'host' => 'mysql.francois-garcia.ws'
 );
 
 

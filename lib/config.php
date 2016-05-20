@@ -23,9 +23,9 @@ $_SESSION['ASSETS_URL_ADMIN'] = ASSETS_URL_ADMIN;
 //Infos connections
 
 
-define('PDO_DSN', 'mysql:host=localhost;dbname=forma_avril');
-define('PDO_USERNAME', 'root');
-define('PDO_PASSWORD', '');
+define('PDO_DSN', 'mysql:host=mysql.francois-garcia.ws;dbname=formadb');
+define('PDO_USERNAME', 'fitchadmin');
+define('PDO_PASSWORD', 'menphis31');
 
 //require library files
 require_once("func.global.php");

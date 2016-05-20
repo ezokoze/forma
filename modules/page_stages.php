@@ -1,125 +1,143 @@
 <?php require_once("inc/init.php"); ?>
 
-<button type="button" class="well" onclick="ouvertureAjout_utilisateur();"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Creer un nouveau stage
+<button type="button" class="well" onclick="ouverture_formations_ajout();"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Créer
+    une formation
 </button>
 
-<!-- modal-->
-<div class="modal fade" id="modal_ajoute_utilisateur" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-        </div>
-    </div>
-</div> <!-- fin modal-->
-
-
-<!-- row -->
+<!-- Container datatable -->
 <div class="row">
-
-    <!-- nouveau widget -->
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-        <!-- id du widget -->
         <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-editbutton="false"
              data-widget-fullscreenbutton="false">
 
             <header>
-                <span class="widget-icon"> <i class="fa fa-graduation-cap"></i> </span>
+                <span class="widget-icon">
+                    <i class="fa fa-building"></i>
+                </span>
                 <h2>Stages</h2>
             </header>
-            <!-- widget div-->
-            <div>
-                <!-- edit box du widget -->
-                <div class="jarviswidget-editbox">
 
+            <!-- debut widget-->
+            <div>
+                <div class="jarviswidget-editbox">
                 </div>
-                <!-- fin edit box du widget -->
+
                 <!-- contenu widget -->
                 <div class="widget-body no-padding">
                     <form id="tableau">
-                        <table id="listing_intervenants" class="table table-striped table-bordered table-hover"
+                        <table id="listing_stages" class="table table-striped table-bordered table-hover"
                                width="100%">
                             <thead>
                             <tr>
-                                <th>Utilisateur</th>
-                                <th>Local</th>
-                                <th>Téléphone mobile</th>
-                                <th>Email</th>
-                                <th>Modifications</th>
+                                <th>Intitulé</th>
+                                <th>Association</th>
+                                <th>Salles</th>
+                                <th>Prix</th>
+                                <th>Places restantes</th>
+                                <th>Date formations</th>
+                                <th></th>
                             </tr>
                             </thead>
                         </table>
                     </form>
-
                 </div>
                 <!-- fin contenu widget -->
             </div>
-            <!-- fin widget div -->
+            <!-- fin widget -->
         </div>
-        <!-- fin widget -->
     </article>
-    <!-- FIN END -->
 </div>
-<!-- fin row -->
+<!-- fin container-->
 
+<!-- modal ajout association-->
+<div class="modal fade" id="formations_ajout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<!-- fin modal ajout -->
+
+<!-- modal modification association -->
+<div class="modal fade" id="formations_modification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div> <!-- fin modal modification -->
 
 <script type="text/javascript">
 
-    pageSetUp();
+    $(document).ready(function () {
 
-    var pagefunction = function () {
+        pageSetUp();
 
-        localStorage.clear();
+        var pagefunction = function () {
 
-        var responsiveHelper_listing_intervenants = undefined;
+            localStorage.clear();
 
-        var breakpointDefinition = {
-            tablet: 1024,
-            phone: 480
+            var responsiveHelper_listing_stages = undefined;
+
+            var breakpointDefinition = {
+                tablet: 1024,
+                phone: 480
+            };
+
+            $('#listing_stages').dataTable({
+                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-6 hidden-xs'T>r>" +
+                "t" +
+                "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
+                "oTableTools": {
+                    "aButtons": [
+                        "xls",
+                        {
+                            "sExtends": "print",
+                            "sMessage": "Généré par Forma <i>(Appuyez sur Echap pour fermer)</i>"
+                        }
+                    ],
+                    "sSwfPath": "assets/js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
+                },
+                "autoWidth": true,
+                "preDrawCallback": function () {
+                    if (!responsiveHelper_listing_stages) {
+                        responsiveHelper_listing_stages = new ResponsiveDatatablesHelper($('#listing_stages'), breakpointDefinition);
+                    }
+                },
+                "rowCallback": function (nRow) {
+                    responsiveHelper_listing_stages.createExpandIcon(nRow);
+                },
+                "ajax": "modules/stages/ajax/iStages_listing.php",
+                "drawCallback": function (oSettings) {
+                    responsiveHelper_listing_stages.respond();
+                },
+                "language": {
+                    "url": "./data/traduction_datatables_fr.json"
+                }
+            });
+
         };
 
-
-        $('#listing_intervenants').dataTable({
-            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-6 hidden-xs'T>r>" +
-            "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
-            "oTableTools": {
-                "aButtons": [
-                    "xls",
-                    {
-                        "sExtends": "print",
-                        "sMessage": "Généré par Forma <i>(Appuyez sur Echap pour fermer)</i>"
-                    }
-                ],
-                "sSwfPath": "js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
-            },
-            "autoWidth": true,
-            "preDrawCallback": function () {
-                if (!responsiveHelper_listing_intervenants) {
-                    responsiveHelper_listing_intervenants = new ResponsiveDatatablesHelper($('#listing_intervenants'), breakpointDefinition);
-                }
-            },
-            "rowCallback": function (nRow) {
-                responsiveHelper_listing_intervenants.createExpandIcon(nRow);
-            },
-            "ajax": "./php/iListe_utilisateurs.php",
-            "drawCallback": function (oSettings) {
-                responsiveHelper_listing_intervenants.respond();
-            },
-            "language": {
-                "url": "./data/french_trad_datatables.json"
-            }
+        loadScript("assets/js/plugin/datatables/jquery.dataTables.min.js", function () {
+            loadScript("assets/js/plugin/datatables/dataTables.colVis.min.js", function () {
+                loadScript("assets/js/plugin/datatables/dataTables.tableTools.min.js", function () {
+                    loadScript("assets/js/plugin/datatables/dataTables.bootstrap.min.js", function () {
+                        loadScript("assets/js/plugin/datatable-responsive/datatables.responsive.min.js", pagefunction)
+                    });
+                });
+            });
         });
-    };
 
-    function ouvertureAjout_utilisateur() {
+    });
+
+    function ouverture_formations_ajout() {
         $.ajax({
-            url: './php/modal/modal_ajout_utilisateur.php',
+            url: 'modules/formations/modal/modal_formations_ajout.php',
             type: 'POST',
             data: '',
             dataType: 'html',
             success: function (contenu) {
-                $('#modal_ajoute_utilisateur .modal-content').html(contenu);
-                $('#modal_ajoute_utilisateur').modal('show');
+                $('#formations_ajout .modal-content').html(contenu);
+                $('#formations_ajout').modal('show');
             },
             error: function () {
                 alert('erreur lors du retour JSON !');
@@ -127,27 +145,38 @@
         });
     }
 
-    function ouvertureModification_utilisateur(paramId) {
-        window.location = './#ajax/modification_utilisateur.php?id=' + paramId;
+    function ouverture_formations_modification(formations_id) {
+        $.ajax({
+            url: 'modules/formations/modal/modal_formations_modification.php',
+            type: 'POST',
+            data: {"formations_id": formations_id},
+            dataType: 'html',
+            success: function (contenu) {
+                $('#formations_modification .modal-content').html(contenu);
+                $('#formations_modification').modal('show');
+            },
+            error: function () {
+                alert('erreur lors du retour JSON !');
+            }
+        });
     }
 
-    function suppressionLigne(paramId) {
+    function suppressionLigne(formationId) {
         $.SmartMessageBox({
             title: "Attention !",
-            content: "Vous êtes sur le point de supprimer cet utilsateur, confirmer ?",
+            content: "Vous êtes sur le point de supprimer cette formation, confirmer ?",
             buttons: '[Non][Oui]'
         }, function (ButtonPressed) {
-            console.log(paramId);
             if (ButtonPressed === "Oui") {
                 $.ajax({
-                    url: './php/modal/modal_suppression_utilisateur.php',
+                    url: 'modules/formations/ajax/iFormation_suppression.php',
                     type: 'POST',
-                    data: {'id': paramId},
+                    data: {'id': formationId},
                     dataType: 'html',
                     success: function (contenu) {
-                        smallBox('Suppression', "L'utilisateur à correctement été supprimé.", 'success');
+                        smallBox('Suppression', "La formation a correctement été supprimée.", 'success');
                         setTimeout(function () {
-                            $('#listing_intervenants').DataTable().ajax.reload(null, false);
+                            $('#listing_stages').DataTable().ajax.reload(null, false); // refresh la datable association
                         }, 500);
                     },
                     error: function () {
@@ -156,20 +185,28 @@
                 });
             }
             if (ButtonPressed === "Non") {
-                smallBox('Suppression', "L'équipement n'a pas été supprimé.", 'warning');
+                smallBox('Suppression', "La formation n'a pas été supprimée.", 'warning');
             }
         });
     }
 
-    loadScript("js/plugin/datatables/jquery.dataTables.min.js", function () {
-        loadScript("js/plugin/datatables/dataTables.colVis.min.js", function () {
-            loadScript("js/plugin/datatables/dataTables.tableTools.min.js", function () {
-                loadScript("js/plugin/datatables/dataTables.bootstrap.min.js", function () {
-                    loadScript("js/plugin/datatable-responsive/datatables.responsive.min.js", pagefunction)
-                });
-            });
+    function inscriptionUtilisateurs(stageId) {
+        $.ajax({
+            url: 'modules/stages/ajax/iStages_inscription.php',
+            type: 'POST',
+            data: {'stage_id': stageId},
+            dataType: 'html',
+            success: function (data) {
+                if (data.return == 'ok') {
+                    smallBox('Inscription', 'Utilisateurs correctement inscrit à la formation.', 'warning');
+                } else {
+                    smallBox('Erreur', 'Impossible d\'inscrire l\'utilisateur à cette formation.', 'warning');
+                }
+            },
+            error: function () {
+                alert('erreur lors du retour JSON !');
+            }
         });
-    });
-
+    }
 
 </script>

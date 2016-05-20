@@ -21,38 +21,54 @@ ex:
 )
 
 */
-$page_nav = array(
-	"dashboard" => array(
-		"title" => "Tableau de bord",
-		"icon" => "fa-tachometer",
-		"url" => "index.php?p=modules/page_dashboard"
-	),
-	"stages" => array(
-		"title" => "Stages",
-		"icon" => "fa-graduation-cap",
-		"url" => "index.php?p=modules/page_stages",
-	),
-	"formations" => array(
-		"title" => "Formations",
-		"icon" => "fa-tags",
-		"url" => "index.php?p=modules/page_formations",
-	),
-	"associations" => array(
-		"title" => "Associations",
-		"icon" => "fa-building",
-		"url" => "index.php?p=modules/page_associations",
-	),
-	"utilisateurs" => array(
-		"title" => "Utilisateurs",
-		"icon" => "fa-child",
-		"url" => "index.php?p=modules/page_utilisateurs",
-	),
-	"information" => array(
-		"title" => "Informations",
-		"icon" => "fa-info-circle",
-		"url" => "",
-	)
-);
+if($_SESSION['utilisateurs_admin'] == 1){ // on affiche le menu de navigation pour les admins
+    $page_nav = array(
+        "dashboard" => array(
+            "title" => "Tableau de bord",
+            "icon" => "fa-tachometer",
+            "url" => "index.php?p=modules/page_dashboard"
+        ),
+        "stages" => array(
+            "title" => "Stages",
+            "icon" => "fa-graduation-cap",
+            "url" => "index.php?p=modules/page_stages",
+        ),
+        "formations" => array(
+            "title" => "Formations",
+            "icon" => "fa-tags",
+            "url" => "index.php?p=modules/page_formations",
+        ),
+        "associations" => array(
+            "title" => "Associations",
+            "icon" => "fa-building",
+            "url" => "index.php?p=modules/page_associations",
+        ),
+        "utilisateurs" => array(
+            "title" => "Utilisateurs",
+            "icon" => "fa-child",
+            "url" => "index.php?p=modules/page_utilisateurs",
+        ),
+        "information" => array(
+            "title" => "Informations",
+            "icon" => "fa-info-circle",
+            "url" => "",
+        )
+    );
+} else { // pour les autres utilisateurs
+    $page_nav = array(
+        "stages" => array(
+            "title" => "Stages",
+            "icon" => "fa-graduation-cap",
+            "url" => "index.php?p=modules/page_stages",
+        ),
+        "information" => array(
+            "title" => "Informations",
+            "icon" => "fa-info-circle",
+            "url" => "",
+        )
+    );
+}
+
 
 //configuration variables
 $page_title = "";
