@@ -1,10 +1,10 @@
 <?php require_once('lib/config.php'); ?>
 
     <div class="row">
-
+        
         <!-- NEW WIDGET START -->
         <article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-
+            <h1>Bienvenue sur la page d'accueil <b><?php echo $_SESSION['utilisateurs_prenom'] . ' ' . $_SESSION['utilisateurs_nom']; ?></b></h1>
             <header>
                 <h2>Inscriptions sur l'année</h2>
             </header>
@@ -28,7 +28,7 @@
         <article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
             <header>
-                <h2>Catégorie de stage</h2>
+                <h2>Taux d'inscription par catégorie</h2>
             </header>
 
             <div>
@@ -85,7 +85,7 @@
             }
 
             var barData = {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
                 datasets: [
                     {
                         label: "My First dataset",
@@ -115,7 +115,7 @@
             // RADAR CHART
 
             var radarData = {
-                labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+                labels: ["Office", "Photoshop", "Recherche internet", "Préstashop", "Sécurité", "Réseaux sociaux", "Profil"],
                 datasets: [
                     {
                         label: "My First dataset",

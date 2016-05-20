@@ -35,7 +35,7 @@ $page_nav = array(
 	"formations" => array(
 		"title" => "Formations",
 		"icon" => "fa-tags",
-		"url" => "",
+		"url" => "index.php?p=modules/page_formations",
 	),
 	"associations" => array(
 		"title" => "Associations",

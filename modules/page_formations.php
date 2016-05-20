@@ -1,5 +1,7 @@
-<button type="button" class="well" onclick="ouverture_utilisateurs_ajout();"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Créer
-    un utilisateur
+<?php require_once("inc/init.php"); ?>
+
+<button type="button" class="well" onclick="ouverture_formations_ajout();"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Créer
+    une formation
 </button>
 
 <!-- Container datatable -->
@@ -12,7 +14,7 @@
                 <span class="widget-icon">
                     <i class="fa fa-building"></i>
                 </span>
-                <h2>Utilisateurs</h2>
+                <h2>Formations</h2>
             </header>
 
             <!-- debut widget-->
@@ -23,15 +25,16 @@
                 <!-- contenu widget -->
                 <div class="widget-body no-padding">
                     <form id="tableau">
-                        <table id="listing_utilisateurs" class="table table-striped table-bordered table-hover"
+                        <table id="listing_formations" class="table table-striped table-bordered table-hover"
                                width="100%">
                             <thead>
                             <tr>
-                                <th>Association</th>
-                                <th>Type utilisateur</th>
-                                <th>Nom</th>
-                                <th>E-mail</th>
-                                <th>Quota</th>
+                                <th>Domaine</th>
+                                <th>Intitulé</th>
+                                <th>Niveau</th>
+                                <th>Date début</th>
+                                <th>Date fin</th>
+                                <th>Date limite</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -46,8 +49,8 @@
 </div>
 <!-- fin container-->
 
-<!-- modal ajout-->
-<div class="modal fade" id="utilisateurs_ajout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- modal ajout association-->
+<div class="modal fade" id="formations_ajout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         </div>
@@ -55,16 +58,16 @@
 </div>
 <!-- fin modal ajout -->
 
-<!-- modal modification-->
-<div class="modal fade" id="utilisateurs_modification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- modal modification association -->
+<div class="modal fade" id="formations_modification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         </div>
     </div>
-</div>
-<!-- fin modal modification-->
+</div> <!-- fin modal modification -->
 
 <script type="text/javascript">
+
     $(document).ready(function () {
 
         pageSetUp();
@@ -73,14 +76,14 @@
 
             localStorage.clear();
 
-            var responsiveHelper_listing_utilisateurs = undefined;
+            var responsiveHelper_listing_formations = undefined;
 
             var breakpointDefinition = {
                 tablet: 1024,
                 phone: 480
             };
 
-            $('#listing_utilisateurs').dataTable({
+            $('#listing_formations').dataTable({
                 "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-6 hidden-xs'T>r>" +
                 "t" +
                 "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
@@ -96,16 +99,16 @@
                 },
                 "autoWidth": true,
                 "preDrawCallback": function () {
-                    if (!responsiveHelper_listing_utilisateurs) {
-                        responsiveHelper_listing_utilisateurs = new ResponsiveDatatablesHelper($('#listing_utilisateurs'), breakpointDefinition);
+                    if (!responsiveHelper_listing_formations) {
+                        responsiveHelper_listing_formations = new ResponsiveDatatablesHelper($('#listing_formations'), breakpointDefinition);
                     }
                 },
                 "rowCallback": function (nRow) {
-                    responsiveHelper_listing_utilisateurs.createExpandIcon(nRow);
+                    responsiveHelper_listing_formations.createExpandIcon(nRow);
                 },
-                "ajax": "modules/utilisateurs/ajax/iUtilisateur_listing.php",
+                "ajax": "modules/formations/ajax/iFormation_listing.php",
                 "drawCallback": function (oSettings) {
-                    responsiveHelper_listing_utilisateurs.respond();
+                    responsiveHelper_listing_formations.respond();
                 },
                 "language": {
                     "url": "./data/traduction_datatables_fr.json"
@@ -126,15 +129,15 @@
 
     });
 
-    function ouverture_utilisateurs_ajout() {
+    function ouverture_formations_ajout() {
         $.ajax({
-            url: 'modules/utilisateurs/modal/modal_utilisateurs_ajout.php',
+            url: 'modules/formations/modal/modal_formations_ajout.php',
             type: 'POST',
             data: '',
             dataType: 'html',
             success: function (contenu) {
-                $('#utilisateurs_ajout .modal-content').html(contenu);
-                $('#utilisateurs_ajout').modal('show');
+                $('#formations_ajout .modal-content').html(contenu);
+                $('#formations_ajout').modal('show');
             },
             error: function () {
                 alert('erreur lors du retour JSON !');
@@ -142,15 +145,15 @@
         });
     }
 
-    function ouverture_utilisateurs_modification(utilisateurs_id) {
+    function ouverture_formations_modification(formations_id) {
         $.ajax({
-            url: 'modules/utilisateurs/modal/modal_utilisateurs_modification.php',
+            url: 'modules/formations/modal/modal_formations_modification.php',
             type: 'POST',
-            data: {"utilisateurs_id" : utilisateurs_id},
+            data: {"formations_id" : formations_id},
             dataType: 'html',
             success: function (contenu) {
-                $('#utilisateurs_modification .modal-content').html(contenu);
-                $('#utilisateurs_modification').modal('show');
+                $('#formations_modification .modal-content').html(contenu);
+                $('#formations_modification').modal('show');
             },
             error: function () {
                 alert('erreur lors du retour JSON !');
@@ -158,22 +161,22 @@
         });
     }
 
-    function suppressionLigne(utilisateurs_id) {
+    function suppressionLigne(formationId) {
         $.SmartMessageBox({
             title: "Attention !",
-            content: "Vous êtes sur le point de supprimer l'utilisateur suivant , confirmer ?",
+            content: "Vous êtes sur le point de supprimer cette formation, confirmer ?",
             buttons: '[Non][Oui]'
         }, function (ButtonPressed) {
             if (ButtonPressed === "Oui") {
                 $.ajax({
-                    url: 'modules/utilisateurs/ajax/iUtilisateur_suppression.php',
+                    url: 'modules/formations/ajax/iFormation_suppression.php',
                     type: 'POST',
-                    data: {'id': utilisateurs_id},
+                    data: {'id': formationId},
                     dataType: 'html',
                     success: function (contenu) {
-                        smallBox('Suppression', "L'utilisateur à correctement été supprimé.", 'success');
+                        smallBox('Suppression', "La formation a correctement été supprimée.", 'success');
                         setTimeout(function () {
-                            $('#listing_utilisateurs').DataTable().ajax.reload(null, false); // refresh la datable association
+                            $('#listing_formations').DataTable().ajax.reload(null, false); // refresh la datable association
                         }, 500);
                     },
                     error: function () {
@@ -182,7 +185,7 @@
                 });
             }
             if (ButtonPressed === "Non") {
-                smallBox('Suppression', "L'utlisateur n'a pas été supprimé.", 'warning');
+                smallBox('Suppression', "La formation n'a pas été supprimée.", 'warning');
             }
         });
     }
