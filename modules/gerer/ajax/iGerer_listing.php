@@ -5,7 +5,7 @@ require_once('../../../lib/config.php');
 $inscrit = $pdo->sqlValue("SELECT COUNT(stages_formations_id) FROM inscriptions WHERE utilisateurs_id = ?", array($_SESSION['utilisateurs_id']));
 
 // DB table to use
-$table = 'view_stages_formations';
+$table = 'view_utilisateurs_inscrits';
 
 // Table's primary key
 $primaryKey = 'stages_formations_id';
@@ -69,14 +69,7 @@ $columns = array(
         'db' => 'stages_formations_date',
         'dt' => 6,
         'formatter' => function ($d, $row) {
-            if($_SESSION['utilisateurs_admin'] == '1'){
-                return '<button type=\'button\' onclick=\'ouverture_stages_modification('.$row['stages_formations_id'].');\' class=\'btn btn-primary btn-circle\'><i class="fa fa-pencil"></i></button>
-            <button type=\'button\' onclick=\'suppressionLigne('.$row['stages_formations_id'].');\' class=\'btn btn-danger btn-circle\'><i class="fa fa-trash-o"></i></button>';
-            } else {
-                return '<button type=\'button\' onclick=\'inscriptionUtilisateurs(' . $row['stages_formations_id'] . ');\' class=\'btn btn-success btn-xs\'>inscription</button>';
-            }
-
-            
+            return '<button type=\'button\' onclick=\'desinscrireUtilisateurs(' . $row['stages_formations_id'] . ');\' class=\'btn btn-danger btn-xs\'>se désinscrire</button>';
         }
     )
 );
@@ -102,7 +95,7 @@ if ($_SESSION['utilisateurs_admin'] == 1) {
     );
 } else {
     echo json_encode(
-        SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, "associations_id = '" . $_SESSION['associations_id'] . "' AND stages_formations_id NOT IN (SELECT stages_formations_id FROM inscriptions WHERE utilisateurs_id = '" . $_SESSION['utilisateurs_id'] . "')")
+        SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, "utilisateurs_id = " . $_SESSION['utilisateurs_id'])
     );
 }
 

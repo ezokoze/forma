@@ -18,7 +18,7 @@
                 <span class="widget-icon">
                     <i class="fa fa-building"></i>
                 </span>
-                <h2>Stages</h2>
+                <h2>Stages auxquels vous-êtes inscrits</h2>
             </header>
 
             <!-- debut widget-->
@@ -111,7 +111,7 @@
                 "rowCallback": function (nRow) {
                     responsiveHelper_listing_stages.createExpandIcon(nRow);
                 },
-                "ajax": "modules/stages/ajax/iStages_listing.php",
+                "ajax": "modules/gerer/ajax/iGerer_listing.php",
                 "drawCallback": function (oSettings) {
                     responsiveHelper_listing_stages.respond();
                 },
@@ -134,18 +134,20 @@
 
     });
 
-    function ouverture_formations_ajout() {
+    function desinscrireUtilisateurs(stages_formations_id) {
         $.ajax({
-            url: 'modules/formations/modal/modal_formations_ajout.php',
+            url: 'modules/gerer/ajax/iGerer_desinscrire.php',
             type: 'POST',
-            data: '',
+            data: {"stages_formations_id": stages_formations_id},
             dataType: 'html',
             success: function (contenu) {
-                $('#formations_ajout .modal-content').html(contenu);
-                $('#formations_ajout').modal('show');
+                smallBox('Désinscription', "Vous êtes correctement désinscris.", 'success');
+                setTimeout(function () {
+                    $('#listing_stages').DataTable().ajax.reload(null, false); // refresh la datable association
+                }, 500);
             },
             error: function () {
-                alert('erreur lors du retour JSON !');
+                smallBox('Erreur', 'Une erreur est survenu dans la fonction suppressionLigne(paramId).', 'warning');
             }
         });
     }

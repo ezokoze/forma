@@ -61,10 +61,10 @@ if($_SESSION['utilisateurs_admin'] == 1){ // on affiche le menu de navigation po
             "icon" => "fa-graduation-cap",
             "url" => "index.php?p=modules/page_stages",
         ),
-        "information" => array(
-            "title" => "Informations",
+        "gerer" => array(
+            "title" => "Gérer formation",
             "icon" => "fa-info-circle",
-            "url" => "",
+            "url" => "index.php?p=modules/page_gerer",
         )
     );
 }

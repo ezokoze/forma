@@ -31,7 +31,7 @@ if ($countUtilisateurs == 1) {
     header("Location: ../../index.php?p=modules/page_dashboard");
 
 } else {
-    echo 'you$uck';
+    echo "Connexion impossible";
 }
 
 ?>
