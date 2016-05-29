@@ -1,28 +1,6 @@
 <?php require_once('lib/config.php'); ?>
 
     <div class="row">
-        
-        <!-- NEW WIDGET START -->
-        <article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <h1>Bienvenue sur la page d'accueil <b><?php echo $_SESSION['utilisateurs_prenom'] . ' ' . $_SESSION['utilisateurs_nom']; ?></b></h1>
-            <header>
-                <h2>Inscriptions sur l'année</h2>
-            </header>
-
-            <div>
-
-                <div class="jarviswidget-editbox">
-                    <input class="form-control" type="text">
-                </div>
-
-                <div class="widget-body">
-                    <canvas id="barChart" height="120"></canvas>
-                </div>
-
-            </div>
-
-        </article>
-
 
         <!-- NEW WIDGET START -->
         <article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">

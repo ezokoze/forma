@@ -2,6 +2,9 @@
     un utilisateur
 </button>
 
+<button type="button" class="well" onclick="reinitialiser_quota();"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;Réinitaliser les quotas
+</button>
+
 <!-- Container datatable -->
 <div class="row">
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -183,6 +186,24 @@
             }
             if (ButtonPressed === "Non") {
                 smallBox('Suppression', "L'utlisateur n'a pas été supprimé.", 'warning');
+            }
+        });
+    }
+
+    function reinitialiser_quota(){
+        $.ajax({
+            url: 'modules/utilisateurs/ajax/iUtilisateur_quota.php',
+            type: 'POST',
+            data: '',
+            dataType: 'html',
+            success: function (contenu) {
+                smallBox('Succés !', "Les quotas ont correctement été réinitialisés", 'success');
+                setTimeout(function () {
+                    $('#listing_utilisateurs').DataTable().ajax.reload(null, false); // refresh la datable association
+                }, 500);
+            },
+            error: function () {
+                alert('erreur lors du retour JSON !');
             }
         });
     }
