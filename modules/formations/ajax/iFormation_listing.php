@@ -41,30 +41,10 @@ $columns = array(
             return '<span class="id" id="id" data-type="text" data-pk="'.$row['formations_id'].'" table_id="societes_id" data-original-title="">'.utf8_encode($d).'</span>';
         }
     ),
+    /* Partie commentaires */
     array(
-        'db'        => 'formations_dateDebut',
+        'db'        => 'formations_niveau',
         'dt'        => 3,
-        'formatter' => function( $d, $row ) {
-            return '<span class="id" id="id" data-type="text" data-pk="'.$row['formations_id'].'" table_id="societes_id" data-original-title="">'.date_format(date_create($d), "d/m/Y H:i:s").'</span>';
-        }
-    ),
-    array(
-        'db'        => 'formations_dateFin',
-        'dt'        => 4,
-        'formatter' => function( $d, $row ) {
-            return '<span class="id" id="id" data-type="text" data-pk="'.$row['formations_id'].'" table_id="societes_id" data-original-title="">'.date_format(date_create($d), "d/m/Y H:i:s").'</span>';
-        }
-    ),
-    array(
-        'db'        => 'formations_dateLimite',
-        'dt'        => 5,
-        'formatter' => function( $d, $row ) {
-            return '<span class="id" id="id" data-type="text" data-pk="'.$row['formations_id'].'" table_id="societes_id" data-original-title="">'.date_format(date_create($d), "d/m/Y H:i:s").'</span>';
-        }
-    ), /* Partie commentaires */
-    array(
-        'db'        => 'formations_dateLimite',
-        'dt'        => 6,
         'formatter' => function( $d, $row ) {
             return '<button type=\'button\' onclick=\'ouverture_formations_modification('.$row['formations_id'].');\' class=\'btn btn-primary btn-circle\'><i class="fa fa-pencil"></i></button>
             <button type=\'button\' onclick=\'suppressionLigne('.$row['formations_id'].');\' class=\'btn btn-danger btn-circle\'><i class="fa fa-trash-o"></i></button>';

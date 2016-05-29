@@ -18,6 +18,27 @@
             <div class="row">
 
                 <!-- Nom de la formation -->
+                <label class="label col col-2">Association</label>
+                <section class="col col-4">
+                    <label class="select">
+                        <select name="associations_id" id="associations_id" required data-show-icon="true">
+                            <option value="" disabled selected> &nbsp;&nbsp;Choisir une association</option>
+                            <?php
+                            $select = $pdo->sql("select associations_id, associations_nom from associations group by associations_nom");
+
+                            while ($row = $select->fetch()) {
+                                echo "<option " . $selected . " value=" . $row['associations_id'] . ">" . $row['associations_nom'] . "</option>";
+                            }
+                            ?>
+                        </select> <i></i> </label>
+                </section>
+                <!-- Fin nom de la formation -->
+
+            </div>
+
+            <div class="row">
+
+                <!-- Nom de la formation -->
                 <label class="label col col-2">Formation</label>
                 <section class="col col-4">
                     <label class="select">
@@ -33,10 +54,6 @@
                         </select> <i></i> </label>
                 </section>
                 <!-- Fin nom de la formation -->
-
-            </div>
-
-            <div class="row">
 
                 <!-- Nom de la salle -->
                 <label class="label col col-2">Salle</label>
@@ -85,18 +102,49 @@
 
             </div>
 
+        </fieldset>
+
+        <fieldset>
+
+            <legend>Dates</legend>
             <div class="row">
 
-                <!-- Date pour le stage -->
+                <!-- Date début pour le stage -->
 
-                <label class="label col col-2">Date</label>
+                <label class="label col col-2">Date début</label>
                 <section class="col col-4">
                     <label class="input"> <i class="icon-prepend fa fa-calendar-o"></i>
-                        <input type="text" class="form-control datepicker" name="stages_date"
-                               placeholder="Date du stage" required readonly="readonly">
+                        <input type="text" class="form-control datepicker" name="stages_dateDebut" id="date_dbt"
+                               placeholder="Date début du stage" required readonly="readonly">
                     </label>
                 </section>
-                <!-- Fin date pour le stage -->
+                <!-- Fin date début pour le stage -->
+
+                <!-- Date fin pour le stage -->
+
+                <label class="label col col-2">Date fin</label>
+                <section class="col col-4">
+                    <label class="input"> <i class="icon-prepend fa fa-calendar-o"></i>
+                        <input type="text" class="form-control datepicker" name="stages_dateFin" id="date_fin"
+                               placeholder="Date fin du stage" required readonly="readonly">
+                    </label>
+                </section>
+                <!-- Fin date fin pour le stage -->
+
+            </div>
+
+            <div class="row">
+
+                <!-- Date début pour le stage -->
+
+                <label class="label col col-2">Date limite</label>
+                <section class="col col-4">
+                    <label class="input"> <i class="icon-prepend fa fa-calendar-o"></i>
+                        <input type="text" class="form-control datepicker" name="stages_dateLimite" id="date_lmt"
+                               placeholder="Date limite d'inscription" required readonly="readonly">
+                    </label>
+                </section>
+                <!-- Fin date début pour le stage -->
 
             </div>
 
@@ -191,7 +239,19 @@
                 smallBox('Erreur', "Veuillez remplir les champs correctement.", 'error', '3000')
             }
         });
+
+        // on limite la date de début à la date du jour
+        $("#date_dbt").datepicker('option','minDate',new Date() );
+
+        $('#date_dbt').change(function(){
+            // on limite la date de limite d'inscription en fonction des dates de debut et date de fin
+            $("#date_fin").datepicker( 'option' , 'minDate' , $('#date_dbt').val() );
+            // on limite la date de fin en fonction de la date du début
+            $('#date_lmt').datepicker( 'option' , 'maxDate' , $('#date_dbt').val() );
+        });
     };
+
+
 
     loadScript("assets/js/plugin/jquery-form/jquery-form.min.js", pagefunction);
 

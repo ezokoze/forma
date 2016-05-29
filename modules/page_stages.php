@@ -38,7 +38,9 @@
                                 <th>Salles</th>
                                 <th>Prix</th>
                                 <th>Places restantes</th>
-                                <th>Date formations</th>
+                                <th>Date début</th>
+                                <th>Date fin</th>
+                                <th>Limite inscription</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -220,6 +222,9 @@
             success: function (data) {
                 if (data.return == "ok") {
                     smallBox('Inscription', 'Utilisateurs correctement inscrit à la formation.', 'success');
+                    setTimeout(function () {
+                        $('#listing_stages').DataTable().ajax.reload(null, false); // refresh la datable association
+                    }, 500);
                 } else if (data.return == "limite") {
                     smallBox('Avertissement', 'L\'utilisateur à depassé son nombre limite d\'inscription.', 'warning');
                 } else {

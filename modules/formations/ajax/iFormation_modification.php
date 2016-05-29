@@ -7,18 +7,12 @@ $formation_id = $_POST['formations_id'];
 $formations_intitule = $_POST['formations_intitule'];
 $formations_domaine = $_POST['formations_domaine'];
 $difficulte = $_POST['difficulte'];
-$formations_prix = $_POST['formations_prix'];
 $formations_contenu = $_POST['formations_contenu'];
-/* données sur l'intervenant & lieu */
+/* données sur l'intervenant */
 $intervenant_nom = $_POST['intervenant_nom'];
 $intervenant_prenom = $_POST['intervenant_prenom'];
 $intervenant_poste = $_POST['intervenant_poste'];
 $intervenant_email = $_POST['intervenant_email'];
-$formations_lieu = $_POST['formations_lieu'];
-/* dates */
-$formation_dateDebut = $func->dateUS($_POST['formation_dateDebut']);
-$formation_dateFin = $func->dateUS($_POST['formation_dateFin']);
-$formations_dateLimite = $func->dateUS($_POST['formations_dateLimite']);
 
 /* recuperation des anciennes doonées de la formation */
 $formation_old = $pdo->sqlRow("SELECT * FROM formations WHERE formations_id = ?", array($formation_id));
@@ -26,19 +20,13 @@ $formation_old = $pdo->sqlRow("SELECT * FROM formations WHERE formations_id = ?"
 /* update */
 $pdo->sql("UPDATE `formations` SET 
             `domaines_id`= ?,
-            `salles_id`= ?,
             `formations_intitule`= ?,
             `formations_niveau`= ?,
             `intervenants_nom`= ?,
             `intervenants_prenom`= ?,
             `intervenants_email`= ?,
             `intervenants_poste`= ?,
-            `formations_contenu`= ?,
-            `formations_prix`= ?,
-            `formations_dateDebut`= ?,
-            `formations_dateFin`= ?,
-            `formations_dateLimite`= ? WHERE `formations_id`= ?", array($formations_domaine,
-                                                                        $formations_lieu,
+            `formations_contenu`= ? WHERE `formations_id`= ?", array($formations_domaine,
                                                                         $formations_intitule,
                                                                         $difficulte,
                                                                         $intervenant_nom,
@@ -46,15 +34,11 @@ $pdo->sql("UPDATE `formations` SET
                                                                         $intervenant_email,
                                                                         $intervenant_poste,
                                                                         $formations_contenu,
-                                                                        $formations_prix,
-                                                                        $formation_dateDebut,
-                                                                        $formation_dateFin,
-                                                                        $formations_dateLimite,
                                                                         $formation_id));
 $alert = 'ok';
 
 /* verification des doublons dans la bd */
-$doublonsNom = $pdo->sql("SELECT formations_id FROM formations WHERE formations_intitule = ? AND salles_id = ?", array($formations_intitule, $formations_lieu));
+$doublonsNom = $pdo->sql("SELECT formations_id FROM formations WHERE formations_intitule = ?", array($formations_intitule));
 $countNom = $doublonsNom->rowCount();
 
 if ($countNom > 1) {
@@ -63,19 +47,13 @@ if ($countNom > 1) {
 
     $pdo->sql("UPDATE `formations` SET 
             `domaines_id`= ?,
-            `salles_id`= ?,
             `formations_intitule`= ?,
             `formations_niveau`= ?,
             `intervenants_nom`= ?,
             `intervenants_prenom`= ?,
             `intervenants_email`= ?,
             `intervenants_poste`= ?,
-            `formations_contenu`= ?,
-            `formations_prix`= ?,
-            `formations_dateDebut`= ?,
-            `formations_dateFin`= ?,
-            `formations_dateLimite`= ? WHERE `formations_id`= ?", array($formations_domaine,
-                                                                        $formations_lieu,
+            `formations_contenu`= ? WHERE `formations_id`= ?", array($formations_domaine,
                                                                         $formation_old['formations_intitule'],
                                                                         $difficulte,
                                                                         $intervenant_nom,
@@ -83,10 +61,6 @@ if ($countNom > 1) {
                                                                         $intervenant_email,
                                                                         $intervenant_poste,
                                                                         $formations_contenu,
-                                                                        $formations_prix,
-                                                                        $formation_dateDebut,
-                                                                        $formation_dateFin,
-                                                                        $formations_dateLimite,
                                                                         $formation_id));
 
 }

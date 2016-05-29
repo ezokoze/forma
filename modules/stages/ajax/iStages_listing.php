@@ -59,15 +59,29 @@ $columns = array(
         }
     ),
     array(
-        'db' => 'stages_formations_dateLimite',
+        'db' => 'stages_formations_dateDebut',
         'dt' => 5,
         'formatter' => function ($d, $row) {
-            return '<span class="id" id="id" data-type="text" data-pk="' . $row['stages_formations_id'] . '" table_id="societes_id" data-original-title="">' . date_format(date_create($d), "d/m/Y H:i:s") . '</span>';
+            return '<span class="id" id="id" data-type="text" data-pk="' . $row['stages_formations_id'] . '" table_id="societes_id" data-original-title="">' . date_format(date_create($d), "d/m/Y") . '</span>';
+        }
+    ),
+    array(
+        'db' => 'stages_formations_dateFin',
+        'dt' => 6,
+        'formatter' => function ($d, $row) {
+            return '<span class="id" id="id" data-type="text" data-pk="' . $row['stages_formations_id'] . '" table_id="societes_id" data-original-title="">' . date_format(date_create($d), "d/m/Y") . '</span>';
         }
     ),
     array(
         'db' => 'stages_formations_dateLimite',
-        'dt' => 6,
+        'dt' => 7,
+        'formatter' => function ($d, $row) {
+            return '<span class="id" id="id" data-type="text" data-pk="' . $row['stages_formations_id'] . '" table_id="societes_id" data-original-title="">' . date_format(date_create($d), "d/m/Y") . '</span>';
+        }
+    ),
+    array(
+        'db' => 'stages_formations_dateLimite',
+        'dt' => 8,
         'formatter' => function ($d, $row) {
             if($_SESSION['utilisateurs_admin'] == '1'){
                 return '<button type=\'button\' onclick=\'ouverture_stages_modification('.$row['stages_formations_id'].');\' class=\'btn btn-primary btn-circle\'><i class="fa fa-pencil"></i></button>
@@ -102,7 +116,7 @@ if ($_SESSION['utilisateurs_admin'] == 1) {
     );
 } else {
     echo json_encode(
-        SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, "associations_id = '" . $_SESSION['associations_id'] . "' AND stages_formations_id NOT IN (SELECT stages_formations_id FROM inscriptions WHERE utilisateurs_id = '" . $_SESSION['utilisateurs_id'] . "')")
+        SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, "associations_id = '" . $_SESSION['associations_id'] . "' AND stages_formations_dateLimite >= NOW() AND stages_formations_id NOT IN (SELECT stages_formations_id FROM inscriptions WHERE utilisateurs_id = '" . $_SESSION['utilisateurs_id'] . "')")
     );
 }
 

@@ -45,7 +45,7 @@ $columns = array(
         'db'        => 'associations_inscription',
         'dt'        => 3,
         'formatter' => function( $d, $row ) {
-            return '<span class="id" id="id" data-type="text" data-pk="'.$row['associations_id'].'" table_id="societes_id" data-original-title="">'.date_format(date_create($d), "d/m/Y H:i:s").'</span>';
+            return '<span class="id" id="id" data-type="text" data-pk="'.$row['associations_id'].'" table_id="societes_id" data-original-title="">'.date_format(date_create($d), "d/m/Y").'</span>';
         }
     ),
 

@@ -60,31 +60,6 @@ $formations_data = $pdo->sqlRow("SELECT * FROM formations WHERE formations_id = 
 
             </div>
 
-            <div class="row">
-                <!-- Date début formation -->
-                <label class="label col col-2">Date début</label>
-                <section class="col col-4">
-                    <label class="input"> <i class="icon-prepend fa fa-calendar-o"></i>
-                        <input type="text" class="form-control datepicker" name="formation_dateDebut"
-                               placeholder="Date début formation" required
-                               value="<?php echo $func->dateFR($formations_data['formations_dateDebut']); ?>">
-                    </label>
-                </section>
-                <!-- Fin date début formation -->
-
-                <!-- Date fin formation -->
-                <label class="label col col-2">Date fin</label>
-                <section class="col col-4">
-                    <label class="input"> <i class="icon-prepend fa fa-calendar-o"></i>
-                        <input type="text" class="form-control datepicker" name="formation_dateFin"
-                               placeholder="Date fin formation" required
-                               value="<?php echo $func->dateFR($formations_data['formations_dateFin']); ?>">
-                    </label>
-                </section>
-                <!-- Fin date fin formation -->
-
-            </div>
-
         </fieldset>
 
         <!-- FIN FORMATION -->
@@ -151,30 +126,8 @@ $formations_data = $pdo->sqlRow("SELECT * FROM formations WHERE formations_id = 
 
             <div class="row">
 
-                <!-- Lieu formation -->
-                <label class="label col col-2">Lieu</label>
-                <section class="col col-4">
-                    <label class="select">
-                        <select name="formations_lieu" id="formations_lieu" required>
-                            <option value="" disabled selected> &nbsp;&nbsp;Choisir une salle</option>
-                            <?php
-                            $select = $pdo->sql("select salles_id , salles_nom from salles group by salles_nom");
-
-                            while ($row = $select->fetch()) {
-                                // on recupere la valeur pour la formation
-                                $salles_formation_id = $pdo->sqlValue("SELECT salles_id FROM formations WHERE formations_id = ?", array($formations_id));
-                                // on selectionne si =
-                                $selected = ($row['salles_id'] == $salles_formation_id) ? 'selected' : '';
-
-                                echo "<option " . $selected . " value=" . $row['salles_id'] . ">" . $row['salles_nom'] . "</option>";
-                            }
-                            ?>
-                        </select> <i></i> </label>
-                </section>
-                <!-- Fin lieu formation -->
-
                 <!-- Difficulté formation -->
-                <label class="label col col-3">Difficulté</label>
+                <label class="label col col-1">Difficulté</label>
                 <section class="col col-3">
                     <div class="rating">
                         <input type="radio" name="difficulte" id="difficulte-5"
@@ -195,31 +148,6 @@ $formations_data = $pdo->sqlRow("SELECT * FROM formations WHERE formations_id = 
                     </div>
                 </section>
                 <!-- Fin difficulté formation -->
-
-            </div>
-
-            <div class="row">
-
-                <!-- Prix formation -->
-                <label class="label col col-2">Prix</label>
-                <section class="col col-4">
-                    <label class="input fe"> <i class="icon-prepend fa fa-eur"></i>
-                        <input type="text" name="formations_prix" placeholder="Prix de la formation" required
-                               value="<?php echo $formations_data['formations_prix']; ?>">
-                    </label>
-                </section>
-                <!-- Fin prix formation -->
-
-                <!-- Date limite formation -->
-                <label class="label col col-2">Date limite</label>
-                <section class="col col-4">
-                    <label class="input"> <i class="icon-prepend fa fa-calendar-times-o"></i>
-                        <input type="text" class="form-control datepicker" name="formations_dateLimite"
-                               placeholder="Date limite d'inscription" required
-                               value="<?php echo $func->dateFR($formations_data['formations_dateLimite']); ?>">
-                    </label>
-                </section>
-                <!-- Fin date limite formation -->
 
             </div>
 

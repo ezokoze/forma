@@ -38,7 +38,8 @@
                                 <th>Salles</th>
                                 <th>Prix</th>
                                 <th>Places restantes</th>
-                                <th>Date formations</th>
+                                <th>Date début</th>
+                                <th>Date fin</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -135,19 +136,30 @@
     });
 
     function desinscrireUtilisateurs(stages_formations_id) {
-        $.ajax({
-            url: 'modules/gerer/ajax/iGerer_desinscrire.php',
-            type: 'POST',
-            data: {"stages_formations_id": stages_formations_id},
-            dataType: 'html',
-            success: function (contenu) {
-                smallBox('Désinscription', "Vous êtes correctement désinscris.", 'success');
-                setTimeout(function () {
-                    $('#listing_stages').DataTable().ajax.reload(null, false); // refresh la datable association
-                }, 500);
-            },
-            error: function () {
-                smallBox('Erreur', 'Une erreur est survenu dans la fonction suppressionLigne(paramId).', 'warning');
+        $.SmartMessageBox({
+            title: "Attention !",
+            content: "Vous êtes sur le point de vous désinscrire du stage, êtes-vous sûr ?",
+            buttons: '[Non][Oui]'
+        }, function (ButtonPressed) {
+            if (ButtonPressed === "Oui") {
+                $.ajax({
+                    url: 'modules/gerer/ajax/iGerer_desinscrire.php',
+                    type: 'POST',
+                    data: {"stages_formations_id": stages_formations_id},
+                    dataType: 'html',
+                    success: function (contenu) {
+                        smallBox('Désinscription', "Vous êtes correctement désinscris.", 'success');
+                        setTimeout(function () {
+                            $('#listing_stages').DataTable().ajax.reload(null, false); // refresh la datable association
+                        }, 500);
+                    },
+                    error: function () {
+                        smallBox('Erreur', 'Une erreur est survenu dans la fonction suppressionLigne(paramId).', 'warning');
+                    }
+                });
+            }
+            if (ButtonPressed === "Non") {
+                smallBox('Suppression', "Vous n'avait pas été désinscrit du stage.", 'warning');
             }
         });
     }
@@ -221,7 +233,7 @@
             dataType: 'json',
             success: function (data) {
                 if (data.return == "ok") {
-                    smallBox('Inscription', 'Utilisateurs correctement inscrit à la formation.', 'success');
+                    smallBox('Inscription', 'Utilisateurs correctement inscrit à la formation.', 'error');
                 } else if (data.return == "limite") {
                     smallBox('Avertissement', 'L\'utilisateur à depassé son nombre limite d\'inscription.', 'warning');
                 } else {

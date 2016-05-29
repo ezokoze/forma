@@ -59,15 +59,22 @@ $columns = array(
         }
     ),
     array(
-        'db' => 'stages_formations_date',
+        'db' => 'stages_formations_dateDebut',
         'dt' => 5,
         'formatter' => function ($d, $row) {
             return '<span class="id" id="id" data-type="text" data-pk="' . $row['stages_formations_id'] . '" table_id="societes_id" data-original-title="">' . date_format(date_create($d), "d/m/Y H:i:s") . '</span>';
         }
     ),
     array(
-        'db' => 'stages_formations_date',
+        'db' => 'stages_formations_dateFin',
         'dt' => 6,
+        'formatter' => function ($d, $row) {
+            return '<span class="id" id="id" data-type="text" data-pk="' . $row['stages_formations_id'] . '" table_id="societes_id" data-original-title="">' . date_format(date_create($d), "d/m/Y H:i:s") . '</span>';
+        }
+    ),
+    array(
+        'db' => 'stages_formations_dateFin',
+        'dt' => 7,
         'formatter' => function ($d, $row) {
             return '<button type=\'button\' onclick=\'desinscrireUtilisateurs(' . $row['stages_formations_id'] . ');\' class=\'btn btn-danger btn-xs\'>se désinscrire</button>';
         }

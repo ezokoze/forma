@@ -32,9 +32,6 @@
                                 <th>Domaine</th>
                                 <th>Intitulé</th>
                                 <th>Niveau</th>
-                                <th>Date début</th>
-                                <th>Date fin</th>
-                                <th>Date limite</th>
                                 <th></th>
                             </tr>
                             </thead>
