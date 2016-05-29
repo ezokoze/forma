@@ -59,14 +59,14 @@ $columns = array(
         }
     ),
     array(
-        'db' => 'stages_formations_date',
+        'db' => 'stages_formations_dateLimite',
         'dt' => 5,
         'formatter' => function ($d, $row) {
             return '<span class="id" id="id" data-type="text" data-pk="' . $row['stages_formations_id'] . '" table_id="societes_id" data-original-title="">' . date_format(date_create($d), "d/m/Y H:i:s") . '</span>';
         }
     ),
     array(
-        'db' => 'stages_formations_date',
+        'db' => 'stages_formations_dateLimite',
         'dt' => 6,
         'formatter' => function ($d, $row) {
             if($_SESSION['utilisateurs_admin'] == '1'){
