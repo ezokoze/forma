@@ -28,7 +28,7 @@ if ($countUtilisateurs == 1) {
     $_SESSION['utilisateurs_quotaFormation'] = $allUtilsateur['utilisateurs_quotaFormation'];
 
     // redirection vers la page d'accueil
-    header("Location: ../../index.php?p=modules/page_dashboard");
+    header("Location: ../../index.php?p=modules/page_stages");
 
 } else {
     echo "Connexion impossible";

@@ -23,11 +23,6 @@ ex:
 */
 if($_SESSION['utilisateurs_admin'] == 1){ // on affiche le menu de navigation pour les admins
     $page_nav = array(
-        "dashboard" => array(
-            "title" => "Tableau de bord",
-            "icon" => "fa-tachometer",
-            "url" => "index.php?p=modules/page_dashboard"
-        ),
         "stages" => array(
             "title" => "Stages",
             "icon" => "fa-graduation-cap",
