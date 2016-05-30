@@ -24,9 +24,6 @@ De manière général l'utilisateur une fois connecté dipose d'un menu lui perm
 
 Ainsi l'utilisateur dispose de tableau permettant la recherche ou la consultation de n'importe lesquels de ces catégories.
 
-``` c#
-dbConnect.listViewStagesFormations(query, listViewStagesFormations);
-```
 
 Affichage du code javascript permettant le remplissage d'une Datatable avec un appel Ajax.
 ``` javascript
