@@ -8,85 +8,134 @@ Application pour les utilisateurs de la maison des ligues permettant leur(s) ins
 Interface de connexion simple permettant la saisie de l'identifiant (e-amil) et mot de passe de l'utilisateur.
 Le mot de passe utilise le protocole de cryptage **SHA1**.
 
-![alt tag](https://i.gyazo.com/9a1a95c353b1f812ae2138d7180e8af9.png)
+![alt tag](https://i.gyazo.com/41ab36ecc2679217231fdd3fb64c5ed8.png)
+
 
 ## Menu
 
 Cette application dispose d'un menu après connexion, permettant à l'utilisateur de choisir l'action attendue.
-L'utilisateur a le choix entre consulter les *stages de formations à venir* ou bien *consulter toutes les formations* disponibles.
+L'utilisateur a le choix entre consulter les *stages de formations à venir*, *consulter toutes les formations* disponibles, *ajouter des associations ou les modifier* et pour finir *ajouter ou modifier des utilisateurs*.
 
-## Formations à venir
+## Consultation d'une rubrique
 
-L'utilisateur connecté peut consulter les stages de formations à venir par défaut d'une date allant du jour J au jour J+7.
+De manière général l'utilisateur une fois connecté dipose d'un menu lui permettant l'accès à un pannel de fonction.
 
-![alt tag](https://i.gyazo.com/2655c347ef2f0c10ae110add482ba72d.png)
+![alt tag](https://i.gyazo.com/ee9f56dcb4ea62ddb6b0e0536fb80065.png)
 
-Afin de permettre la recherche de stages de formations par date, l'utilisateur dispose d'une fonction de **recherche avancée**.
-Celle-ci fonctionne au travers de différent élément clé tel qu'une fourchette de date ou autre, recupéré afin de composer une requete SQL permettant son affichage filtré à l'aide de la fonction suivante :
+Ainsi l'utilisateur dispose de tableau permettant la recherche ou la consultation de n'importe lesquels de ces catégories.
 
 ``` c#
 dbConnect.listViewStagesFormations(query, listViewStagesFormations);
 ```
 
-Affichage du code de la fonction permettant le remplissage d'une ListView en fonction d'une requête SQL :
-``` c#
-public void listViewStagesFormations(string query, ListView p_listView)
-        {
-            // allow reload without superposition
-            p_listView.Items.Clear();
-            //Open connection
-            if (this.OpenConnection() == true)
-            {
-                //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                //Create a data reader and Execute the command
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                //Read the data and store them in the list
-                while (dataReader.Read())
-                {
-                    ListViewItem item = new ListViewItem(dataReader["formations_intitule"].ToString());
-                    item.SubItems.Add(dataReader["associations_nom"].ToString());
-                    item.SubItems.Add(dataReader["salles_nom"].ToString());
-                    item.SubItems.Add(dataReader["stages_formations_prix"].ToString());
-                    item.SubItems.Add(dataReader["stages_formations_placeRestantes"].ToString());
-                    item.SubItems.Add(dataReader["stages_formations_date"].ToString());
-
-                    p_listView.Items.Add(item);
+Affichage du code javascript permettant le remplissage d'une Datatable avec un appel Ajax.
+``` javascript
+$('#listing_stages').dataTable({
+                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-6 hidden-xs'T>r>" +
+                "t" +
+                "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
+                "oTableTools": {
+                    "aButtons": [
+                        "xls",
+                        {
+                            "sExtends": "print",
+                            "sMessage": "Généré par Forma <i>(Appuyez sur Echap pour fermer)</i>"
+                        }
+                    ],
+                    "sSwfPath": "assets/js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
+                },
+                "autoWidth": true,
+                "preDrawCallback": function () {
+                    if (!responsiveHelper_listing_stages) {
+                        responsiveHelper_listing_stages = new ResponsiveDatatablesHelper($('#listing_stages'), breakpointDefinition);
+                    }
+                },
+                "rowCallback": function (nRow) {
+                    responsiveHelper_listing_stages.createExpandIcon(nRow);
+                },
+                "ajax": "modules/gerer/ajax/iGerer_listing.php",
+                "drawCallback": function (oSettings) {
+                    responsiveHelper_listing_stages.respond();
+                },
+                "language": {
+                    "url": "./data/traduction_datatables_fr.json"
                 }
-
-                //close Data Reader
-                dataReader.Close();
-
-                //close Connection
-                this.CloseConnection();
-
-            }
-            else
-            {
-                MessageBox.Show("Une erreur est survenue");
-            }
-        }
+            });
 ```
 
-Ainsi il est plus facile de gérer l'espace de recherche avancée à partir de certains paramètres
+## Ajout
 
-![alt tag](https://i.gyazo.com/ae008bd2009de43e2a26f25590c07828.png)
+Afin d'ajouter une formation ou un stage l'utilisateur doit-être en premier lieu un administrateur.
+Une fois l'utilisateur connecté lorsqu'il se rend sur une catégorie il disposera toujours d'un bouton *Créer un/une [...]*.
+Si l'utilisateur clique sur ce bouton il se verra apparaître à l'écran un modal permettant l'ajout des données correspondantes à la catégorie.
 
-Ainsi pour une nouvelle fourchette de date, il suffit à l'utilisateur de choisir une date à partir du **DateTimePicker** et de cliquer sur le bouton *Rechercher par date*.
+![alt tag](https://i.gyazo.com/1a661a2ec2d76ae6b553a61283f909d8.png)
 
-Cela aura pour effet d'executer le code suivant :
+Une fois la création ajoutée une notification d'ajout apparaîtra en haut à droite de l'écran.
 
-``` c#
-DBConnect dbConnect = new DBConnect();
+## Modification
 
-// récupération des dates
-string dateDebutUS = dateTimePickerDebut.Value.Date.ToString("yyyy/MM/dd");
-string dateFinUS = dateTimePickerFin.Value.Date.ToString("yyyy/MM/dd");
+Afin de modifier n'importe quelle ligne de la datatable, deux boutons sont à la disposition de l'utilisateur, un bouton modifier (bleu) et un bouton permettant la suppression de ligne (rouge)
 
-// écriture de la requête
-string query = "SELECT * FROM view_stages_formations WHERE stages_formations_date >= '" + dateDebutUS + "' AND stages_formations_date <= '" + dateFinUS + "'";
+![alt tag](https://i.gyazo.com/606e963730ac6f446f8d8148e0a4ff0c.png)
 
-// remplissage de la ListView
-dbConnect.listViewStagesFormations(query, listViewStagesFormations);
+En cliquant sur le bouton de modification l'utilisateur fait apparaître un modal lui présentant les mêmes champs qu'au moment de la création d'une de ces lignes à la différence que les champs sont pré-remplie exécute une simple requête SQL de type UPDATE
+
+Voici un exemple de modal de modification : 
+
+![alt tag](https://i.gyazo.com/d148628de3c3f9db9052a2af160dc245.png)
+
+Une fois la modification effectué lorsque l'utilisateur cliquera sur le bouton *Modifier !* une notification d'erreur ou de succès apparaîtra en haut à droite sur l'écran de l'utilisateur.
+
+## Suppression 
+
+Pour supprimer une ligne, l'utilisateur dispose d'un bouton de suppression dans la colonne la plus à droite de la datatable, il s'agit d'un bouton rouge, une fois celui-ci pressé un message de confirmation apparaîtra à l'écran de l'utilisateur. Si celui-ci confirme la ligne correspondante sera supprimé et la datatable automatiquement rafraichit.
+
+## Notification
+
+Afin de permettre à l'utilisateur une connaissance permanente sur le succès ou des erreurs durant les ajouts ou les modifications j'ai mis en place un système de notification.
+Le code permettant l'apparition de celles-ci est simple.
+
+Dans le cas d'une erreur : 
+
+``` javascript
+smallBox('Inscription', 'Utilisateurs correctement inscrit à la formation.', 'error');
 ```
+
+La fonction smallBox possédant le code suivant : 
+
+``` javascript
+function smallBox(title, content, type, timeout) {
+    var title = ((title == undefined) || (title == '')) ? 'Information' : title;
+    var content = ((content == undefined) || (content == '')) ? 'Nouvelle information' : content;
+    var timeout = ((timeout == undefined) || (timeout == '')) ? '4000' : timeout;
+    switch (type) {
+        case 'success':
+            var color = '#739E73';
+            var icon = 'fa fa-check';
+            break;
+        case 'warning':
+            var color = '#C79121';
+            var icon = 'fa fa-exclamation-circle';
+            break;
+        case 'error':
+            var color = '#C46A69';
+            var icon = 'fa fa-times';
+            break;
+        default:
+            // Info
+            var color = '#3276B1';
+            var icon = 'fa fa-info-circle';
+            break;
+    }
+
+    $.smallBox({
+        title  : title,
+        content: content,
+        color  : color,
+        timeout: timeout,
+        icon   : icon
+    });
+}
+```
+
