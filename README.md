@@ -136,3 +136,14 @@ function smallBox(title, content, type, timeout) {
 }
 ```
 
+## Déconnexion
+
+Pour se déconnecter l'utilisateur dispose d'un bouton de déconnexion en haut à droite de son écran 
+
+![alt tag](https://i.gyazo.com/7d90d0b58b4ebc697e1bd25d6f343873.png)
+
+L'appui sur ce bouton entrainera l'affichage suivant
+![alt tag](https://i.gyazo.com/d19a9afbf205a8aa4d83baa09e31f8a5.png)
+
+
+
